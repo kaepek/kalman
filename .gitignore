@@ -1,0 +1,11 @@
+env/
+build/
+kalman/*.so
+Kalman1D.egg-info/
+
+#datasets
+datasets/data/*
+
+__pycache__/
+
+dist/

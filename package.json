@@ -1,0 +1,32 @@
+{
+  "name": "kalman",
+  "version": "1.1.0",
+  "description": "Velocity, acceleration and jerk will be computed using the Eular method from temporal and angular measurements, some effort is required to smooth these measurements and deal with error. Kalman or more specifically EKF will be used.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create:venv": "python3 -m venv env",
+    "install:venv": "pip install -r requirements.freeze",
+    "install:wheel": "pip install --force-reinstall $(find . -name '*.whl')",
+    "create:wheel": "rm -rf build && python setup.py bdist_wheel",
+    "create:wheel:windows64": "python setup.py bdist_wheel --plat-name win_amd64",
+    "create:wheel:linux64": "python setup.py bdist_wheel --plat-name linux_x86_64",
+    "download:ibm-double-pendulum": "bash ./datasets/download-double-pendulum.sh",
+    "install:ibm-double-pendulum": "python datasets/process-double-pendulum.py ${npm_config_dataset}", 
+    "simulate:double-pendulum": "npm run install:ibm-double-pendulum ${npm_config_dataset} && bokeh serve --port 8080 --show tests/pendulum-state-estimator.py --args ${npm_config_dataset} ${npm_config_py_or_cy}",
+    "simulate-manual:double-pendulum": "bokeh serve --port 8081 --show tests/pendulum-state-estimator.py --args ${npm_config_dataset} ${npm_config_py_or_cy}",
+    "simulate:fixed-speed:1e6:abs": "python ./tests/xykalman-abs.py ${npm_config_py_or_cy}",
+    "bestof5:fixed-speed:1e6:abs": " python -m timeit \"__import__('os').system('npm run simulate:fixed-speed:1e6:abs --py_or_cy=cy')\"",
+    "simulate:fixed-speed:1e6:rel": "python ./tests/xykalman-rel.py ${npm_config_py_or_cy}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jk89/kalman.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jk89/kalman/issues"
+  },
+  "homepage": "https://github.com/jk89/kalman/blob/main/README.md"
+}
