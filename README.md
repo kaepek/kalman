@@ -32,8 +32,8 @@ p = filter1D.get_covariance_matrix()
 Include `kalman.cpp` and `kalman.hpp` within your code. Use a symbolic link or a git-submodule to include this in your project.
 
 ```
-#include "/somedir/kalman_jerk.hpp"
-#include "/somedir/kalman_jerk.cpp"
+#include "/somedir/lib/jerk/kalman_jerk.hpp"
+#include "/somedir/lib/jerk/kalman_jerk.cpp"
 
 double alpha = 0.1;
 double x_resolution_error = 1.0;
@@ -45,7 +45,8 @@ KalmanJerk1D k1 = kaepek::KalmanJerk1D(alpha, x_resolution_error, x_jerk_error, 
 KalmanJerk1D k2 = kaepek::KalmanJerk1D(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_mod_limit);
 
 void loop() {
-  k1.step(seconds_since_last, encoder_value);
+  // get <value> somehow... not specified here
+  k1.step(seconds_since_last, value);
   double *kalman_vec = k1.get_kalman_vector();
   double *eular_vec = k1.get_eular_vector();
   double *covar = k1.get_covariance_matrix();
