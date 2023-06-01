@@ -24,7 +24,7 @@
     "url": "git+https://github.com/jk89/kalman.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "AGPL3",
   "bugs": {
     "url": "https://github.com/jk89/kalman/issues"
   },
