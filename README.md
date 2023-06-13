@@ -4,6 +4,8 @@
 
 Velocity, acceleration and jerk can be computed using the Eular method from temporal and angular/spacial measurements, some effort is required to smooth these measurements and deal with error in the higher derivatives. Kalman or more specifically EKF will be used with a jerk as white noise model.
 
+[Model derivation](model/TrackingKalman.pdf)
+
 ## Python
 
 ### Installation
