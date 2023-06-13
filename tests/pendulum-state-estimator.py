@@ -45,7 +45,6 @@ filename = 'datasets/data/double-pendulum/data%d.csv' % (dataset_number)
 std_in = None
 with open(filename) as f: 
     std_in = f.readlines()
-# std_in = sys.std_in.readlines() does not work with bohek serve
 len_std_in = len(std_in)
 
 # define column data source for plot data
@@ -114,13 +113,6 @@ def callback(dt):
         state_estimate = kalman.get_eular_vector()
         kalman_state = kalman.get_kalman_vector()
 
-        # (state_estimate, kalman_state) =
-        #if kalman_state:
-        #    X_k = kalman_state[0]
-        #    error = kalman_state[1]
-        #    S = kalman_state[2]
-        #    K = kalman_state[3]
-
         # create stream obj
         stream_obj = {
             'dt': [state_estimate[0]],
@@ -132,11 +124,7 @@ def callback(dt):
             "d_theta":[kalman_state[0]],
             "k_omega":[kalman_state[1]],
             "k_alpha": [kalman_state[2]],
-            "k_jerk":[kalman_state[3]],
-            #"d_theta":[X_k[0,0] % 2 ** 14] if kalman_state else [0],
-            #"k_omega":[X_k[1,0]] if kalman_state else [0],
-            #"k_alpha": [X_k[2,0]] if kalman_state else [0],
-            #"k_jerk":[X_k[3,0]] if kalman_state else [0],
+            "k_jerk":[kalman_state[3]]
             }
 
         # stream data

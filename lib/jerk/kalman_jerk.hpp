@@ -116,7 +116,6 @@
 Code is simplified using dependancy chain analysis of the linear algebra algorithm as written above see (kalman.model2.py) for
 details.
 
-
 needed variables:
 P1
 P2
@@ -133,7 +132,6 @@ calculate_diff_x()
 calculate_diff_t()
 public:
 step(s)
-
 
 */
 
@@ -182,41 +180,50 @@ namespace kaepek
         double q_scale;
 
         /**
-         * @brief Initalise the covariance matrix P as a function of dt
+         * @brief Initalise the covariance matrix P as a function of dt (relative time since last step, step k to k+1)
          *
          */
         void get_initial_P(double dt);
 
         /**
-         * @brief Creates Q the process noise covariance matrix u(k) as a function of dt
+         * @brief Creates Q the process noise covariance matrix u(k) as a function of dt (relative time since last step, step k to k+1)
          *
          */
         void get_Q_low_alpha_T(double dt);
 
         /**
-         * @brief Creates the state transition matrix as defined in [Ref1] low alpha tau (T in the reference) regime, from step k to k+1
+         * @brief Creates the state transition matrix as defined in [Ref1] low alpha tau (T in the reference) regime as a function of dt (relative time since last step, step k to k+1)
          *
          */
         void get_F_low_alpha_T(double dt);
 
+        /**
+         * @brief Perform kalman step given dx and dt.
+         * @param dx change in measurement displacement between latest consecutive steps (step k to k+1)
+         * @param dt change in time between latest consecutive steps (step k to k+1)
+         */
         void kalman_step(double dx, double dt);
 
     protected:
     public:
         /**
-         * @brief Get change in x between two displacement values
+         * @brief Get change in x between two measurement displacement values
          *
+         * @param last_x The last measurement displacement value
+         * @param current_x The current measurement displacement value
          */
         double calculate_diff_x(double last_x, double current_x);
 
         /**
          * @brief Get change in t between two time values
          *
+         * @param last_t The last time value
+         * @param current_t The current time value
          */
         double calculate_diff_t(double last_t, double current_t);
 
         /**
-         * @brief Get Kalman state X estimate of the system e.g. [position, velocity, acceleration, jerk], time t found in get_eular_vector()[0]
+         * @brief Get Kalman state X estimate of the system e.g. [position, velocity, acceleration, jerk], for total time retrieval use get_eular_vector()[0]
          *
          */
         Dbl4x1Pointer get_kalman_vector();
@@ -236,9 +243,10 @@ namespace kaepek
         /**
          * Kalman1D constructor.
          *
-         * @param x_resolution_error The standard deviation of a measurement variable x
-         * @param x_jerk_error The standard deviation constraint of the 4th temporal derivative of a measurement variable x
          * @param alpha alpha used to calculate q factor with q = 2 * alpha * x_jerk_error^2
+         * @param x_resolution_error The standard deviation of a measurement displacement variable x
+         * @param x_jerk_error The standard deviation constraint of the 4th temporal derivative of the measurement displacement variable x
+         * @param time_is_relative Indicates whether time values parsed to the step function are absolute temporal values or temporal differences between consecutive steps.
          * @return instance of Kalman1D class
          */
         KalmanJerk1D(double alpha, double x_resolution_error, double x_jerk_error, bool time_is_relative);
@@ -246,9 +254,10 @@ namespace kaepek
         /**
          * Kalman1D constructor.
          *
-         * @param x_resolution_error The standard deviation of a measurement variable x
-         * @param x_jerk_error The standard deviation constraint of the 4th temporal derivative of a measurement variable x
          * @param alpha alpha used to calculate q factor with q = 2 * alpha * x_jerk_error^2
+         * @param x_resolution_error The standard deviation of a measurement displacement variable x
+         * @param x_jerk_error The standard deviation constraint of the 4th temporal derivative of the measurement displacement variable x
+         * @param time_is_relative Indicates whether time values parsed to the step function are absolute temporal values or temporal differences between consecutive steps.
          * @param x_mod_limit If x obeys modular arithmatic what is the maximum value before restarting x at 0
          * @return instance of Kalman1D class
          */
@@ -256,11 +265,10 @@ namespace kaepek
 
         /**
          * Kalman1D step function
-         * @param time (absolute time [s])
-         * @param x (absolute position/rotation [units])
+         * @param time_or_dt absolute time or relative time since last step (depending on how boolean time_is_relative parameter is set)
+         * @param x absolute measurement displacement variable x
          */
-        void step(double time, double x);
+        void step(double time_or_dt, double x);
     };
 }
-
 #endif

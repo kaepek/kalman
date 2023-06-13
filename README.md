@@ -146,9 +146,3 @@ npm run simulate:bldc
 - [Cython](https://github.com/cython/cython/blob/master/LICENSE.txt)
 - [numpy](https://numpy.org/doc/stable/license.html)
 - [sympy](https://github.com/sympy/sympy/blob/master/LICENSE)
-
-## Snippets
-
- python setup.py build_ext --inplace
-
- python setup.py build_ext --inplace > out 2>&1

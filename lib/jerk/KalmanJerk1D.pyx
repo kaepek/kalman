@@ -5,12 +5,8 @@ cimport numpy as np
 from kalman_jerk cimport KalmanJerk1D as _KalmanJerk1D
 from libcpp cimport bool as bool_t
 
-# Create a Cython extension type which holds a C++ instance
-# as an attribute and create a bunch of forwarding methods
-# Python extension type.
-
 cdef class KalmanJerk1D:
-    cdef _KalmanJerk1D* c_kalman  # Hold a C++ instance which we're wrapping
+    cdef _KalmanJerk1D* c_kalman
     cdef bint boolean_variable
 
     def __cinit__(self, double alpha, double x_resolution_error, double x_jerk_error, bint time_is_relative = False, double x_mod_limit =-1):
@@ -26,7 +22,6 @@ cdef class KalmanJerk1D:
 
     def get_kalman_vector(self):
         cdef np.ndarray[double, ndim=1, mode='c'] X = np.empty([4])
-        # cdef double[5] X = [0.0, 0.0, 0.0, 0.0]
         _X = self.c_kalman.get_kalman_vector()
         X[0] = _X[0]
         X[1] = _X[1]

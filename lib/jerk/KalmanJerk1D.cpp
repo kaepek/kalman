@@ -4,17 +4,17 @@
 {
     "distutils": {
         "depends": [
-            "/home/user/code-bak/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/arrayobject.h",
-            "/home/user/code-bak/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/arrayscalars.h",
-            "/home/user/code-bak/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ndarrayobject.h",
-            "/home/user/code-bak/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ndarraytypes.h",
-            "/home/user/code-bak/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ufuncobject.h",
+            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/arrayobject.h",
+            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/arrayscalars.h",
+            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ndarrayobject.h",
+            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ndarraytypes.h",
+            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ufuncobject.h",
             "lib/jerk/KalmanJerk1D.cpp",
             "lib/jerk/kalman_jerk.hpp"
         ],
         "include_dirs": [
             "lib/jerk",
-            "/home/user/code-bak/kalman/env/lib/python3.10/site-packages/numpy/core/include"
+            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include"
         ],
         "language": "c++",
         "name": "CyKalman",
@@ -1354,15 +1354,15 @@ typedef double **__pyx_t_11kalman_jerk_Double4x4_2;
  * ctypedef double ** Double4x4_2
  * ctypedef double[4][4] Double4x4_3             # <<<<<<<<<<<<<<
  * 
- * # Declare the class with cdef
+ * cdef extern from "kalman_jerk.hpp" namespace "kaepek":
  */
 typedef double __pyx_t_11kalman_jerk_Double4x4_3[4][4];
 
-/* "lib/jerk/KalmanJerk1D.pyx":12
- * # Python extension type.
+/* "lib/jerk/KalmanJerk1D.pyx":8
+ * from libcpp cimport bool as bool_t
  * 
  * cdef class KalmanJerk1D:             # <<<<<<<<<<<<<<
- *     cdef _KalmanJerk1D* c_kalman  # Hold a C++ instance which we're wrapping
+ *     cdef _KalmanJerk1D* c_kalman
  *     cdef bint boolean_variable
  */
 struct __pyx_obj_8CyKalman_KalmanJerk1D {
@@ -2049,7 +2049,7 @@ static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
 /* Late includes */
 
-/* "lib/jerk/KalmanJerk1D.pyx":16
+/* "lib/jerk/KalmanJerk1D.pyx":12
  *     cdef bint boolean_variable
  * 
  *     def __cinit__(self, double alpha, double x_resolution_error, double x_jerk_error, bint time_is_relative = False, double x_mod_limit =-1):             # <<<<<<<<<<<<<<
@@ -2100,13 +2100,13 @@ static int __pyx_pw_8CyKalman_12KalmanJerk1D_1__cinit__(PyObject *__pyx_v_self, 
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_resolution_error)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, 1); __PYX_ERR(1, 16, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, 1); __PYX_ERR(1, 12, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_jerk_error)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, 2); __PYX_ERR(1, 16, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, 2); __PYX_ERR(1, 12, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -2122,7 +2122,7 @@ static int __pyx_pw_8CyKalman_12KalmanJerk1D_1__cinit__(PyObject *__pyx_v_self, 
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 16, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 12, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2137,23 +2137,23 @@ static int __pyx_pw_8CyKalman_12KalmanJerk1D_1__cinit__(PyObject *__pyx_v_self, 
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 16, __pyx_L3_error)
-    __pyx_v_x_resolution_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_x_resolution_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 16, __pyx_L3_error)
-    __pyx_v_x_jerk_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_x_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 16, __pyx_L3_error)
+    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
+    __pyx_v_x_resolution_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_x_resolution_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
+    __pyx_v_x_jerk_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_x_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
     if (values[3]) {
-      __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 16, __pyx_L3_error)
+      __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
     } else {
       __pyx_v_time_is_relative = ((int)0);
     }
     if (values[4]) {
-      __pyx_v_x_mod_limit = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_x_mod_limit == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 16, __pyx_L3_error)
+      __pyx_v_x_mod_limit = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_x_mod_limit == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
     } else {
       __pyx_v_x_mod_limit = ((double)-1.0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 16, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 12, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("CyKalman.KalmanJerk1D.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2176,7 +2176,7 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":17
+  /* "lib/jerk/KalmanJerk1D.pyx":13
  * 
  *     def __cinit__(self, double alpha, double x_resolution_error, double x_jerk_error, bint time_is_relative = False, double x_mod_limit =-1):
  *         self.boolean_variable = False             # <<<<<<<<<<<<<<
@@ -2185,7 +2185,7 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
  */
   __pyx_v_self->boolean_variable = 0;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":19
+  /* "lib/jerk/KalmanJerk1D.pyx":15
  *         self.boolean_variable = False
  * 
  *         if x_mod_limit == -1:             # <<<<<<<<<<<<<<
@@ -2195,7 +2195,7 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
   __pyx_t_1 = ((__pyx_v_x_mod_limit == -1.0) != 0);
   if (__pyx_t_1) {
 
-    /* "lib/jerk/KalmanJerk1D.pyx":20
+    /* "lib/jerk/KalmanJerk1D.pyx":16
  * 
  *         if x_mod_limit == -1:
  *             self.c_kalman = new _KalmanJerk1D(alpha, x_resolution_error, x_jerk_error, time_is_relative)             # <<<<<<<<<<<<<<
@@ -2206,11 +2206,11 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
       __pyx_t_2 = new kaepek::KalmanJerk1D(__pyx_v_alpha, __pyx_v_x_resolution_error, __pyx_v_x_jerk_error, __pyx_v_time_is_relative);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 20, __pyx_L1_error)
+      __PYX_ERR(1, 16, __pyx_L1_error)
     }
     __pyx_v_self->c_kalman = __pyx_t_2;
 
-    /* "lib/jerk/KalmanJerk1D.pyx":19
+    /* "lib/jerk/KalmanJerk1D.pyx":15
  *         self.boolean_variable = False
  * 
  *         if x_mod_limit == -1:             # <<<<<<<<<<<<<<
@@ -2220,7 +2220,7 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
     goto __pyx_L3;
   }
 
-  /* "lib/jerk/KalmanJerk1D.pyx":22
+  /* "lib/jerk/KalmanJerk1D.pyx":18
  *             self.c_kalman = new _KalmanJerk1D(alpha, x_resolution_error, x_jerk_error, time_is_relative)
  *         else:
  *             self.c_kalman = new _KalmanJerk1D(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_mod_limit)             # <<<<<<<<<<<<<<
@@ -2232,13 +2232,13 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
       __pyx_t_2 = new kaepek::KalmanJerk1D(__pyx_v_alpha, __pyx_v_x_resolution_error, __pyx_v_x_jerk_error, __pyx_v_time_is_relative, __pyx_v_x_mod_limit);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 22, __pyx_L1_error)
+      __PYX_ERR(1, 18, __pyx_L1_error)
     }
     __pyx_v_self->c_kalman = __pyx_t_2;
   }
   __pyx_L3:;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":16
+  /* "lib/jerk/KalmanJerk1D.pyx":12
  *     cdef bint boolean_variable
  * 
  *     def __cinit__(self, double alpha, double x_resolution_error, double x_jerk_error, bint time_is_relative = False, double x_mod_limit =-1):             # <<<<<<<<<<<<<<
@@ -2257,7 +2257,7 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
   return __pyx_r;
 }
 
-/* "lib/jerk/KalmanJerk1D.pyx":24
+/* "lib/jerk/KalmanJerk1D.pyx":20
  *             self.c_kalman = new _KalmanJerk1D(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_mod_limit)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2280,7 +2280,7 @@ static void __pyx_pf_8CyKalman_12KalmanJerk1D_2__dealloc__(struct __pyx_obj_8CyK
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":25
+  /* "lib/jerk/KalmanJerk1D.pyx":21
  * 
  *     def __dealloc__(self):
  *         del self.c_kalman             # <<<<<<<<<<<<<<
@@ -2289,7 +2289,7 @@ static void __pyx_pf_8CyKalman_12KalmanJerk1D_2__dealloc__(struct __pyx_obj_8CyK
  */
   delete __pyx_v_self->c_kalman;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":24
+  /* "lib/jerk/KalmanJerk1D.pyx":20
  *             self.c_kalman = new _KalmanJerk1D(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_mod_limit)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2301,12 +2301,12 @@ static void __pyx_pf_8CyKalman_12KalmanJerk1D_2__dealloc__(struct __pyx_obj_8CyK
   __Pyx_RefNannyFinishContext();
 }
 
-/* "lib/jerk/KalmanJerk1D.pyx":27
+/* "lib/jerk/KalmanJerk1D.pyx":23
  *         del self.c_kalman
  * 
  *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
  *         cdef np.ndarray[double, ndim=1, mode='c'] X = np.empty([4])
- *         # cdef double[5] X = [0.0, 0.0, 0.0, 0.0]
+ *         _X = self.c_kalman.get_kalman_vector()
  */
 
 /* Python wrapper */
@@ -2345,19 +2345,19 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   __pyx_pybuffernd_X.data = NULL;
   __pyx_pybuffernd_X.rcbuffer = &__pyx_pybuffer_X;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":28
+  /* "lib/jerk/KalmanJerk1D.pyx":24
  * 
  *     def get_kalman_vector(self):
  *         cdef np.ndarray[double, ndim=1, mode='c'] X = np.empty([4])             # <<<<<<<<<<<<<<
- *         # cdef double[5] X = [0.0, 0.0, 0.0, 0.0]
  *         _X = self.c_kalman.get_kalman_vector()
+ *         X[0] = _X[0]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 28, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 28, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 28, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_4);
   __Pyx_GIVEREF(__pyx_int_4);
@@ -2375,16 +2375,16 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 28, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 28, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 24, __pyx_L1_error)
   __pyx_t_5 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_X.rcbuffer->pybuffer, (PyObject*)__pyx_t_5, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_X = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_X.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(1, 28, __pyx_L1_error)
+      __PYX_ERR(1, 24, __pyx_L1_error)
     } else {__pyx_pybuffernd_X.diminfo[0].strides = __pyx_pybuffernd_X.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_X.diminfo[0].shape = __pyx_pybuffernd_X.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2392,17 +2392,17 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   __pyx_v_X = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":30
+  /* "lib/jerk/KalmanJerk1D.pyx":25
+ *     def get_kalman_vector(self):
  *         cdef np.ndarray[double, ndim=1, mode='c'] X = np.empty([4])
- *         # cdef double[5] X = [0.0, 0.0, 0.0, 0.0]
  *         _X = self.c_kalman.get_kalman_vector()             # <<<<<<<<<<<<<<
  *         X[0] = _X[0]
  *         X[1] = _X[1]
  */
   __pyx_v__X = __pyx_v_self->c_kalman->get_kalman_vector();
 
-  /* "lib/jerk/KalmanJerk1D.pyx":31
- *         # cdef double[5] X = [0.0, 0.0, 0.0, 0.0]
+  /* "lib/jerk/KalmanJerk1D.pyx":26
+ *         cdef np.ndarray[double, ndim=1, mode='c'] X = np.empty([4])
  *         _X = self.c_kalman.get_kalman_vector()
  *         X[0] = _X[0]             # <<<<<<<<<<<<<<
  *         X[1] = _X[1]
@@ -2416,11 +2416,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_X.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 31, __pyx_L1_error)
+    __PYX_ERR(1, 26, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_X.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_X.diminfo[0].strides) = (__pyx_v__X[0]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":32
+  /* "lib/jerk/KalmanJerk1D.pyx":27
  *         _X = self.c_kalman.get_kalman_vector()
  *         X[0] = _X[0]
  *         X[1] = _X[1]             # <<<<<<<<<<<<<<
@@ -2435,11 +2435,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_X.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 32, __pyx_L1_error)
+    __PYX_ERR(1, 27, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_X.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_X.diminfo[0].strides) = (__pyx_v__X[1]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":33
+  /* "lib/jerk/KalmanJerk1D.pyx":28
  *         X[0] = _X[0]
  *         X[1] = _X[1]
  *         X[2] = _X[2]             # <<<<<<<<<<<<<<
@@ -2454,11 +2454,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_X.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 33, __pyx_L1_error)
+    __PYX_ERR(1, 28, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_X.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_X.diminfo[0].strides) = (__pyx_v__X[2]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":34
+  /* "lib/jerk/KalmanJerk1D.pyx":29
  *         X[1] = _X[1]
  *         X[2] = _X[2]
  *         X[3] = _X[3]             # <<<<<<<<<<<<<<
@@ -2473,11 +2473,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_X.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 34, __pyx_L1_error)
+    __PYX_ERR(1, 29, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_X.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_X.diminfo[0].strides) = (__pyx_v__X[3]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":35
+  /* "lib/jerk/KalmanJerk1D.pyx":30
  *         X[2] = _X[2]
  *         X[3] = _X[3]
  *         return X             # <<<<<<<<<<<<<<
@@ -2489,12 +2489,12 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   __pyx_r = ((PyObject *)__pyx_v_X);
   goto __pyx_L0;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":27
+  /* "lib/jerk/KalmanJerk1D.pyx":23
  *         del self.c_kalman
  * 
  *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
  *         cdef np.ndarray[double, ndim=1, mode='c'] X = np.empty([4])
- *         # cdef double[5] X = [0.0, 0.0, 0.0, 0.0]
+ *         _X = self.c_kalman.get_kalman_vector()
  */
 
   /* function exit code */
@@ -2521,7 +2521,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   return __pyx_r;
 }
 
-/* "lib/jerk/KalmanJerk1D.pyx":37
+/* "lib/jerk/KalmanJerk1D.pyx":32
  *         return X
  * 
  *     def get_eular_vector(self):             # <<<<<<<<<<<<<<
@@ -2565,19 +2565,19 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   __pyx_pybuffernd_eular.data = NULL;
   __pyx_pybuffernd_eular.rcbuffer = &__pyx_pybuffer_eular;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":38
+  /* "lib/jerk/KalmanJerk1D.pyx":33
  * 
  *     def get_eular_vector(self):
  *         cdef np.ndarray[double, ndim=1, mode='c'] eular  = np.empty([5])             # <<<<<<<<<<<<<<
  *         _eular = self.c_kalman.get_eular_vector()
  *         eular[0] = _eular[0]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_5);
   __Pyx_GIVEREF(__pyx_int_5);
@@ -2595,16 +2595,16 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 38, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 38, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 33, __pyx_L1_error)
   __pyx_t_5 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_eular.rcbuffer->pybuffer, (PyObject*)__pyx_t_5, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_eular = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(1, 38, __pyx_L1_error)
+      __PYX_ERR(1, 33, __pyx_L1_error)
     } else {__pyx_pybuffernd_eular.diminfo[0].strides = __pyx_pybuffernd_eular.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_eular.diminfo[0].shape = __pyx_pybuffernd_eular.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2612,7 +2612,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   __pyx_v_eular = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":39
+  /* "lib/jerk/KalmanJerk1D.pyx":34
  *     def get_eular_vector(self):
  *         cdef np.ndarray[double, ndim=1, mode='c'] eular  = np.empty([5])
  *         _eular = self.c_kalman.get_eular_vector()             # <<<<<<<<<<<<<<
@@ -2621,7 +2621,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
  */
   __pyx_v__eular = __pyx_v_self->c_kalman->get_eular_vector();
 
-  /* "lib/jerk/KalmanJerk1D.pyx":40
+  /* "lib/jerk/KalmanJerk1D.pyx":35
  *         cdef np.ndarray[double, ndim=1, mode='c'] eular  = np.empty([5])
  *         _eular = self.c_kalman.get_eular_vector()
  *         eular[0] = _eular[0]             # <<<<<<<<<<<<<<
@@ -2636,11 +2636,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_eular.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 40, __pyx_L1_error)
+    __PYX_ERR(1, 35, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_eular.diminfo[0].strides) = (__pyx_v__eular[0]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":41
+  /* "lib/jerk/KalmanJerk1D.pyx":36
  *         _eular = self.c_kalman.get_eular_vector()
  *         eular[0] = _eular[0]
  *         eular[1] = _eular[1]             # <<<<<<<<<<<<<<
@@ -2655,11 +2655,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_eular.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 41, __pyx_L1_error)
+    __PYX_ERR(1, 36, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_eular.diminfo[0].strides) = (__pyx_v__eular[1]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":42
+  /* "lib/jerk/KalmanJerk1D.pyx":37
  *         eular[0] = _eular[0]
  *         eular[1] = _eular[1]
  *         eular[2] = _eular[2]             # <<<<<<<<<<<<<<
@@ -2674,11 +2674,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_eular.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 42, __pyx_L1_error)
+    __PYX_ERR(1, 37, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_eular.diminfo[0].strides) = (__pyx_v__eular[2]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":43
+  /* "lib/jerk/KalmanJerk1D.pyx":38
  *         eular[1] = _eular[1]
  *         eular[2] = _eular[2]
  *         eular[3] = _eular[3]             # <<<<<<<<<<<<<<
@@ -2693,11 +2693,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_eular.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 43, __pyx_L1_error)
+    __PYX_ERR(1, 38, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_eular.diminfo[0].strides) = (__pyx_v__eular[3]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":44
+  /* "lib/jerk/KalmanJerk1D.pyx":39
  *         eular[2] = _eular[2]
  *         eular[3] = _eular[3]
  *         eular[4] = _eular[4]             # <<<<<<<<<<<<<<
@@ -2712,11 +2712,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_eular.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 44, __pyx_L1_error)
+    __PYX_ERR(1, 39, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_eular.diminfo[0].strides) = (__pyx_v__eular[4]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":45
+  /* "lib/jerk/KalmanJerk1D.pyx":40
  *         eular[3] = _eular[3]
  *         eular[4] = _eular[4]
  *         return eular             # <<<<<<<<<<<<<<
@@ -2728,7 +2728,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   __pyx_r = ((PyObject *)__pyx_v_eular);
   goto __pyx_L0;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":37
+  /* "lib/jerk/KalmanJerk1D.pyx":32
  *         return X
  * 
  *     def get_eular_vector(self):             # <<<<<<<<<<<<<<
@@ -2760,7 +2760,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   return __pyx_r;
 }
 
-/* "lib/jerk/KalmanJerk1D.pyx":47
+/* "lib/jerk/KalmanJerk1D.pyx":42
  *         return eular
  * 
  *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
@@ -2805,19 +2805,19 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   __pyx_pybuffernd_P.data = NULL;
   __pyx_pybuffernd_P.rcbuffer = &__pyx_pybuffer_P;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":48
+  /* "lib/jerk/KalmanJerk1D.pyx":43
  * 
  *     def get_covariance_matrix(self):
  *         cdef np.ndarray[double, ndim=2, mode='c'] P = np.empty([4,4])             # <<<<<<<<<<<<<<
  *         _P = self.c_kalman.get_covariance_matrix()
  *         P[0,0] = _P[0][0]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 48, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 48, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 48, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_4);
   __Pyx_GIVEREF(__pyx_int_4);
@@ -2838,16 +2838,16 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 48, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 48, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 43, __pyx_L1_error)
   __pyx_t_5 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_P.rcbuffer->pybuffer, (PyObject*)__pyx_t_5, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_P = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_P.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(1, 48, __pyx_L1_error)
+      __PYX_ERR(1, 43, __pyx_L1_error)
     } else {__pyx_pybuffernd_P.diminfo[0].strides = __pyx_pybuffernd_P.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_P.diminfo[0].shape = __pyx_pybuffernd_P.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_P.diminfo[1].strides = __pyx_pybuffernd_P.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_P.diminfo[1].shape = __pyx_pybuffernd_P.rcbuffer->pybuffer.shape[1];
     }
   }
@@ -2855,7 +2855,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   __pyx_v_P = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":49
+  /* "lib/jerk/KalmanJerk1D.pyx":44
  *     def get_covariance_matrix(self):
  *         cdef np.ndarray[double, ndim=2, mode='c'] P = np.empty([4,4])
  *         _P = self.c_kalman.get_covariance_matrix()             # <<<<<<<<<<<<<<
@@ -2864,7 +2864,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
  */
   __pyx_v__P = __pyx_v_self->c_kalman->get_covariance_matrix();
 
-  /* "lib/jerk/KalmanJerk1D.pyx":50
+  /* "lib/jerk/KalmanJerk1D.pyx":45
  *         cdef np.ndarray[double, ndim=2, mode='c'] P = np.empty([4,4])
  *         _P = self.c_kalman.get_covariance_matrix()
  *         P[0,0] = _P[0][0]             # <<<<<<<<<<<<<<
@@ -2884,11 +2884,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 50, __pyx_L1_error)
+    __PYX_ERR(1, 45, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[0])[0]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":51
+  /* "lib/jerk/KalmanJerk1D.pyx":46
  *         _P = self.c_kalman.get_covariance_matrix()
  *         P[0,0] = _P[0][0]
  *         P[0,1] = _P[0][1]             # <<<<<<<<<<<<<<
@@ -2908,11 +2908,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 51, __pyx_L1_error)
+    __PYX_ERR(1, 46, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[0])[1]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":52
+  /* "lib/jerk/KalmanJerk1D.pyx":47
  *         P[0,0] = _P[0][0]
  *         P[0,1] = _P[0][1]
  *         P[0,2] = _P[0][2]             # <<<<<<<<<<<<<<
@@ -2932,11 +2932,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 52, __pyx_L1_error)
+    __PYX_ERR(1, 47, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[0])[2]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":53
+  /* "lib/jerk/KalmanJerk1D.pyx":48
  *         P[0,1] = _P[0][1]
  *         P[0,2] = _P[0][2]
  *         P[0,3] = _P[0][3]             # <<<<<<<<<<<<<<
@@ -2956,11 +2956,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 53, __pyx_L1_error)
+    __PYX_ERR(1, 48, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[0])[3]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":55
+  /* "lib/jerk/KalmanJerk1D.pyx":50
  *         P[0,3] = _P[0][3]
  * 
  *         P[1,0] = _P[1][0]             # <<<<<<<<<<<<<<
@@ -2980,11 +2980,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 55, __pyx_L1_error)
+    __PYX_ERR(1, 50, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[1])[0]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":56
+  /* "lib/jerk/KalmanJerk1D.pyx":51
  * 
  *         P[1,0] = _P[1][0]
  *         P[1,0] = _P[1][1]             # <<<<<<<<<<<<<<
@@ -3004,11 +3004,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 56, __pyx_L1_error)
+    __PYX_ERR(1, 51, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[1])[1]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":57
+  /* "lib/jerk/KalmanJerk1D.pyx":52
  *         P[1,0] = _P[1][0]
  *         P[1,0] = _P[1][1]
  *         P[1,0] = _P[1][2]             # <<<<<<<<<<<<<<
@@ -3028,11 +3028,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 57, __pyx_L1_error)
+    __PYX_ERR(1, 52, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[1])[2]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":58
+  /* "lib/jerk/KalmanJerk1D.pyx":53
  *         P[1,0] = _P[1][1]
  *         P[1,0] = _P[1][2]
  *         P[1,0] = _P[1][3]             # <<<<<<<<<<<<<<
@@ -3052,11 +3052,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 58, __pyx_L1_error)
+    __PYX_ERR(1, 53, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[1])[3]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":60
+  /* "lib/jerk/KalmanJerk1D.pyx":55
  *         P[1,0] = _P[1][3]
  * 
  *         P[2,0] = _P[2][0]             # <<<<<<<<<<<<<<
@@ -3076,11 +3076,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 60, __pyx_L1_error)
+    __PYX_ERR(1, 55, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[2])[0]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":61
+  /* "lib/jerk/KalmanJerk1D.pyx":56
  * 
  *         P[2,0] = _P[2][0]
  *         P[2,0] = _P[2][1]             # <<<<<<<<<<<<<<
@@ -3100,11 +3100,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 61, __pyx_L1_error)
+    __PYX_ERR(1, 56, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[2])[1]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":62
+  /* "lib/jerk/KalmanJerk1D.pyx":57
  *         P[2,0] = _P[2][0]
  *         P[2,0] = _P[2][1]
  *         P[2,0] = _P[2][2]             # <<<<<<<<<<<<<<
@@ -3124,11 +3124,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 62, __pyx_L1_error)
+    __PYX_ERR(1, 57, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[2])[2]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":63
+  /* "lib/jerk/KalmanJerk1D.pyx":58
  *         P[2,0] = _P[2][1]
  *         P[2,0] = _P[2][2]
  *         P[2,0] = _P[2][3]             # <<<<<<<<<<<<<<
@@ -3148,11 +3148,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 63, __pyx_L1_error)
+    __PYX_ERR(1, 58, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[2])[3]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":65
+  /* "lib/jerk/KalmanJerk1D.pyx":60
  *         P[2,0] = _P[2][3]
  * 
  *         P[3,0] = _P[3][0]             # <<<<<<<<<<<<<<
@@ -3172,11 +3172,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 65, __pyx_L1_error)
+    __PYX_ERR(1, 60, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[3])[0]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":66
+  /* "lib/jerk/KalmanJerk1D.pyx":61
  * 
  *         P[3,0] = _P[3][0]
  *         P[3,0] = _P[3][1]             # <<<<<<<<<<<<<<
@@ -3196,11 +3196,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 66, __pyx_L1_error)
+    __PYX_ERR(1, 61, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[3])[1]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":67
+  /* "lib/jerk/KalmanJerk1D.pyx":62
  *         P[3,0] = _P[3][0]
  *         P[3,0] = _P[3][1]
  *         P[3,0] = _P[3][2]             # <<<<<<<<<<<<<<
@@ -3220,11 +3220,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 67, __pyx_L1_error)
+    __PYX_ERR(1, 62, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[3])[2]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":68
+  /* "lib/jerk/KalmanJerk1D.pyx":63
  *         P[3,0] = _P[3][1]
  *         P[3,0] = _P[3][2]
  *         P[3,0] = _P[3][3]             # <<<<<<<<<<<<<<
@@ -3244,11 +3244,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 68, __pyx_L1_error)
+    __PYX_ERR(1, 63, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[3])[3]);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":69
+  /* "lib/jerk/KalmanJerk1D.pyx":64
  *         P[3,0] = _P[3][2]
  *         P[3,0] = _P[3][3]
  *         return P             # <<<<<<<<<<<<<<
@@ -3260,7 +3260,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   __pyx_r = ((PyObject *)__pyx_v_P);
   goto __pyx_L0;
 
-  /* "lib/jerk/KalmanJerk1D.pyx":47
+  /* "lib/jerk/KalmanJerk1D.pyx":42
  *         return eular
  * 
  *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
@@ -3292,7 +3292,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   return __pyx_r;
 }
 
-/* "lib/jerk/KalmanJerk1D.pyx":71
+/* "lib/jerk/KalmanJerk1D.pyx":66
  *         return P
  * 
  *     def step(self, double time, double x):             # <<<<<<<<<<<<<<
@@ -3333,11 +3333,11 @@ static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_11step(PyObject *__pyx_v_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("step", 1, 2, 2, 1); __PYX_ERR(1, 71, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("step", 1, 2, 2, 1); __PYX_ERR(1, 66, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(1, 71, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(1, 66, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3345,12 +3345,12 @@ static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_11step(PyObject *__pyx_v_self
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 71, __pyx_L3_error)
-    __pyx_v_x = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 71, __pyx_L3_error)
+    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 66, __pyx_L3_error)
+    __pyx_v_x = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 66, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("step", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 71, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("step", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 66, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("CyKalman.KalmanJerk1D.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3368,14 +3368,14 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_10step(struct __pyx_obj_8CyKa
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("step", 0);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":72
+  /* "lib/jerk/KalmanJerk1D.pyx":67
  * 
  *     def step(self, double time, double x):
  *         self.c_kalman.step(time, x)             # <<<<<<<<<<<<<<
  */
   __pyx_v_self->c_kalman->step(__pyx_v_time, __pyx_v_x);
 
-  /* "lib/jerk/KalmanJerk1D.pyx":71
+  /* "lib/jerk/KalmanJerk1D.pyx":66
  *         return P
  * 
  *     def step(self, double time, double x):             # <<<<<<<<<<<<<<
@@ -4815,15 +4815,15 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_8CyKalman_KalmanJerk1D) < 0) __PYX_ERR(1, 12, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_8CyKalman_KalmanJerk1D) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_8CyKalman_KalmanJerk1D.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_8CyKalman_KalmanJerk1D.tp_dictoffset && __pyx_type_8CyKalman_KalmanJerk1D.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_8CyKalman_KalmanJerk1D.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk1D, (PyObject *)&__pyx_type_8CyKalman_KalmanJerk1D) < 0) __PYX_ERR(1, 12, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_8CyKalman_KalmanJerk1D) < 0) __PYX_ERR(1, 12, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk1D, (PyObject *)&__pyx_type_8CyKalman_KalmanJerk1D) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_8CyKalman_KalmanJerk1D) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
   __pyx_ptype_8CyKalman_KalmanJerk1D = &__pyx_type_8CyKalman_KalmanJerk1D;
   __Pyx_RefNannyFinishContext();
   return 0;

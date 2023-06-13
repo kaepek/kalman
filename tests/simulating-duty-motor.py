@@ -16,7 +16,7 @@ alpha = 50
 angular_resolution_error = 0.5
 #error in jerk
 jerk_error =0.001
-kalman = Kalman_Filter_1D(alpha, angular_resolution_error, jerk_error)#('kalman-ideas')
+kalman = Kalman_Filter_1D(alpha, angular_resolution_error, jerk_error)
 
 # setup transition parameters
 duty_to_equilibrium_omega_coefficient =  255 / 150 # say 255 duty is max speed at say speed is 150
@@ -50,7 +50,6 @@ def calculate_omega_at_current_time(transition_time, old_duty, new_duty):
         old_omega = old_duty * duty_to_equilibrium_omega_coefficient
         denominator = (1 + math.exp((  -1.0 * (current_time - transition_time_middle_point))/float(grow_fall_transition_speed)))
         next_omega =  gain / denominator
-        print("old_duty, current_duty, delta_duty, next_omega, old_omega", old_duty, current_duty, delta_duty, next_omega, old_omega) 
         next_omega = (next_omega) + old_omega
         noise = numpy.random.normal(next_omega, omega_noise, size=1)[0]
         return noise
@@ -200,7 +199,6 @@ duty_transition(start_time + 700, initial_duty)
 
 duty_transition(start_time + 800, initial_duty - 4)
 duty_transition(start_time + 850, initial_duty)
-
 
 # start bokeh
 doc.add_next_tick_callback(time_step)

@@ -3,10 +3,8 @@ ctypedef double * DoublePtr
 ctypedef (double *)[4] Double4x4
 ctypedef double ** Double4x4_2
 
-# Declare the class with cdef
 cdef extern from "kalman_jerk.hpp" namespace "kaepek":
     cdef cppclass KalmanJerk1D:
-        #Kalman1D() except +
         KalmanJerk1D(double,double,double,bint) except +
         KalmanJerk1D(double,double,double,bint,double) except +
 
