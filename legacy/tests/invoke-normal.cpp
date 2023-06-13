@@ -102,7 +102,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-        std::cout << "kalman step 8";
+    std::cout << "kalman step 8";
     kalman_normal.step(8.0, 8.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -110,7 +110,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-        std::cout << "kalman step 9";
+    std::cout << "kalman step 9";
     kalman_normal.step(9.0, 9.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -118,7 +118,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-        std::cout << "kalman step 10";
+    std::cout << "kalman step 10";
     kalman_normal.step(10.0, 10.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -126,7 +126,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-            std::cout << "kalman step 11";
+    std::cout << "kalman step 11";
     kalman_normal.step(11.0, 11.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -134,7 +134,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-            std::cout << "kalman step 12";
+    std::cout << "kalman step 12";
     kalman_normal.step(12.0, 12.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -142,7 +142,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-            std::cout << "kalman step 13";
+    std::cout << "kalman step 13";
     kalman_normal.step(13.0, 13.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -150,7 +150,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-            std::cout << "kalman step 14";
+    std::cout << "kalman step 14";
     kalman_normal.step(14.0, 14.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -158,7 +158,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-            std::cout << "kalman step 15";
+    std::cout << "kalman step 15";
     kalman_normal.step(15.0, 15.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -166,7 +166,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-            std::cout << "kalman step 16";
+    std::cout << "kalman step 16";
     kalman_normal.step(16.0, 16.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -174,7 +174,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-            std::cout << "kalman step 17";
+    std::cout << "kalman step 17";
     kalman_normal.step(17.0, 17.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -182,7 +182,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-            std::cout << "kalman step 18";
+    std::cout << "kalman step 18";
     kalman_normal.step(18.0, 18.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -190,7 +190,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-            std::cout << "kalman step 19";
+    std::cout << "kalman step 19";
     kalman_normal.step(19.0, 19.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
@@ -198,7 +198,7 @@ int main()
     print_state(eular, kalman, p);
     std::cout << "--------------------------------------------------\n";
 
-            std::cout << "kalman step 20";
+    std::cout << "kalman step 20";
     kalman_normal.step(20.0, 20.0);
     eular = kalman_normal.get_eular_vector();
     kalman = kalman_normal.get_kalman_vector();
