@@ -8,6 +8,7 @@ ctypedef double[4][4] Double4x4_3
 
 cdef extern from "kalman_jerk.hpp" namespace "kaepek":
     cdef cppclass KalmanJerk1D:
+        KalmanJerk1D() except +
         KalmanJerk1D(double,double,double,bint) except +
         KalmanJerk1D(double,double,double,bint,double) except +
 

@@ -11,6 +11,9 @@ namespace kaepek
         return value - mod * floor(value / mod);
     }
 
+    KalmanJerk1D::KalmanJerk1D() {
+    }
+
     KalmanJerk1D::KalmanJerk1D(double alpha, double x_resolution_error, double x_jerk_error, bool time_is_relative)
     {
         this->alpha = alpha;

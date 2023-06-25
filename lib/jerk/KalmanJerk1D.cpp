@@ -4,17 +4,17 @@
 {
     "distutils": {
         "depends": [
-            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/arrayobject.h",
-            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/arrayscalars.h",
-            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ndarrayobject.h",
-            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ndarraytypes.h",
-            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ufuncobject.h",
+            "/home/jonathan/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/arrayobject.h",
+            "/home/jonathan/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/arrayscalars.h",
+            "/home/jonathan/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ndarrayobject.h",
+            "/home/jonathan/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ndarraytypes.h",
+            "/home/jonathan/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ufuncobject.h",
             "lib/jerk/KalmanJerk1D.cpp",
             "lib/jerk/kalman_jerk.hpp"
         ],
         "include_dirs": [
             "lib/jerk",
-            "/home/user/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include"
+            "/home/jonathan/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include"
         ],
         "language": "c++",
         "name": "CyKalman",

@@ -1,6 +1,6 @@
 {
   "name": "kalman",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Velocity, acceleration and jerk will be computed using the Eular method from temporal and angular measurements, some effort is required to smooth these measurements and deal with error. Kalman or more specifically EKF will be used.",
   "main": "index.js",
   "scripts": {

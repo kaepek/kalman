@@ -241,7 +241,12 @@ namespace kaepek
         Dbl5x1Pointer get_eular_vector();
 
         /**
-         * Kalman1D constructor.
+         * Kalman1D default constructor.
+         */
+        KalmanJerk1D();
+
+        /**
+         * Kalman1D constructor with parameters.
          *
          * @param alpha alpha used to calculate q factor with q = 2 * alpha * x_jerk_error^2
          * @param x_resolution_error The standard deviation of a measurement displacement variable x
@@ -252,7 +257,7 @@ namespace kaepek
         KalmanJerk1D(double alpha, double x_resolution_error, double x_jerk_error, bool time_is_relative);
 
         /**
-         * Kalman1D constructor.
+         * Kalman1D constructor with parameters - modular arithmetic variant.
          *
          * @param alpha alpha used to calculate q factor with q = 2 * alpha * x_jerk_error^2
          * @param x_resolution_error The standard deviation of a measurement displacement variable x
