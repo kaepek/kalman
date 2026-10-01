@@ -7,9 +7,9 @@ This document derives every filter in the library from the jerk model of K. Mehr
 | Class | Measurement | Coverage by the paper | Paper equations | Additional derivation |
 |-|-|-|-|-|
 | `KalmanJerk1D` | $`x`$, or an angle with wrap limit | Complete (Sections II to IV) | (1) to (29) | None |
-| `KalmanJerk2D` | $`(x, y)`$ | Three axis form only (Section V) | (32), (33), (39), (47), (49) | Restriction to two axes; initial covariance for a general $`R`$ |
-| `KalmanJerk3D` | $`(x, y, z)`$ | Complete (Section V) | (32), (33), (39), (47), (49) | Initial covariance for a general $`R`$ |
-| `KalmanJerk2DPolar` | $`(r, \theta)`$ | Planar case of Section V | (44), (45) with $`\varphi = 0`$ | Planar measurement conversion |
+| `KalmanJerk2D` | $`(x, y)`$ | Three axis form only (Section V) | (32), (33), (39), (47), (49) | None |
+| `KalmanJerk3D` | $`(x, y, z)`$ | Complete (Section V) | (32), (33), (39), (47), (49) | None |
+| `KalmanJerk2DPolar` | $`(r, \theta)`$ | Planar case of Section V | (44), (45) with $`\varphi = 0`$ | None |
 | `KalmanJerk3DSpherical` | $`(r, \theta, \varphi)`$ | Complete (Section V) | (44), (45) | None |
 | `KalmanJerk2DAzEl` | $`(\theta, \varphi)`$ | Not covered | (5) to (8), (11), (13) applied on the sphere | Intrinsic jerk model on the unit sphere |
 | `KalmanJerk1DBearingMovingSensor` | $`\beta`$ and sensor state | Not covered | (5) to (8), (11), (13) applied to relative motion | Modified polar coordinates of jerk order |
@@ -17,118 +17,37 @@ This document derives every filter in the library from the jerk model of K. Mehr
 
 Angles follow the convention of (44): $`\theta`$ is azimuth and $`\varphi`$ is elevation above the horizontal plane.
 
-# KalmanJerk1D
+# Notation
 
-`KalmanJerk1D` tracks a single coordinate with a four state jerk model: position, velocity, acceleration and jerk. The coordinate is either a linear position or an angle that wraps at a fixed limit.
+The following quantities are those of the paper and are used without rederivation.
 
-It is the base of the family. Every other class reuses its per axis transition matrix, process noise matrix and initialisation procedure, so the derivation below defines the quantities referred to throughout the document.
+| Symbol | Definition | Paper |
+|-|-|-|
+| $`\alpha`$, $`\sigma_j`$ | reciprocal jerk time constant and jerk standard deviation | (1) |
+| $`Q_c`$ | white noise intensity $`2 \alpha \sigma_j^2`$ | (6) |
+| $`A`$, $`B`$ | continuous state and input matrices of one axis | (7) |
+| $`F(T)`$ | transition matrix of one axis | (14), (15); (16) when $`\alpha T`$ is small |
+| $`Q(T)`$ | process noise covariance of one axis | (20); (21) when $`\alpha T`$ is small |
+| $`\sigma_m`$ | standard deviation of the target acceleration | (28) |
+| $`P_{proc}`$ | terms of the initial covariance (28) that involve $`\sigma_m`$, $`\sigma_j`$ and the $`q_{ij}`$, or of (29) when $`\alpha T`$ is small | (28), (29) |
 
-## Derivation
-
-### Continuous model
-
-The target jerk $`j(t)`$ is a zero mean stationary process with exponential autocorrelation (1):
-
-$$
-r_j(\tau) = E\{ j(t) j(t + \tau) \} = \sigma_j^2 e^{-\alpha \lvert \tau \rvert}
-$$
-
-Whitening (2) to (4) gives the first order model (5) driven by white noise $`w(t)`$ of intensity (6):
-
-$$
-\dot{j}(t) = -\alpha j(t) + w(t), \qquad E\{ w(t) w(t + \tau) \} = Q_c \delta(\tau), \qquad Q_c = 2 \alpha \sigma_j^2
-$$
-
-With state $`X = [x, \dot{x}, \ddot{x}, \dddot{x}]^T`$ the continuous system (7), (8) is $`\dot{X} = A X + B w`$ with
-
-$$
-A = \begin{bmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & -\alpha \end{bmatrix}, \qquad
-B = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix}
-$$
-
-### Discretisation
-
-Over a sampling interval $`T`$ the transition matrix is $`F(T) = e^{A T}`$ (11), which evaluates to (14), (15):
-
-$$
-F(T) = \begin{bmatrix} 1 & T & T^2/2 & p_1 \\ 0 & 1 & T & q_1 \\ 0 & 0 & 1 & r_1 \\ 0 & 0 & 0 & s_1 \end{bmatrix}
-$$
-
-$$
-p_1 = \frac{2 - 2 \alpha T + \alpha^2 T^2 - 2 e^{-\alpha T}}{2 \alpha^3}, \quad
-q_1 = \frac{e^{-\alpha T} - 1 + \alpha T}{\alpha^2}, \quad
-r_1 = \frac{1 - e^{-\alpha T}}{\alpha}, \quad
-s_1 = e^{-\alpha T}
-$$
-
-The process noise covariance is the integral (13), (17):
-
-$$
-Q(T) = Q_c \int_0^T g(u) g(u)^T du, \qquad g(u) = F(u) B = [p_1(u), q_1(u), r_1(u), s_1(u)]^T
-$$
-
-whose entries are listed in (20). In the limit $`\alpha T \to 0`$ the transition matrix reduces to (16) and, with $`g(u) \to [u^3/6, u^2/2, u, 1]^T`$, the process noise reduces to (21):
-
-$$
-F(T) = \begin{bmatrix} 1 & T & T^2/2 & T^3/6 \\ 0 & 1 & T & T^2/2 \\ 0 & 0 & 1 & T \\ 0 & 0 & 0 & 1 \end{bmatrix}, \qquad
-Q(T) = Q_c \begin{bmatrix}
-T^7/252 & T^6/72 & T^5/30 & T^4/24 \\
-T^6/72 & T^5/20 & T^4/8 & T^3/6 \\
-T^5/30 & T^4/8 & T^3/3 & T^2/2 \\
-T^4/24 & T^3/6 & T^2/2 & T
-\end{bmatrix}
-$$
-
-The first entry follows from $`\int_0^T (u^3/6)^2 du = T^7/252`$, and each remaining entry from the corresponding product of components of $`g(u)`$.
-
-The library provides both evaluations as compile time policies acting on this 4 by 4 block. `JerkSmallAlphaT` evaluates (16) and (21). `JerkExact` evaluates (14), (15) and (20). The entries of (20) contain cancellations between terms of order $`(\alpha T)^k`$, so (16) and (21) are the numerically preferred evaluation when $`\alpha T \ll 1`$.
-
-### Measurement and update
-
-The measurement (9) is $`z = H X + v`$ with $`H = [1, 0, 0, 0]`$ and $`E\{ v^2 \} = R = \sigma_x^2`$. The update is the standard Kalman recursion:
-
-$$
-X^- = F X, \quad P^- = F P F^T + Q, \quad y = z - H X^-, \quad S = H P^- H^T + R, \quad K = P^- H^T S^{-1}
-$$
-
-$$
-X = X^- + K y, \qquad P = (I - K H) P^-
-$$
-
-For an angular coordinate with wrap limit $`M`$ the measurement lies on the circle $`S^1`$. The circle has zero intrinsic curvature and arc length is linear in the angle, so the model above applies to the angle without modification once consecutive measurements are unwrapped. The unwrapped measurement is $`z_k = z_{k-1} + d(\tilde{z}_k, z_{k-1})`$, where $`\tilde{z}_k`$ is the raw reading and
+The compile time policy `JerkExact` evaluates (14), (15) and (20), and `JerkSmallAlphaT` evaluates (16) and (21). The filters are initialised from the first three measurements by (22). For an angular coordinate with wrap limit $`M`$, differences of measurements are formed with
 
 $$
 d(a, b) = \mathrm{mod}(a - b, M) - M \cdot [\mathrm{mod}(a - b, M) > M/2]
 $$
 
-maps the raw difference into the interval $`(-M/2, M/2]`$. This requires the true change between samples to be smaller than $`M/2`$.
+which maps the raw difference into the interval $`(-M/2, M/2]`$.
 
-### Initialisation
+# KalmanJerk1D
 
-The filter is initialised from the first three measurements $`M(1), M(2), M(3)`$ by (22):
+`KalmanJerk1D` tracks a single coordinate with a four state jerk model: position, velocity, acceleration and jerk. The coordinate is either a linear position or an angle that wraps at a fixed limit.
 
-$$
-\hat{x}(3) = M(3), \quad \hat{\dot{x}}(3) = \frac{M(3) - M(2)}{T}, \quad \hat{\ddot{x}}(3) = \frac{M(3) - 2 M(2) + M(1)}{T^2}, \quad \hat{\dddot{x}}(3) = 0
-$$
+It is the base of the family, and its per axis matrices are used by every other class.
 
-The error analysis (23) to (28) gives the initial covariance. In the limit $`\alpha T \to 0`$ it is (29):
+## Derivation
 
-$$
-P = \begin{bmatrix}
-\sigma_x^2 & \sigma_x^2 / T & \sigma_x^2 / T^2 & 0 \\
-\sigma_x^2 / T & 2 \sigma_x^2 / T^2 & 3 \sigma_x^2 / T^3 & (5/6) \sigma_j^2 T^2 \\
-\sigma_x^2 / T^2 & 3 \sigma_x^2 / T^3 & 6 \sigma_x^2 / T^4 & \sigma_j^2 T \\
-0 & (5/6) \sigma_j^2 T^2 & \sigma_j^2 T & \sigma_j^2
-\end{bmatrix}
-$$
-
-Under `JerkExact` the entries follow (28) with the $`q_{ij}`$ of (20), where $`\sigma_m`$ is the standard deviation of the target acceleration. The terms of (28) that involve $`\sigma_m`$, $`\sigma_j`$ and the $`q_{ij}`$ arise from the target acceleration, jerk and process noise and are denoted $`P_{proc}`$; they do not enter the position row or column. The measurement dependent part of (29) has a direct form that is used by the multi axis classes. Each estimate in (22) is linear in the measurements, with coefficient vectors over $`(\hat{x}, \hat{\dot{x}}, \hat{\ddot{x}})`$:
-
-$$
-c_1 = [0, 0, 1/T^2]^T, \quad c_2 = [0, -1/T, -2/T^2]^T, \quad c_3 = [1, 1/T, 1/T^2]^T
-$$
-
-so that the upper left 3 by 3 block of $`P`$ is $`\sum_{n=1}^{3} \sigma_x^2 c_n c_n^T`$, which reproduces the corresponding entries of (29).
+Sections II to IV of the paper, (1) to (29). An angular coordinate lies on a circle, which has zero intrinsic curvature, so the paper's model applies to it unchanged once measurement differences are formed with $`d`$.
 
 # KalmanJerk2D
 
@@ -138,29 +57,7 @@ It provides the two axis Cartesian core used by `KalmanJerk2DPolar`. The measure
 
 ## Derivation
 
-The paper constructs the multi axis filter in Section V by applying the one dimensional model independently to each Cartesian axis (32), (33). For $`N`$ axes the state is $`X = [X_1^T, \ldots, X_N^T]^T`$ with $`X_i`$ the four state vector of axis $`i`$, and (47), (49), (39) generalise to
-
-$$
-F_N = I_N \otimes F, \qquad Q_N = I_N \otimes Q, \qquad H_N = I_N \otimes [1, 0, 0, 0]
-$$
-
-where $`F`$ and $`Q`$ are the matrices of `KalmanJerk1D`. `KalmanJerk2D` is the case $`N = 2`$, obtained from Section V by retaining two of its three axes. Each retained axis carries the same continuous model (5) to (8), so the construction of (47) and (49) applies unchanged.
-
-The measurement noise covariance $`R`$ is a symmetric positive definite $`N`$ by $`N`$ matrix that may vary between steps. The update equations are those of `KalmanJerk1D` with $`S`$ of size $`N`$ by $`N`$. For $`N = 2`$:
-
-$$
-S^{-1} = \frac{1}{s_{11} s_{22} - s_{12}^2} \begin{bmatrix} s_{22} & -s_{12} \\ -s_{12} & s_{11} \end{bmatrix}
-$$
-
-When $`R`$ has nonzero off diagonal entries, the update introduces cross axis blocks into $`P`$, which $`F_N`$ and $`Q_N`$ then propagate. When $`R`$ is diagonal at every step, $`P`$ remains block diagonal and the filter factorises into independent axes, which is the structure of (49).
-
-The initialisation applies (22) to each axis. The measurement dependent part of the initial covariance follows from the coefficient vectors $`c_n`$ of `KalmanJerk1D` with the measurement covariance $`R(n)`$ of sample $`n`$. For axes $`i`$ and $`k`$ the upper left 3 by 3 part of block $`(i, k)`$ is
-
-$$
-P^{(ik)}_{3 \times 3} = \sum_{n=1}^{3} R_{ik}(n) \, c_n c_n^T
-$$
-
-and $`P_{proc}`$ of (28), or of (29) when $`\alpha T`$ is small, is placed in the diagonal blocks only, since the acceleration, jerk and process noise of different axes are independent. With a single axis and constant $`R`$ this reproduces (29), and with diagonal $`R`$ it reproduces the block structure prescribed for the initial covariance in Section VI.
+Section V of the paper, (32), (33), (39), (47) and (49), with two axes in place of three, and initialisation by (22) to (28) applied to each axis with the full measurement covariance.
 
 # KalmanJerk3D
 
@@ -170,13 +67,7 @@ It is the Cartesian core of the paper's three dimensional filter and is used by 
 
 ## Derivation
 
-`KalmanJerk3D` is the construction of `KalmanJerk2D` with $`N = 3`$. In this case $`F_3`$, $`Q_3`$ and $`H_3`$ coincide with (47), (49) and (39), and the state and measurement equations coincide with (32) and (33). The innovation covariance is inverted in closed form through its adjugate:
-
-$$
-S^{-1} = \frac{\mathrm{adj}(S)}{\det S}
-$$
-
-The initial covariance is the expression given for `KalmanJerk2D` with $`i, k \in \{1, 2, 3\}`$. It consists of three diagonal 4 by 4 blocks of the form (29) when $`R`$ is diagonal, which is the initialisation stated in Section VI.
+Section V of the paper, (32), (33), (39), (47) and (49), with initialisation by (22) to (28) applied to each axis with the full measurement covariance.
 
 # KalmanJerk2DPolar
 
@@ -186,28 +77,7 @@ It serves sensors that report planar position in polar form. The conversion make
 
 ## Derivation
 
-The planar measurement is the case $`\varphi = 0`$ of (44):
-
-$$
-M_x = r_m \cos \theta_m, \qquad M_y = r_m \sin \theta_m
-$$
-
-The converted measurement covariance is the first order propagation of the polar covariance $`\mathrm{diag}(\sigma_r^2, \sigma_\theta^2)`$ through the Jacobian of this conversion:
-
-$$
-J = \begin{bmatrix} \cos \theta_m & -r_m \sin \theta_m \\ \sin \theta_m & r_m \cos \theta_m \end{bmatrix}, \qquad
-R = J \mathrm{diag}(\sigma_r^2, \sigma_\theta^2) J^T
-$$
-
-which gives
-
-$$
-r_{11} = \sigma_r^2 \cos^2 \theta_m + r_m^2 \sigma_\theta^2 \sin^2 \theta_m, \quad
-r_{22} = \sigma_r^2 \sin^2 \theta_m + r_m^2 \sigma_\theta^2 \cos^2 \theta_m, \quad
-r_{12} = \tfrac{1}{2} (\sigma_r^2 - r_m^2 \sigma_\theta^2) \sin 2 \theta_m
-$$
-
-These are the entries $`r_{11}`$, $`r_{22}`$ and $`r_{12}`$ of (45) evaluated at $`\varphi_m = 0`$. As in the paper, $`R`$ is evaluated at the measured values and recomputed at every step. The filtering is then performed by `KalmanJerk2D`, and the initial covariance uses the $`R(n)`$ of the first three converted measurements.
+The conversion (44) and its covariance (45) of the paper evaluated at $`\varphi = 0`$, followed by `KalmanJerk2D`.
 
 # KalmanJerk3DSpherical
 
@@ -217,34 +87,7 @@ It is the complete three dimensional filter of Section V, which the paper formul
 
 ## Derivation
 
-The measurement conversion is (44):
-
-$$
-M_x = r_m \cos \varphi_m \cos \theta_m, \qquad M_y = r_m \cos \varphi_m \sin \theta_m, \qquad M_z = r_m \sin \varphi_m
-$$
-
-The converted measurement covariance (45) is the first order propagation of $`\mathrm{diag}(\sigma_r^2, \sigma_\theta^2, \sigma_\varphi^2)`$ through the Jacobian of (44):
-
-$$
-J = \begin{bmatrix}
-\cos \varphi \cos \theta & -r \cos \varphi \sin \theta & -r \sin \varphi \cos \theta \\
-\cos \varphi \sin \theta & r \cos \varphi \cos \theta & -r \sin \varphi \sin \theta \\
-\sin \varphi & 0 & r \cos \varphi
-\end{bmatrix}, \qquad
-R = J \mathrm{diag}(\sigma_r^2, \sigma_\theta^2, \sigma_\varphi^2) J^T
-$$
-
-evaluated at $`(r_m, \theta_m, \varphi_m)`$. Expanding the product reproduces each entry of (45); for example
-
-$$
-r_{11} = \sigma_r^2 \cos^2 \varphi_m \cos^2 \theta_m + r_m^2 \left( \sigma_\varphi^2 \sin^2 \varphi_m \cos^2 \theta_m + \sigma_\theta^2 \cos^2 \varphi_m \sin^2 \theta_m \right)
-$$
-
-$$
-r_{33} = \sigma_r^2 \sin^2 \varphi_m + r_m^2 \sigma_\varphi^2 \cos^2 \varphi_m
-$$
-
-The filtering is performed by `KalmanJerk3D` with this $`R`$ recomputed at every step, as specified in Section V, and the initial covariance uses the $`R(n)`$ of the first three converted measurements.
+The conversion (44) and its covariance (45) of the paper, followed by `KalmanJerk3D`.
 
 # KalmanJerk2DAzEl
 
@@ -575,7 +418,7 @@ When the sensor is stationary, $`X_s = 0`$ and the first seven components of $`Y
 
 ### Measurement and update
 
-The measurement is $`z = \beta_m`$ with $`H = [1, 0, 0, 0, 0, 0, 0, 0]`$ and $`R = \sigma_\beta^2`$. The innovation is formed with the wrapped difference $`d`$ with $`M = 2 \pi`$, and the update follows `KalmanJerk1D`.
+The measurement is $`z = \beta_m`$ with $`H = [1, 0, 0, 0, 0, 0, 0, 0]`$ and $`R = \sigma_\beta^2`$. The innovation is formed with $`d`$ with $`M = 2 \pi`$, and the update follows `KalmanJerk1D`.
 
 ### Initialisation
 
