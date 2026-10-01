@@ -2,7 +2,7 @@ import numpy as np
 import math
 
 def Kalman_Filter_1D_create_Q_low_alpha_T(self, T):
-    T7Over256 = (T**7)/256
+    T7Over252 = (T**7)/252
     T6Over72 = (T ** 6)/72
     T5Over30 = (T ** 5)/30
     T5Over20 = (T ** 5)/20
@@ -12,7 +12,7 @@ def Kalman_Filter_1D_create_Q_low_alpha_T(self, T):
     T3Over3 = (T**3)/3
     T2Over2 = (T**2)/2
     return np.matrix([
-        [T7Over256, T6Over72, T5Over30, T4Over24],
+        [T7Over252, T6Over72, T5Over30, T4Over24],
         [T6Over72 , T5Over20, T4Over8 , T3Over6 ],
         [T5Over30 , T4Over8 , T3Over3 , T2Over2],
         [T4Over24 , T3Over6 , T2Over2 , T]

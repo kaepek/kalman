@@ -30,13 +30,13 @@ P
 dt, vt, vj = symbols('dt vt vj')
 
 """ Q_low_alpha_T
-[T7Over256, T6Over72, T5Over30, T4Over24],
+[T7Over252, T6Over72, T5Over30, T4Over24],
 [T6Over72 , T5Over20, T4Over8 , T3Over6 ],
 [T5Over30 , T4Over8 , T3Over3 , T2Over2],
 [T4Over24 , T3Over6 , T2Over2 , T]
 """
 init_Q = Matrix([
-    [Pow(dt, 7)/256,Pow(dt, 6)/72,Pow(dt, 5)/30,Pow(dt, 4)/24],
+    [Pow(dt, 7)/252,Pow(dt, 6)/72,Pow(dt, 5)/30,Pow(dt, 4)/24],
     [Pow(dt, 6)/72,Pow(dt, 5)/20,Pow(dt, 4)/8,Pow(dt, 3)/6],
     [Pow(dt, 5)/30,Pow(dt, 4)/8,Pow(dt, 3)/3,Pow(dt, 2)/2],
     [Pow(dt, 4)/24,Pow(dt, 3)/6,Pow(dt, 2)/2,dt]
