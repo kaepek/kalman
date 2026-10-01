@@ -102,7 +102,7 @@ namespace kaepek
 
     void KalmanJerk1D::get_Q_low_alpha_T(double dt)
     {
-        double t7over256 = pow(dt, 7.0) / 256.0;
+        double t7over252 = pow(dt, 7.0) / 252.0;
         double t6over72 = pow(dt, 6.0) / 72.0;
         double t5 = pow(dt, 5.0);
         double t5over30 = t5 / 30.0;
@@ -116,7 +116,7 @@ namespace kaepek
         double t2over2 = pow(dt, 2.0) / 2.0;
 
         // [row][col]
-        this->q[0][0] = t7over256 * q_scale;
+        this->q[0][0] = t7over252 * q_scale;
         this->q[0][1] = t6over72 * q_scale;
         this->q[0][2] = t5over30 * q_scale;
         this->q[0][3] = t4over24 * q_scale;
