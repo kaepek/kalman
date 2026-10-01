@@ -2964,8 +2964,8 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
  *         P[0,3] = _P[0][3]
  * 
  *         P[1,0] = _P[1][0]             # <<<<<<<<<<<<<<
- *         P[1,0] = _P[1][1]
- *         P[1,0] = _P[1][2]
+ *         P[1,1] = _P[1][1]
+ *         P[1,2] = _P[1][2]
  */
   __pyx_t_6 = 1;
   __pyx_t_7 = 0;
@@ -2987,12 +2987,12 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   /* "lib/jerk/KalmanJerk1D.pyx":51
  * 
  *         P[1,0] = _P[1][0]
- *         P[1,0] = _P[1][1]             # <<<<<<<<<<<<<<
- *         P[1,0] = _P[1][2]
- *         P[1,0] = _P[1][3]
+ *         P[1,1] = _P[1][1]             # <<<<<<<<<<<<<<
+ *         P[1,2] = _P[1][2]
+ *         P[1,3] = _P[1][3]
  */
   __pyx_t_7 = 1;
-  __pyx_t_6 = 0;
+  __pyx_t_6 = 1;
   __pyx_t_8 = -1;
   if (__pyx_t_7 < 0) {
     __pyx_t_7 += __pyx_pybuffernd_P.diminfo[0].shape;
@@ -3010,13 +3010,13 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
 
   /* "lib/jerk/KalmanJerk1D.pyx":52
  *         P[1,0] = _P[1][0]
- *         P[1,0] = _P[1][1]
- *         P[1,0] = _P[1][2]             # <<<<<<<<<<<<<<
- *         P[1,0] = _P[1][3]
+ *         P[1,1] = _P[1][1]
+ *         P[1,2] = _P[1][2]             # <<<<<<<<<<<<<<
+ *         P[1,3] = _P[1][3]
  * 
  */
   __pyx_t_6 = 1;
-  __pyx_t_7 = 0;
+  __pyx_t_7 = 2;
   __pyx_t_8 = -1;
   if (__pyx_t_6 < 0) {
     __pyx_t_6 += __pyx_pybuffernd_P.diminfo[0].shape;
@@ -3033,14 +3033,14 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[1])[2]);
 
   /* "lib/jerk/KalmanJerk1D.pyx":53
- *         P[1,0] = _P[1][1]
- *         P[1,0] = _P[1][2]
- *         P[1,0] = _P[1][3]             # <<<<<<<<<<<<<<
+ *         P[1,1] = _P[1][1]
+ *         P[1,2] = _P[1][2]
+ *         P[1,3] = _P[1][3]             # <<<<<<<<<<<<<<
  * 
  *         P[2,0] = _P[2][0]
  */
   __pyx_t_7 = 1;
-  __pyx_t_6 = 0;
+  __pyx_t_6 = 3;
   __pyx_t_8 = -1;
   if (__pyx_t_7 < 0) {
     __pyx_t_7 += __pyx_pybuffernd_P.diminfo[0].shape;
@@ -3057,11 +3057,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[1])[3]);
 
   /* "lib/jerk/KalmanJerk1D.pyx":55
- *         P[1,0] = _P[1][3]
+ *         P[1,3] = _P[1][3]
  * 
  *         P[2,0] = _P[2][0]             # <<<<<<<<<<<<<<
- *         P[2,0] = _P[2][1]
- *         P[2,0] = _P[2][2]
+ *         P[2,1] = _P[2][1]
+ *         P[2,2] = _P[2][2]
  */
   __pyx_t_6 = 2;
   __pyx_t_7 = 0;
@@ -3083,12 +3083,12 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   /* "lib/jerk/KalmanJerk1D.pyx":56
  * 
  *         P[2,0] = _P[2][0]
- *         P[2,0] = _P[2][1]             # <<<<<<<<<<<<<<
- *         P[2,0] = _P[2][2]
- *         P[2,0] = _P[2][3]
+ *         P[2,1] = _P[2][1]             # <<<<<<<<<<<<<<
+ *         P[2,2] = _P[2][2]
+ *         P[2,3] = _P[2][3]
  */
   __pyx_t_7 = 2;
-  __pyx_t_6 = 0;
+  __pyx_t_6 = 1;
   __pyx_t_8 = -1;
   if (__pyx_t_7 < 0) {
     __pyx_t_7 += __pyx_pybuffernd_P.diminfo[0].shape;
@@ -3106,13 +3106,13 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
 
   /* "lib/jerk/KalmanJerk1D.pyx":57
  *         P[2,0] = _P[2][0]
- *         P[2,0] = _P[2][1]
- *         P[2,0] = _P[2][2]             # <<<<<<<<<<<<<<
- *         P[2,0] = _P[2][3]
+ *         P[2,1] = _P[2][1]
+ *         P[2,2] = _P[2][2]             # <<<<<<<<<<<<<<
+ *         P[2,3] = _P[2][3]
  * 
  */
   __pyx_t_6 = 2;
-  __pyx_t_7 = 0;
+  __pyx_t_7 = 2;
   __pyx_t_8 = -1;
   if (__pyx_t_6 < 0) {
     __pyx_t_6 += __pyx_pybuffernd_P.diminfo[0].shape;
@@ -3129,14 +3129,14 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[2])[2]);
 
   /* "lib/jerk/KalmanJerk1D.pyx":58
- *         P[2,0] = _P[2][1]
- *         P[2,0] = _P[2][2]
- *         P[2,0] = _P[2][3]             # <<<<<<<<<<<<<<
+ *         P[2,1] = _P[2][1]
+ *         P[2,2] = _P[2][2]
+ *         P[2,3] = _P[2][3]             # <<<<<<<<<<<<<<
  * 
  *         P[3,0] = _P[3][0]
  */
   __pyx_t_7 = 2;
-  __pyx_t_6 = 0;
+  __pyx_t_6 = 3;
   __pyx_t_8 = -1;
   if (__pyx_t_7 < 0) {
     __pyx_t_7 += __pyx_pybuffernd_P.diminfo[0].shape;
@@ -3153,11 +3153,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[2])[3]);
 
   /* "lib/jerk/KalmanJerk1D.pyx":60
- *         P[2,0] = _P[2][3]
+ *         P[2,3] = _P[2][3]
  * 
  *         P[3,0] = _P[3][0]             # <<<<<<<<<<<<<<
- *         P[3,0] = _P[3][1]
- *         P[3,0] = _P[3][2]
+ *         P[3,1] = _P[3][1]
+ *         P[3,2] = _P[3][2]
  */
   __pyx_t_6 = 3;
   __pyx_t_7 = 0;
@@ -3179,12 +3179,12 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   /* "lib/jerk/KalmanJerk1D.pyx":61
  * 
  *         P[3,0] = _P[3][0]
- *         P[3,0] = _P[3][1]             # <<<<<<<<<<<<<<
- *         P[3,0] = _P[3][2]
- *         P[3,0] = _P[3][3]
+ *         P[3,1] = _P[3][1]             # <<<<<<<<<<<<<<
+ *         P[3,2] = _P[3][2]
+ *         P[3,3] = _P[3][3]
  */
   __pyx_t_7 = 3;
-  __pyx_t_6 = 0;
+  __pyx_t_6 = 1;
   __pyx_t_8 = -1;
   if (__pyx_t_7 < 0) {
     __pyx_t_7 += __pyx_pybuffernd_P.diminfo[0].shape;
@@ -3202,13 +3202,13 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
 
   /* "lib/jerk/KalmanJerk1D.pyx":62
  *         P[3,0] = _P[3][0]
- *         P[3,0] = _P[3][1]
- *         P[3,0] = _P[3][2]             # <<<<<<<<<<<<<<
- *         P[3,0] = _P[3][3]
+ *         P[3,1] = _P[3][1]
+ *         P[3,2] = _P[3][2]             # <<<<<<<<<<<<<<
+ *         P[3,3] = _P[3][3]
  *         return P
  */
   __pyx_t_6 = 3;
-  __pyx_t_7 = 0;
+  __pyx_t_7 = 2;
   __pyx_t_8 = -1;
   if (__pyx_t_6 < 0) {
     __pyx_t_6 += __pyx_pybuffernd_P.diminfo[0].shape;
@@ -3225,14 +3225,14 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[3])[2]);
 
   /* "lib/jerk/KalmanJerk1D.pyx":63
- *         P[3,0] = _P[3][1]
- *         P[3,0] = _P[3][2]
- *         P[3,0] = _P[3][3]             # <<<<<<<<<<<<<<
+ *         P[3,1] = _P[3][1]
+ *         P[3,2] = _P[3][2]
+ *         P[3,3] = _P[3][3]             # <<<<<<<<<<<<<<
  *         return P
  * 
  */
   __pyx_t_7 = 3;
-  __pyx_t_6 = 0;
+  __pyx_t_6 = 3;
   __pyx_t_8 = -1;
   if (__pyx_t_7 < 0) {
     __pyx_t_7 += __pyx_pybuffernd_P.diminfo[0].shape;
@@ -3249,8 +3249,8 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[3])[3]);
 
   /* "lib/jerk/KalmanJerk1D.pyx":64
- *         P[3,0] = _P[3][2]
- *         P[3,0] = _P[3][3]
+ *         P[3,2] = _P[3][2]
+ *         P[3,3] = _P[3][3]
  *         return P             # <<<<<<<<<<<<<<
  * 
  *     def step(self, double time, double x):
