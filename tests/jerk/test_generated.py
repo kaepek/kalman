@@ -10,8 +10,8 @@ import jerk_reference as ref
 
 root = pathlib.Path(__file__).resolve().parent.parent.parent
 generated = root / "lib" / "jerk" / "generated"
+torch_generated = root / "kalman" / "torch" / "generated"
 
-pytestmark = pytest.mark.skipif(shutil.which("g++") is None, reason="g++ is required")
 
 SOURCE = """
 #include "generated/jerk_block.hpp"
@@ -42,6 +42,8 @@ void c_msc_from_xi(const double *xi, double *y) { msc_from_xi(xi, y); }
 
 @pytest.fixture(scope="module")
 def lib(tmp_path_factory):
+    if shutil.which("g++") is None:
+        pytest.skip("g++ is required")
     path = tmp_path_factory.mktemp("generated")
     (path / "generated.cpp").write_text(SOURCE)
     subprocess.run(["g++", "-std=c++11", "-O2", "-shared", "-fPIC", "-Wall", "-Wextra", "-Werror", "-I", str(root / "lib" / "jerk"),
@@ -64,14 +66,16 @@ def test_headers_up_to_date(tmp_path):
     pytest.importorskip("sympy")
     sys.path.insert(0, str(root / "model"))
     import codegen
-    codegen.output_path = tmp_path
-    codegen.header("jerk_block", "jerk_block.py", codegen.jerk_block_header())
-    codegen.header("polar_spherical", "polar_spherical.py", codegen.polar_spherical_header())
-    codegen.header("azel", "azel.py", codegen.azel_header())
-    codegen.header("mpc", "mpc.py", codegen.mpc_header())
-    codegen.header("msc", "msc.py", codegen.msc_header())
-    for name in ["jerk_block", "polar_spherical", "azel", "mpc", "msc"]:
-        assert (tmp_path / (name + ".hpp")).read_text() == (generated / (name + ".hpp")).read_text(), name
+    codegen.output_path = tmp_path / "cpp"
+    codegen.torch_output_path = tmp_path / "torch"
+    codegen.output_path.mkdir()
+    codegen.torch_output_path.mkdir()
+    for name, source, functions in codegen.modules:
+        built = functions()
+        codegen.header(name, source, built)
+        codegen.torch_module(name, source, built)
+        assert (tmp_path / "cpp" / (name + ".hpp")).read_text() == (generated / (name + ".hpp")).read_text(), name
+        assert (tmp_path / "torch" / (name + ".py")).read_text() == (torch_generated / (name + ".py")).read_text(), name
 
 @pytest.mark.parametrize("T", [0.001, 0.05, 1.0])
 def test_jerk_block_small(lib, T):
