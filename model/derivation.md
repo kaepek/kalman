@@ -69,26 +69,6 @@ It is the Cartesian core of the paper's three dimensional filter and is used by 
 
 Section V of the paper, (32), (33), (39), (47) and (49), with initialisation by (22) to (28) applied to each axis with the full measurement covariance.
 
-# KalmanJerk2DPolar
-
-`KalmanJerk2DPolar` tracks a point moving in a plane from measurements of range $`r`$ and angle $`\theta`$. It converts each measurement to Cartesian coordinates and passes the converted measurement and its covariance to an internal `KalmanJerk2D`.
-
-It serves sensors that report planar position in polar form. The conversion makes the Cartesian measurement errors correlated and dependent on the geometry, which is represented through the full measurement covariance of `KalmanJerk2D`.
-
-## Derivation
-
-The conversion (44) and its covariance (45) of the paper evaluated at $`\varphi = 0`$, followed by `KalmanJerk2D`.
-
-# KalmanJerk3DSpherical
-
-`KalmanJerk3DSpherical` tracks a point moving in three dimensional space from measurements of range $`r`$, azimuth $`\theta`$ and elevation $`\varphi`$. It converts each measurement to Cartesian coordinates and passes the converted measurement and its covariance to an internal `KalmanJerk3D`.
-
-It is the complete three dimensional filter of Section V, which the paper formulates for radar measurements in spherical coordinates.
-
-## Derivation
-
-The conversion (44) and its covariance (45) of the paper, followed by `KalmanJerk3D`.
-
 # KalmanJerk2DAzEl
 
 `KalmanJerk2DAzEl` tracks a direction in three dimensional space from measurements of azimuth $`\theta`$ and elevation $`\varphi`$, with the range unknown. The direction moves on the unit sphere, and the filter carries a jerk model of that motion with eight degrees of freedom: two for the direction and two each for the angular rate, angular acceleration and angular jerk.
