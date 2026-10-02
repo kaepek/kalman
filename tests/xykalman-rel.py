@@ -1,4 +1,4 @@
-import CyKalman
+import kalman
 
 import sys
 import kalman_adaptor
