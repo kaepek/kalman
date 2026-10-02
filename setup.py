@@ -15,6 +15,7 @@ setup(
     packages=find_packages(include=["kalman", "kalman.*"]),
     py_modules=["CyKalman"],
     install_requires=["numpy"],
+    extras_require={"torch": ["torch>=2.0"]},
     zip_safe=False,
 )
 

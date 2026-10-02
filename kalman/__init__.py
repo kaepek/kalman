@@ -1,5 +1,5 @@
 """
-Jerk Kalman filters of the Kaepek Project, compiled from lib/jerk.
+Jerk Kalman filters of the Kaepek Project, compiled from lib/jerk. The PyTorch filters are in kalman.torch.
 """
 
 from ._cykalman import (KalmanJerk1D, KalmanJerk2D, KalmanJerk3D, KalmanJerk2DPolar, KalmanJerk3DSpherical, KalmanJerk2DAzEl,
