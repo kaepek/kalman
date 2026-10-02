@@ -65,3 +65,5 @@ cdef class KalmanJerk1D:
 
     def step(self, double time, double x):
         self.c_kalman.step(time, x)
+
+include "python/kalman_jerk_python.pxi"
