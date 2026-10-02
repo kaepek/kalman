@@ -31,7 +31,7 @@ The following quantities are those of the paper and are used without rederivatio
 | $`\sigma_m`$ | standard deviation of the target acceleration | (28) |
 | $`P_{proc}`$ | terms of the initial covariance (28) that involve $`\sigma_m`$, $`\sigma_j`$ and the $`q_{ij}`$, or of (29) when $`\alpha T`$ is small | (28), (29) |
 
-The compile time policy `JerkExact` evaluates (14), (15) and (20), and `JerkSmallAlphaT` evaluates (16) and (21). The filters are initialised from the first three measurements by (22). For an angular coordinate with wrap limit $`M`$, differences of measurements are formed with
+The compile time policy `JerkExact` evaluates (14), (15) and (20), and `JerkSmallAlphaT` evaluates (16) and (21). The filters are initialised from the first three measurements by (22). For an angular coordinate with wrap limit $`M`$ (e.g. `KalmanJerk1D` & `KalmanJerk1DBearingMovingSensor`), differences of measurements are formed with
 
 $$
 d(a, b) = \mathrm{mod}(a - b, M) - M \cdot [\mathrm{mod}(a - b, M) > M/2]
@@ -68,6 +68,14 @@ It is the Cartesian core of the paper's three dimensional filter and is used by 
 ## Derivation
 
 Section V of the paper, (32), (33), (39), (47) and (49), with initialisation by (22) to (28) applied to each axis with the full measurement covariance.
+
+# Order
+
+A filter whose motion model or coordinate conversion is nonlinear propagates its estimate and uncertainty approximately, and the order selects that approximation. `KalmanJerk2DAzEl`, `KalmanJerk1DBearingMovingSensor` and `KalmanJerk2DAzElMovingSensor` each have an order; the Cartesian filters are exact and have none.
+
+- First order: targets far away or moving slowly across the line of sight, a still or gently moving sensor, and a well known range. The direction changes little between samples.
+- Second order: targets at moderate range crossing or turning noticeably between samples.
+- Unscented: close targets crossing fast, sharp turns, a manoeuvring sensor near the target, or a poorly known range. The geometry changes a lot between samples.
 
 # KalmanJerk2DAzEl
 
