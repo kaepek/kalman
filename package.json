@@ -4,9 +4,10 @@
   "description": "Velocity, acceleration and jerk will be computed using the Eular method from temporal and angular measurements, some effort is required to smooth these measurements and deal with error. Kalman or more specifically EKF will be used.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "python setup.py build_ext --inplace && python -m pytest tests/jerk",
     "create:venv": "python3 -m venv env",
     "install:venv": "pip install -r requirements.freeze",
+    "install:venv:test": "pip install -r requirements.test",
     "install:wheel": "pip install --force-reinstall $(find . -name '*.whl')",
     "create:wheel": "rm -rf build && python setup.py bdist_wheel",
     "create:wheel:windows64": "python setup.py bdist_wheel --plat-name win_amd64",

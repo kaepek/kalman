@@ -17,8 +17,8 @@ pip3 install git+https://github.com/kaepek/kalman.git
 ### Usage
 
 ```
-import CyKalman
-filter1D = CyKalman.KalmanJerk1D(0.1, 1.0. 1.0, False, 2**14) # <alpha>, <x_error>, <jerk_constraint>, <time_is_relative>, <x_mod_limit>
+import kalman
+filter1D = kalman.KalmanJerk1D(0.1, 1.0. 1.0, False, 2**14) # <alpha>, <x_error>, <jerk_constraint>, <time_is_relative>, <x_mod_limit>
 
 t = 0
 x = 0

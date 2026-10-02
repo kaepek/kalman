@@ -1,17 +1,20 @@
-from setuptools import setup, Extension
+from setuptools import setup, Extension, find_packages
 from Cython.Build import cythonize
 import numpy
 
-ext = Extension("CyKalman",
+ext = Extension("kalman._cykalman",
                 sources=["lib/jerk/KalmanJerk1D.pyx"], #"kalman.cpp"
                 language="c++",
-                include_dirs=[numpy.get_include()]
+                include_dirs=[numpy.get_include(), "lib/jerk"]
                )
 
 setup(
-    name='CyKalman',
+    name='kalman',
     version='1.0',
     ext_modules=cythonize(ext),
+    packages=find_packages(include=["kalman", "kalman.*"]),
+    py_modules=["CyKalman"],
+    install_requires=["numpy"],
     zip_safe=False,
 )
 

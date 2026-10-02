@@ -10,19 +10,20 @@
             "/home/jonathan/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ndarraytypes.h",
             "/home/jonathan/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include/numpy/ufuncobject.h",
             "lib/jerk/KalmanJerk1D.cpp",
-            "lib/jerk/kalman_jerk.hpp"
+            "lib/jerk/kalman_jerk.hpp",
+            "lib/jerk/python/kalman_jerk_python.hpp"
         ],
         "include_dirs": [
             "lib/jerk",
             "/home/jonathan/code/kaepek/kalman/env/lib/python3.10/site-packages/numpy/core/include"
         ],
         "language": "c++",
-        "name": "CyKalman",
+        "name": "kalman._cykalman",
         "sources": [
             "lib/jerk/KalmanJerk1D.pyx"
         ]
     },
-    "module_name": "CyKalman"
+    "module_name": "kalman._cykalman"
 }
 END: Cython Metadata */
 
@@ -778,8 +779,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__CyKalman
-#define __PYX_HAVE_API__CyKalman
+#define __PYX_HAVE__kalman___cykalman
+#define __PYX_HAVE_API__kalman___cykalman
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -797,6 +798,7 @@ static CYTHON_INLINE float __PYX_NAN() {
 #include "stdexcept"
 #include "typeinfo"
 #include "kalman_jerk.hpp"
+#include "python/kalman_jerk_python.hpp"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -1028,6 +1030,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
+  "lib/jerk/python/kalman_jerk_python.pxi",
   "stringsource",
   "lib/jerk/KalmanJerk1D.pyx",
   "env/lib/python3.10/site-packages/numpy/__init__.pxd",
@@ -1284,7 +1287,14 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 
 
 /*--- Type declarations ---*/
-struct __pyx_obj_8CyKalman_KalmanJerk1D;
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D;
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D;
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D;
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar;
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical;
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl;
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor;
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor;
 
 /* "env/lib/python3.10/site-packages/numpy/__init__.pxd":728
  * ctypedef npy_longdouble longdouble_t
@@ -1365,10 +1375,101 @@ typedef double __pyx_t_11kalman_jerk_Double4x4_3[4][4];
  *     cdef _KalmanJerk1D* c_kalman
  *     cdef bint boolean_variable
  */
-struct __pyx_obj_8CyKalman_KalmanJerk1D {
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D {
   PyObject_HEAD
   kaepek::KalmanJerk1D *c_kalman;
   int boolean_variable;
+};
+
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":114
+ *     return out
+ * 
+ * cdef class KalmanJerk2D:             # <<<<<<<<<<<<<<
+ *     cdef KalmanJerk2DPython* c_kalman
+ * 
+ */
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D {
+  PyObject_HEAD
+  kaepek::python::KalmanJerk2DPython *c_kalman;
+};
+
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":153
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ * cdef class KalmanJerk3D:             # <<<<<<<<<<<<<<
+ *     cdef KalmanJerk3DPython* c_kalman
+ * 
+ */
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D {
+  PyObject_HEAD
+  kaepek::python::KalmanJerk3DPython *c_kalman;
+};
+
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":192
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ * cdef class KalmanJerk2DPolar:             # <<<<<<<<<<<<<<
+ *     cdef KalmanJerk2DPolarPython* c_kalman
+ * 
+ */
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar {
+  PyObject_HEAD
+  kaepek::python::KalmanJerk2DPolarPython *c_kalman;
+};
+
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":222
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ * cdef class KalmanJerk3DSpherical:             # <<<<<<<<<<<<<<
+ *     cdef KalmanJerk3DSphericalPython* c_kalman
+ * 
+ */
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical {
+  PyObject_HEAD
+  kaepek::python::KalmanJerk3DSphericalPython *c_kalman;
+};
+
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":252
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ * cdef class KalmanJerk2DAzEl:             # <<<<<<<<<<<<<<
+ *     cdef KalmanJerk2DAzElPython* c_kalman
+ * 
+ */
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl {
+  PyObject_HEAD
+  kaepek::python::KalmanJerk2DAzElPython *c_kalman;
+};
+
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":304
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ * cdef class KalmanJerk1DBearingMovingSensor:             # <<<<<<<<<<<<<<
+ *     cdef KalmanJerk1DBearingMovingSensorPython* c_kalman
+ * 
+ */
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor {
+  PyObject_HEAD
+  kaepek::python::KalmanJerk1DBearingMovingSensorPython *c_kalman;
+};
+
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":342
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ * cdef class KalmanJerk2DAzElMovingSensor:             # <<<<<<<<<<<<<<
+ *     cdef KalmanJerk2DAzElMovingSensorPython* c_kalman
+ * 
+ */
+struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor {
+  PyObject_HEAD
+  kaepek::python::KalmanJerk2DAzElMovingSensorPython *c_kalman;
 };
 
 
@@ -1629,6 +1730,62 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 /* RaiseException.proto */
 static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
 
+/* PySequenceContains.proto */
+static CYTHON_INLINE int __Pyx_PySequence_ContainsTF(PyObject* item, PyObject* seq, int eq) {
+    int result = PySequence_Contains(seq, item);
+    return unlikely(result < 0) ? result : (result == (eq == Py_EQ));
+}
+
+/* StringJoin.proto */
+#if PY_MAJOR_VERSION < 3
+#define __Pyx_PyString_Join __Pyx_PyBytes_Join
+#define __Pyx_PyBaseString_Join(s, v) (PyUnicode_CheckExact(s) ? PyUnicode_Join(s, v) : __Pyx_PyBytes_Join(s, v))
+#else
+#define __Pyx_PyString_Join PyUnicode_Join
+#define __Pyx_PyBaseString_Join PyUnicode_Join
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+    #if PY_MAJOR_VERSION < 3
+    #define __Pyx_PyBytes_Join _PyString_Join
+    #else
+    #define __Pyx_PyBytes_Join _PyBytes_Join
+    #endif
+#else
+static CYTHON_INLINE PyObject* __Pyx_PyBytes_Join(PyObject* sep, PyObject* values);
+#endif
+
+/* GetItemInt.proto */
+#define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_Fast(o, (Py_ssize_t)i, is_list, wraparound, boundscheck) :\
+    (is_list ? (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL) :\
+               __Pyx_GetItemInt_Generic(o, to_py_func(i))))
+#define __Pyx_GetItemInt_List(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_List_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
+    (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL))
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
+                                                              int wraparound, int boundscheck);
+#define __Pyx_GetItemInt_Tuple(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_Tuple_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
+    (PyErr_SetString(PyExc_IndexError, "tuple index out of range"), (PyObject*)NULL))
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
+                                                              int wraparound, int boundscheck);
+static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
+                                                     int is_list, int wraparound, int boundscheck);
+
+/* ObjectGetItem.proto */
+#if CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key);
+#else
+#define __Pyx_PyObject_GetItem(obj, key)  PyObject_GetItem(obj, key)
+#endif
+
+/* BufferFallbackError.proto */
+static void __Pyx_RaiseBufferFallbackError(void);
+
 /* GetTopmostException.proto */
 #if CYTHON_USE_EXC_INFO_STACK
 static _PyErr_StackItem * __Pyx_PyErr_GetTopmostException(PyThreadState *tstate);
@@ -1703,6 +1860,10 @@ static PyTypeObject *__Pyx_ImportType(PyObject* module, const char *module_name,
 /* Import.proto */
 static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
 
+/* GetNameInClass.proto */
+#define __Pyx_GetNameInClass(var, nmspace, name)  (var) = __Pyx__GetNameInClass(nmspace, name)
+static PyObject *__Pyx__GetNameInClass(PyObject *nmspace, PyObject *name);
+
 /* CLineInTraceback.proto */
 #ifdef CYTHON_CLINE_IN_TRACEBACK
 #define __Pyx_CLineForTraceback(tstate, c_line)  (((CYTHON_CLINE_IN_TRACEBACK)) ? c_line : 0)
@@ -1751,6 +1912,11 @@ typedef struct {
     #define __Pyx_ReleaseBuffer PyBuffer_Release
 #endif
 
+
+/* GCCDiagnostics.proto */
+#if defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
+#define __Pyx_HAS_GCC_DIAGNOSTIC
+#endif
 
 /* CppExceptionConversion.proto */
 #ifndef __Pyx_CppExn2PyErr
@@ -1892,19 +2058,17 @@ static void __Pyx_CppExn2PyErr() {
     #endif
 #endif
 
-/* GCCDiagnostics.proto */
-#if defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
-#define __Pyx_HAS_GCC_DIAGNOSTIC
-#endif
+/* CIntFromPy.proto */
+static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
-
-/* CIntFromPy.proto */
-static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
 /* FastTypeChecks.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -1968,51 +2132,159 @@ static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 
 /* Module declarations from 'libcpp' */
 
-/* Module declarations from 'CyKalman' */
-static PyTypeObject *__pyx_ptype_8CyKalman_KalmanJerk1D = 0;
+/* Module declarations from 'kalman._cykalman' */
+static PyTypeObject *__pyx_ptype_6kalman_9_cykalman_KalmanJerk1D = 0;
+static PyTypeObject *__pyx_ptype_6kalman_9_cykalman_KalmanJerk2D = 0;
+static PyTypeObject *__pyx_ptype_6kalman_9_cykalman_KalmanJerk3D = 0;
+static PyTypeObject *__pyx_ptype_6kalman_9_cykalman_KalmanJerk2DPolar = 0;
+static PyTypeObject *__pyx_ptype_6kalman_9_cykalman_KalmanJerk3DSpherical = 0;
+static PyTypeObject *__pyx_ptype_6kalman_9_cykalman_KalmanJerk2DAzEl = 0;
+static PyTypeObject *__pyx_ptype_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor = 0;
+static PyTypeObject *__pyx_ptype_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor = 0;
+static PyObject *__pyx_f_6kalman_9_cykalman__vector(double const *, int); /*proto*/
+static PyObject *__pyx_f_6kalman_9_cykalman__matrix(double const *, int); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
-#define __Pyx_MODULE_NAME "CyKalman"
-extern int __pyx_module_is_main_CyKalman;
-int __pyx_module_is_main_CyKalman = 0;
+#define __Pyx_MODULE_NAME "kalman._cykalman"
+extern int __pyx_module_is_main_kalman___cykalman;
+int __pyx_module_is_main_kalman___cykalman = 0;
 
-/* Implementation of 'CyKalman' */
+/* Implementation of 'kalman._cykalman' */
+static PyObject *__pyx_builtin_staticmethod;
 static PyObject *__pyx_builtin_TypeError;
+static PyObject *__pyx_builtin_ValueError;
+static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ImportError;
+static const char __pyx_k_R[] = "R";
+static const char __pyx_k_c[] = "c";
 static const char __pyx_k_x[] = "x";
+static const char __pyx_k__3[] = ", ";
 static const char __pyx_k_np[] = "np";
+static const char __pyx_k_cos[] = "cos";
+static const char __pyx_k_form[] = "form";
+static const char __pyx_k_join[] = "join";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_time[] = "time";
+static const char __pyx_k_FORMS[] = "FORMS";
 static const char __pyx_k_alpha[] = "alpha";
+static const char __pyx_k_angle[] = "angle";
+static const char __pyx_k_array[] = "array";
+static const char __pyx_k_dtype[] = "dtype";
 static const char __pyx_k_empty[] = "empty";
+static const char __pyx_k_exact[] = "exact";
+static const char __pyx_k_first[] = "first";
 static const char __pyx_k_numpy[] = "numpy";
+static const char __pyx_k_order[] = "order";
+static const char __pyx_k_range[] = "range";
+static const char __pyx_k_ORDERS[] = "ORDERS";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_reduce[] = "__reduce__";
+static const char __pyx_k_second[] = "second";
+static const char __pyx_k_sensor[] = "sensor";
+static const char __pyx_k_azimuth[] = "azimuth";
+static const char __pyx_k_bearing[] = "bearing";
+static const char __pyx_k_float64[] = "float64";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_setstate[] = "__setstate__";
+static const char __pyx_k_substeps[] = "substeps";
 static const char __pyx_k_TypeError[] = "TypeError";
+static const char __pyx_k_elevation[] = "elevation";
+static const char __pyx_k_form_code[] = "_form_code";
+static const char __pyx_k_range_max[] = "range_max";
+static const char __pyx_k_range_min[] = "range_min";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
+static const char __pyx_k_unscented[] = "unscented";
+static const char __pyx_k_ValueError[] = "ValueError";
+static const char __pyx_k_jerk_error[] = "jerk_error";
+static const char __pyx_k_order_code[] = "_order_code";
 static const char __pyx_k_ImportError[] = "ImportError";
+static const char __pyx_k_angle_error[] = "angle_error";
+static const char __pyx_k_range_error[] = "range_error";
 static const char __pyx_k_x_mod_limit[] = "x_mod_limit";
 static const char __pyx_k_KalmanJerk1D[] = "KalmanJerk1D";
+static const char __pyx_k_KalmanJerk2D[] = "KalmanJerk2D";
+static const char __pyx_k_KalmanJerk3D[] = "KalmanJerk3D";
+static const char __pyx_k_staticmethod[] = "staticmethod";
 static const char __pyx_k_x_jerk_error[] = "x_jerk_error";
+static const char __pyx_k_azimuth_error[] = "azimuth_error";
+static const char __pyx_k_bearing_error[] = "bearing_error";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
+static const char __pyx_k_small_alpha_t[] = "small_alpha_t";
+static const char __pyx_k_direction_error[] = "direction_error";
+static const char __pyx_k_elevation_error[] = "elevation_error";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
+static const char __pyx_k_KalmanJerk2DAzEl[] = "KalmanJerk2DAzEl";
+static const char __pyx_k_kalman__cykalman[] = "kalman._cykalman";
 static const char __pyx_k_time_is_relative[] = "time_is_relative";
+static const char __pyx_k_KalmanJerk2DPolar[] = "KalmanJerk2DPolar";
+static const char __pyx_k_ascontiguousarray[] = "ascontiguousarray";
+static const char __pyx_k_acceleration_error[] = "acceleration_error";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_x_resolution_error[] = "x_resolution_error";
+static const char __pyx_k_form_must_be_one_of[] = "form must be one of ";
+static const char __pyx_k_log_range_jerk_error[] = "log_range_jerk_error";
+static const char __pyx_k_log_range_rate_error[] = "log_range_rate_error";
+static const char __pyx_k_order_must_be_one_of[] = "order must be one of ";
+static const char __pyx_k_x_acceleration_error[] = "x_acceleration_error";
+static const char __pyx_k_KalmanJerk3DSpherical[] = "KalmanJerk3DSpherical";
+static const char __pyx_k_azel_noise_to_tangent[] = "azel_noise_to_tangent";
+static const char __pyx_k_KalmanJerk2DAzElMovingSensor[] = "KalmanJerk2DAzElMovingSensor";
+static const char __pyx_k_log_range_acceleration_error[] = "log_range_acceleration_error";
+static const char __pyx_k_KalmanJerk1DBearingMovingSensor[] = "KalmanJerk1DBearingMovingSensor";
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
+static const char __pyx_k_lib_jerk_python_kalman_jerk_pyth[] = "lib/jerk/python/kalman_jerk_python.pxi";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static const char __pyx_k_numpy_core_umath_failed_to_impor[] = "numpy.core.umath failed to import";
+static PyObject *__pyx_n_s_FORMS;
 static PyObject *__pyx_n_s_ImportError;
 static PyObject *__pyx_n_s_KalmanJerk1D;
+static PyObject *__pyx_n_s_KalmanJerk1DBearingMovingSensor;
+static PyObject *__pyx_n_s_KalmanJerk2D;
+static PyObject *__pyx_n_s_KalmanJerk2DAzEl;
+static PyObject *__pyx_n_s_KalmanJerk2DAzElMovingSensor;
+static PyObject *__pyx_n_s_KalmanJerk2DPolar;
+static PyObject *__pyx_n_s_KalmanJerk3D;
+static PyObject *__pyx_n_s_KalmanJerk3DSpherical;
+static PyObject *__pyx_n_s_ORDERS;
+static PyObject *__pyx_n_s_R;
 static PyObject *__pyx_n_s_TypeError;
+static PyObject *__pyx_n_s_ValueError;
+static PyObject *__pyx_kp_s__3;
+static PyObject *__pyx_n_s_acceleration_error;
 static PyObject *__pyx_n_s_alpha;
+static PyObject *__pyx_n_s_angle;
+static PyObject *__pyx_n_s_angle_error;
+static PyObject *__pyx_n_s_array;
+static PyObject *__pyx_n_s_ascontiguousarray;
+static PyObject *__pyx_n_s_azel_noise_to_tangent;
+static PyObject *__pyx_n_s_azimuth;
+static PyObject *__pyx_n_s_azimuth_error;
+static PyObject *__pyx_n_s_bearing;
+static PyObject *__pyx_n_s_bearing_error;
+static PyObject *__pyx_n_s_c;
 static PyObject *__pyx_n_s_cline_in_traceback;
+static PyObject *__pyx_n_s_cos;
+static PyObject *__pyx_n_s_direction_error;
+static PyObject *__pyx_n_s_dtype;
+static PyObject *__pyx_n_s_elevation;
+static PyObject *__pyx_n_s_elevation_error;
 static PyObject *__pyx_n_s_empty;
+static PyObject *__pyx_n_s_exact;
+static PyObject *__pyx_n_s_first;
+static PyObject *__pyx_n_s_float64;
+static PyObject *__pyx_n_s_form;
+static PyObject *__pyx_n_s_form_code;
+static PyObject *__pyx_kp_s_form_must_be_one_of;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_import;
+static PyObject *__pyx_n_s_jerk_error;
+static PyObject *__pyx_n_s_join;
+static PyObject *__pyx_n_s_kalman__cykalman;
+static PyObject *__pyx_kp_s_lib_jerk_python_kalman_jerk_pyth;
+static PyObject *__pyx_n_s_log_range_acceleration_error;
+static PyObject *__pyx_n_s_log_range_jerk_error;
+static PyObject *__pyx_n_s_log_range_rate_error;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
@@ -2020,33 +2292,168 @@ static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_kp_s_numpy_core_multiarray_failed_to;
 static PyObject *__pyx_kp_s_numpy_core_umath_failed_to_impor;
+static PyObject *__pyx_n_s_order;
+static PyObject *__pyx_n_s_order_code;
+static PyObject *__pyx_kp_s_order_must_be_one_of;
+static PyObject *__pyx_n_s_range;
+static PyObject *__pyx_n_s_range_error;
+static PyObject *__pyx_n_s_range_max;
+static PyObject *__pyx_n_s_range_min;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
+static PyObject *__pyx_n_s_second;
+static PyObject *__pyx_n_s_sensor;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
+static PyObject *__pyx_n_s_small_alpha_t;
+static PyObject *__pyx_n_s_staticmethod;
+static PyObject *__pyx_n_s_substeps;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_time;
 static PyObject *__pyx_n_s_time_is_relative;
+static PyObject *__pyx_n_s_unscented;
 static PyObject *__pyx_n_s_x;
+static PyObject *__pyx_n_s_x_acceleration_error;
 static PyObject *__pyx_n_s_x_jerk_error;
 static PyObject *__pyx_n_s_x_mod_limit;
 static PyObject *__pyx_n_s_x_resolution_error;
-static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_x_resolution_error, double __pyx_v_x_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_x_mod_limit); /* proto */
-static void __pyx_pf_8CyKalman_12KalmanJerk1D_2__dealloc__(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_10step(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self, double __pyx_v_time, double __pyx_v_x); /* proto */
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_8CyKalman_KalmanJerk1D(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_x_resolution_error, double __pyx_v_x_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_x_mod_limit); /* proto */
+static void __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_4get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_6get_eular_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_8get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_10step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self, double __pyx_v_time, double __pyx_v_x); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman__form_code(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_form); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_2_order_code(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_order); /* proto */
+static int __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_x_resolution_error, double __pyx_v_x_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_x_acceleration_error, PyObject *__pyx_v_form); /* proto */
+static void __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self, double __pyx_v_time, PyObject *__pyx_v_x, PyObject *__pyx_v_R); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_6get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_8get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_10get_eular_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_12get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_14get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_16get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_18get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_x_resolution_error, double __pyx_v_x_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_x_acceleration_error, PyObject *__pyx_v_form); /* proto */
+static void __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self, double __pyx_v_time, PyObject *__pyx_v_x, PyObject *__pyx_v_R); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_6get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_8get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_10get_eular_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_12get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_14get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_16get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_18get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_range_error, double __pyx_v_angle_error, double __pyx_v_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_acceleration_error, PyObject *__pyx_v_form); /* proto */
+static void __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self, double __pyx_v_time, double __pyx_v_range, double __pyx_v_angle); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_6get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_8get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_10get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_12get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_14get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_16get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_18__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_20__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_range_error, double __pyx_v_azimuth_error, double __pyx_v_elevation_error, double __pyx_v_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_acceleration_error, PyObject *__pyx_v_form); /* proto */
+static void __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self, double __pyx_v_time, double __pyx_v_range, double __pyx_v_azimuth, double __pyx_v_elevation); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_6get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_8get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_10get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_12get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_14get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_16get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_18__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_20__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_direction_error, double __pyx_v_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_acceleration_error, int __pyx_v_substeps, PyObject *__pyx_v_form, PyObject *__pyx_v_order); /* proto */
+static void __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self, double __pyx_v_time, double __pyx_v_azimuth, double __pyx_v_elevation, PyObject *__pyx_v_R); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_6azel_noise_to_tangent(double __pyx_v_elevation, double __pyx_v_azimuth_error, double __pyx_v_elevation_error); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_8azimuth_defined(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_10get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_12get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_14get_state_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_16get_basis(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_18get_basis_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_20get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_22get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_24get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_26get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_28__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_30__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_bearing_error, double __pyx_v_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_range_min, double __pyx_v_range_max, double __pyx_v_log_range_rate_error, double __pyx_v_log_range_acceleration_error, double __pyx_v_log_range_jerk_error, double __pyx_v_acceleration_error, PyObject *__pyx_v_form, PyObject *__pyx_v_order); /* proto */
+static void __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self, double __pyx_v_time, double __pyx_v_bearing, PyObject *__pyx_v_sensor); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_6get_range(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_8get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_10get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_12get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_14get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_16get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_18get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_direction_error, double __pyx_v_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_range_min, double __pyx_v_range_max, double __pyx_v_log_range_rate_error, double __pyx_v_log_range_acceleration_error, double __pyx_v_log_range_jerk_error, double __pyx_v_acceleration_error, PyObject *__pyx_v_form, PyObject *__pyx_v_order); /* proto */
+static void __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self, double __pyx_v_time, double __pyx_v_azimuth, double __pyx_v_elevation, PyObject *__pyx_v_sensor, PyObject *__pyx_v_R); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_6get_range(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_8get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_10get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_12get_state_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_14get_basis(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_16get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_18get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_20get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_22get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_24__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_26__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk1D(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk2D(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk3D(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk2DPolar(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk3DSpherical(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk2DAzEl(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_float_0_0;
+static PyObject *__pyx_int_0;
+static PyObject *__pyx_int_1;
+static PyObject *__pyx_int_2;
 static PyObject *__pyx_int_4;
 static PyObject *__pyx_int_5;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
-static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
+static PyObject *__pyx_tuple__5;
+static PyObject *__pyx_tuple__6;
+static PyObject *__pyx_tuple__7;
+static PyObject *__pyx_tuple__8;
+static PyObject *__pyx_tuple__9;
+static PyObject *__pyx_tuple__10;
+static PyObject *__pyx_tuple__11;
+static PyObject *__pyx_tuple__12;
+static PyObject *__pyx_tuple__13;
+static PyObject *__pyx_tuple__14;
+static PyObject *__pyx_tuple__15;
+static PyObject *__pyx_tuple__16;
+static PyObject *__pyx_tuple__17;
+static PyObject *__pyx_tuple__18;
+static PyObject *__pyx_tuple__19;
+static PyObject *__pyx_tuple__20;
+static PyObject *__pyx_tuple__22;
+static PyObject *__pyx_tuple__24;
+static PyObject *__pyx_codeobj__21;
+static PyObject *__pyx_codeobj__23;
+static PyObject *__pyx_codeobj__25;
 /* Late includes */
 
 /* "lib/jerk/KalmanJerk1D.pyx":12
@@ -2058,8 +2465,8 @@ static PyObject *__pyx_tuple__4;
  */
 
 /* Python wrapper */
-static int __pyx_pw_8CyKalman_12KalmanJerk1D_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_8CyKalman_12KalmanJerk1D_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_alpha;
   double __pyx_v_x_resolution_error;
   double __pyx_v_x_jerk_error;
@@ -2100,13 +2507,13 @@ static int __pyx_pw_8CyKalman_12KalmanJerk1D_1__cinit__(PyObject *__pyx_v_self, 
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_resolution_error)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, 1); __PYX_ERR(1, 12, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, 1); __PYX_ERR(2, 12, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_jerk_error)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, 2); __PYX_ERR(1, 12, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, 2); __PYX_ERR(2, 12, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -2122,7 +2529,7 @@ static int __pyx_pw_8CyKalman_12KalmanJerk1D_1__cinit__(PyObject *__pyx_v_self, 
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 12, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(2, 12, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2137,36 +2544,36 @@ static int __pyx_pw_8CyKalman_12KalmanJerk1D_1__cinit__(PyObject *__pyx_v_self, 
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
-    __pyx_v_x_resolution_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_x_resolution_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
-    __pyx_v_x_jerk_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_x_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
+    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L3_error)
+    __pyx_v_x_resolution_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_x_resolution_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L3_error)
+    __pyx_v_x_jerk_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_x_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L3_error)
     if (values[3]) {
-      __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
+      __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L3_error)
     } else {
       __pyx_v_time_is_relative = ((int)0);
     }
     if (values[4]) {
-      __pyx_v_x_mod_limit = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_x_mod_limit == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
+      __pyx_v_x_mod_limit = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_x_mod_limit == (double)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L3_error)
     } else {
       __pyx_v_x_mod_limit = ((double)-1.0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 12, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(2, 12, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("CyKalman.KalmanJerk1D.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1D.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(((struct __pyx_obj_8CyKalman_KalmanJerk1D *)__pyx_v_self), __pyx_v_alpha, __pyx_v_x_resolution_error, __pyx_v_x_jerk_error, __pyx_v_time_is_relative, __pyx_v_x_mod_limit);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D___cinit__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *)__pyx_v_self), __pyx_v_alpha, __pyx_v_x_resolution_error, __pyx_v_x_jerk_error, __pyx_v_time_is_relative, __pyx_v_x_mod_limit);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_x_resolution_error, double __pyx_v_x_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_x_mod_limit) {
+static int __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_x_resolution_error, double __pyx_v_x_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_x_mod_limit) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -2206,7 +2613,7 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
       __pyx_t_2 = new kaepek::KalmanJerk1D(__pyx_v_alpha, __pyx_v_x_resolution_error, __pyx_v_x_jerk_error, __pyx_v_time_is_relative);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 16, __pyx_L1_error)
+      __PYX_ERR(2, 16, __pyx_L1_error)
     }
     __pyx_v_self->c_kalman = __pyx_t_2;
 
@@ -2232,7 +2639,7 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
       __pyx_t_2 = new kaepek::KalmanJerk1D(__pyx_v_alpha, __pyx_v_x_resolution_error, __pyx_v_x_jerk_error, __pyx_v_time_is_relative, __pyx_v_x_mod_limit);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 18, __pyx_L1_error)
+      __PYX_ERR(2, 18, __pyx_L1_error)
     }
     __pyx_v_self->c_kalman = __pyx_t_2;
   }
@@ -2250,7 +2657,7 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("CyKalman.KalmanJerk1D.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1D.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2266,17 +2673,17 @@ static int __pyx_pf_8CyKalman_12KalmanJerk1D___cinit__(struct __pyx_obj_8CyKalma
  */
 
 /* Python wrapper */
-static void __pyx_pw_8CyKalman_12KalmanJerk1D_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
-static void __pyx_pw_8CyKalman_12KalmanJerk1D_3__dealloc__(PyObject *__pyx_v_self) {
+static void __pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_3__dealloc__(PyObject *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
-  __pyx_pf_8CyKalman_12KalmanJerk1D_2__dealloc__(((struct __pyx_obj_8CyKalman_KalmanJerk1D *)__pyx_v_self));
+  __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_2__dealloc__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
 }
 
-static void __pyx_pf_8CyKalman_12KalmanJerk1D_2__dealloc__(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self) {
+static void __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
@@ -2310,19 +2717,19 @@ static void __pyx_pf_8CyKalman_12KalmanJerk1D_2__dealloc__(struct __pyx_obj_8CyK
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_5get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_5get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_5get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_5get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_kalman_vector (wrapper)", 0);
-  __pyx_r = __pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(((struct __pyx_obj_8CyKalman_KalmanJerk1D *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_4get_kalman_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self) {
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_4get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self) {
   PyArrayObject *__pyx_v_X = 0;
   __pyx_t_11kalman_jerk_DoublePtr __pyx_v__X;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_X;
@@ -2352,12 +2759,12 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
  *         _X = self.c_kalman.get_kalman_vector()
  *         X[0] = _X[0]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 24, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 24, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 24, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_4);
   __Pyx_GIVEREF(__pyx_int_4);
@@ -2375,16 +2782,16 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 24, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 24, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(2, 24, __pyx_L1_error)
   __pyx_t_5 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_X.rcbuffer->pybuffer, (PyObject*)__pyx_t_5, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_X = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_X.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(1, 24, __pyx_L1_error)
+      __PYX_ERR(2, 24, __pyx_L1_error)
     } else {__pyx_pybuffernd_X.diminfo[0].strides = __pyx_pybuffernd_X.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_X.diminfo[0].shape = __pyx_pybuffernd_X.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2416,7 +2823,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_X.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 26, __pyx_L1_error)
+    __PYX_ERR(2, 26, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_X.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_X.diminfo[0].strides) = (__pyx_v__X[0]);
 
@@ -2435,7 +2842,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_X.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 27, __pyx_L1_error)
+    __PYX_ERR(2, 27, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_X.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_X.diminfo[0].strides) = (__pyx_v__X[1]);
 
@@ -2454,7 +2861,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_X.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 28, __pyx_L1_error)
+    __PYX_ERR(2, 28, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_X.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_X.diminfo[0].strides) = (__pyx_v__X[2]);
 
@@ -2473,7 +2880,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_X.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 29, __pyx_L1_error)
+    __PYX_ERR(2, 29, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_X.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_X.diminfo[0].strides) = (__pyx_v__X[3]);
 
@@ -2509,7 +2916,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
     __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_X.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("CyKalman.KalmanJerk1D.get_kalman_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1D.get_kalman_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -2530,19 +2937,19 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_4get_kalman_vector(struct __p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_7get_eular_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_7get_eular_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_7get_eular_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_7get_eular_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_eular_vector (wrapper)", 0);
-  __pyx_r = __pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(((struct __pyx_obj_8CyKalman_KalmanJerk1D *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_6get_eular_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self) {
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_6get_eular_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self) {
   PyArrayObject *__pyx_v_eular = 0;
   __pyx_t_11kalman_jerk_DoublePtr __pyx_v__eular;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_eular;
@@ -2572,12 +2979,12 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
  *         _eular = self.c_kalman.get_eular_vector()
  *         eular[0] = _eular[0]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 33, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 33, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 33, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_5);
   __Pyx_GIVEREF(__pyx_int_5);
@@ -2595,16 +3002,16 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 33, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 33, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(2, 33, __pyx_L1_error)
   __pyx_t_5 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_eular.rcbuffer->pybuffer, (PyObject*)__pyx_t_5, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_eular = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(1, 33, __pyx_L1_error)
+      __PYX_ERR(2, 33, __pyx_L1_error)
     } else {__pyx_pybuffernd_eular.diminfo[0].strides = __pyx_pybuffernd_eular.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_eular.diminfo[0].shape = __pyx_pybuffernd_eular.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2636,7 +3043,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_eular.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 35, __pyx_L1_error)
+    __PYX_ERR(2, 35, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_eular.diminfo[0].strides) = (__pyx_v__eular[0]);
 
@@ -2655,7 +3062,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_eular.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 36, __pyx_L1_error)
+    __PYX_ERR(2, 36, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_eular.diminfo[0].strides) = (__pyx_v__eular[1]);
 
@@ -2674,7 +3081,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_eular.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 37, __pyx_L1_error)
+    __PYX_ERR(2, 37, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_eular.diminfo[0].strides) = (__pyx_v__eular[2]);
 
@@ -2693,7 +3100,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_eular.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 38, __pyx_L1_error)
+    __PYX_ERR(2, 38, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_eular.diminfo[0].strides) = (__pyx_v__eular[3]);
 
@@ -2712,7 +3119,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_eular.diminfo[0].shape)) __pyx_t_7 = 0;
   if (unlikely(__pyx_t_7 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_7);
-    __PYX_ERR(1, 39, __pyx_L1_error)
+    __PYX_ERR(2, 39, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_eular.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_eular.diminfo[0].strides) = (__pyx_v__eular[4]);
 
@@ -2748,7 +3155,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
     __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_eular.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("CyKalman.KalmanJerk1D.get_eular_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1D.get_eular_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -2769,19 +3176,19 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_6get_eular_vector(struct __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_covariance_matrix (wrapper)", 0);
-  __pyx_r = __pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(((struct __pyx_obj_8CyKalman_KalmanJerk1D *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_8get_covariance_matrix(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self) {
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_8get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self) {
   PyArrayObject *__pyx_v_P = 0;
   double (*__pyx_v__P)[4];
   __Pyx_LocalBuf_ND __pyx_pybuffernd_P;
@@ -2812,12 +3219,12 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
  *         _P = self.c_kalman.get_covariance_matrix()
  *         P[0,0] = _P[0][0]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 43, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 43, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 43, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_4);
   __Pyx_GIVEREF(__pyx_int_4);
@@ -2838,16 +3245,16 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 43, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 43, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(2, 43, __pyx_L1_error)
   __pyx_t_5 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_P.rcbuffer->pybuffer, (PyObject*)__pyx_t_5, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_P = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_P.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(1, 43, __pyx_L1_error)
+      __PYX_ERR(2, 43, __pyx_L1_error)
     } else {__pyx_pybuffernd_P.diminfo[0].strides = __pyx_pybuffernd_P.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_P.diminfo[0].shape = __pyx_pybuffernd_P.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_P.diminfo[1].strides = __pyx_pybuffernd_P.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_P.diminfo[1].shape = __pyx_pybuffernd_P.rcbuffer->pybuffer.shape[1];
     }
   }
@@ -2884,7 +3291,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 45, __pyx_L1_error)
+    __PYX_ERR(2, 45, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[0])[0]);
 
@@ -2908,7 +3315,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 46, __pyx_L1_error)
+    __PYX_ERR(2, 46, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[0])[1]);
 
@@ -2932,7 +3339,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 47, __pyx_L1_error)
+    __PYX_ERR(2, 47, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[0])[2]);
 
@@ -2956,7 +3363,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 48, __pyx_L1_error)
+    __PYX_ERR(2, 48, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[0])[3]);
 
@@ -2980,7 +3387,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 50, __pyx_L1_error)
+    __PYX_ERR(2, 50, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[1])[0]);
 
@@ -3004,7 +3411,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 51, __pyx_L1_error)
+    __PYX_ERR(2, 51, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[1])[1]);
 
@@ -3028,7 +3435,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 52, __pyx_L1_error)
+    __PYX_ERR(2, 52, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[1])[2]);
 
@@ -3052,7 +3459,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 53, __pyx_L1_error)
+    __PYX_ERR(2, 53, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[1])[3]);
 
@@ -3076,7 +3483,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 55, __pyx_L1_error)
+    __PYX_ERR(2, 55, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[2])[0]);
 
@@ -3100,7 +3507,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 56, __pyx_L1_error)
+    __PYX_ERR(2, 56, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[2])[1]);
 
@@ -3124,7 +3531,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 57, __pyx_L1_error)
+    __PYX_ERR(2, 57, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[2])[2]);
 
@@ -3148,7 +3555,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 58, __pyx_L1_error)
+    __PYX_ERR(2, 58, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[2])[3]);
 
@@ -3172,7 +3579,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 60, __pyx_L1_error)
+    __PYX_ERR(2, 60, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[3])[0]);
 
@@ -3196,7 +3603,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 61, __pyx_L1_error)
+    __PYX_ERR(2, 61, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[3])[1]);
 
@@ -3220,7 +3627,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 62, __pyx_L1_error)
+    __PYX_ERR(2, 62, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[3])[2]);
 
@@ -3244,7 +3651,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_P.diminfo[1].shape)) __pyx_t_8 = 1;
   if (unlikely(__pyx_t_8 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_8);
-    __PYX_ERR(1, 63, __pyx_L1_error)
+    __PYX_ERR(2, 63, __pyx_L1_error)
   }
   *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_P.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_P.diminfo[0].strides, __pyx_t_6, __pyx_pybuffernd_P.diminfo[1].strides) = ((__pyx_v__P[3])[3]);
 
@@ -3280,7 +3687,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
     __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_P.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("CyKalman.KalmanJerk1D.get_covariance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1D.get_covariance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -3297,11 +3704,12 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_8get_covariance_matrix(struct
  * 
  *     def step(self, double time, double x):             # <<<<<<<<<<<<<<
  *         self.c_kalman.step(time, x)
+ * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_11step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_11step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_11step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_11step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_time;
   double __pyx_v_x;
   int __pyx_lineno = 0;
@@ -3333,11 +3741,11 @@ static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_11step(PyObject *__pyx_v_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("step", 1, 2, 2, 1); __PYX_ERR(1, 66, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("step", 1, 2, 2, 1); __PYX_ERR(2, 66, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(1, 66, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(2, 66, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3345,25 +3753,25 @@ static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_11step(PyObject *__pyx_v_self
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 66, __pyx_L3_error)
-    __pyx_v_x = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 66, __pyx_L3_error)
+    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(2, 66, __pyx_L3_error)
+    __pyx_v_x = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) __PYX_ERR(2, 66, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("step", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 66, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("step", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(2, 66, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("CyKalman.KalmanJerk1D.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1D.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8CyKalman_12KalmanJerk1D_10step(((struct __pyx_obj_8CyKalman_KalmanJerk1D *)__pyx_v_self), __pyx_v_time, __pyx_v_x);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_10step(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *)__pyx_v_self), __pyx_v_time, __pyx_v_x);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_10step(struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self, double __pyx_v_time, double __pyx_v_x) {
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_10step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self, double __pyx_v_time, double __pyx_v_x) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("step", 0);
@@ -3372,6 +3780,8 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_10step(struct __pyx_obj_8CyKa
  * 
  *     def step(self, double time, double x):
  *         self.c_kalman.step(time, x)             # <<<<<<<<<<<<<<
+ * 
+ * include "python/kalman_jerk_python.pxi"
  */
   __pyx_v_self->c_kalman->step(__pyx_v_time, __pyx_v_x);
 
@@ -3380,6 +3790,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_10step(struct __pyx_obj_8CyKa
  * 
  *     def step(self, double time, double x):             # <<<<<<<<<<<<<<
  *         self.c_kalman.step(time, x)
+ * 
  */
 
   /* function exit code */
@@ -3396,19 +3807,19 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_10step(struct __pyx_obj_8CyKa
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_13__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_13__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_13__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_13__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8CyKalman_12KalmanJerk1D_12__reduce_cython__(((struct __pyx_obj_8CyKalman_KalmanJerk1D *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_12__reduce_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self) {
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3423,11 +3834,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_12__reduce_cython__(CYTHON_UN
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(0, 2, __pyx_L1_error)
+  __PYX_ERR(1, 2, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -3438,7 +3849,7 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_12__reduce_cython__(CYTHON_UN
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("CyKalman.KalmanJerk1D.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1D.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -3453,19 +3864,19 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_12__reduce_cython__(CYTHON_UN
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_15__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_8CyKalman_12KalmanJerk1D_15__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_15__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_15__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8CyKalman_12KalmanJerk1D_14__setstate_cython__(((struct __pyx_obj_8CyKalman_KalmanJerk1D *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_14__setstate_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_8CyKalman_KalmanJerk1D *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk1D_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3479,11 +3890,11 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_14__setstate_cython__(CYTHON_
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(0, 4, __pyx_L1_error)
+  __PYX_ERR(1, 4, __pyx_L1_error)
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
@@ -3495,7 +3906,8589 @@ static PyObject *__pyx_pf_8CyKalman_12KalmanJerk1D_14__setstate_cython__(CYTHON_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("CyKalman.KalmanJerk1D.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1D.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":89
+ * ORDERS = {'first': 0, 'second': 1, 'unscented': 2}
+ * 
+ * def _form_code(form):             # <<<<<<<<<<<<<<
+ *     if form not in FORMS:
+ *         raise ValueError("form must be one of " + ", ".join(FORMS))
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_1_form_code(PyObject *__pyx_self, PyObject *__pyx_v_form); /*proto*/
+static PyMethodDef __pyx_mdef_6kalman_9_cykalman_1_form_code = {"_form_code", (PyCFunction)__pyx_pw_6kalman_9_cykalman_1_form_code, METH_O, 0};
+static PyObject *__pyx_pw_6kalman_9_cykalman_1_form_code(PyObject *__pyx_self, PyObject *__pyx_v_form) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("_form_code (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman__form_code(__pyx_self, ((PyObject *)__pyx_v_form));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman__form_code(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_form) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_form_code", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":90
+ * 
+ * def _form_code(form):
+ *     if form not in FORMS:             # <<<<<<<<<<<<<<
+ *         raise ValueError("form must be one of " + ", ".join(FORMS))
+ *     return FORMS[form]
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_FORMS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_form, __pyx_t_1, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = (__pyx_t_2 != 0);
+  if (unlikely(__pyx_t_3)) {
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":91
+ * def _form_code(form):
+ *     if form not in FORMS:
+ *         raise ValueError("form must be one of " + ", ".join(FORMS))             # <<<<<<<<<<<<<<
+ *     return FORMS[form]
+ * 
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_FORMS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = __Pyx_PyString_Join(__pyx_kp_s__3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_kp_s_form_must_be_one_of, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __PYX_ERR(0, 91, __pyx_L1_error)
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":90
+ * 
+ * def _form_code(form):
+ *     if form not in FORMS:             # <<<<<<<<<<<<<<
+ *         raise ValueError("form must be one of " + ", ".join(FORMS))
+ *     return FORMS[form]
+ */
+  }
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":92
+ *     if form not in FORMS:
+ *         raise ValueError("form must be one of " + ", ".join(FORMS))
+ *     return FORMS[form]             # <<<<<<<<<<<<<<
+ * 
+ * def _order_code(order):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_FORMS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_v_form); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":89
+ * ORDERS = {'first': 0, 'second': 1, 'unscented': 2}
+ * 
+ * def _form_code(form):             # <<<<<<<<<<<<<<
+ *     if form not in FORMS:
+ *         raise ValueError("form must be one of " + ", ".join(FORMS))
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("kalman._cykalman._form_code", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":94
+ *     return FORMS[form]
+ * 
+ * def _order_code(order):             # <<<<<<<<<<<<<<
+ *     if order not in ORDERS:
+ *         raise ValueError("order must be one of " + ", ".join(ORDERS))
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_3_order_code(PyObject *__pyx_self, PyObject *__pyx_v_order); /*proto*/
+static PyMethodDef __pyx_mdef_6kalman_9_cykalman_3_order_code = {"_order_code", (PyCFunction)__pyx_pw_6kalman_9_cykalman_3_order_code, METH_O, 0};
+static PyObject *__pyx_pw_6kalman_9_cykalman_3_order_code(PyObject *__pyx_self, PyObject *__pyx_v_order) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("_order_code (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_2_order_code(__pyx_self, ((PyObject *)__pyx_v_order));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_2_order_code(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_order) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_order_code", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":95
+ * 
+ * def _order_code(order):
+ *     if order not in ORDERS:             # <<<<<<<<<<<<<<
+ *         raise ValueError("order must be one of " + ", ".join(ORDERS))
+ *     return ORDERS[order]
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_ORDERS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_order, __pyx_t_1, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = (__pyx_t_2 != 0);
+  if (unlikely(__pyx_t_3)) {
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":96
+ * def _order_code(order):
+ *     if order not in ORDERS:
+ *         raise ValueError("order must be one of " + ", ".join(ORDERS))             # <<<<<<<<<<<<<<
+ *     return ORDERS[order]
+ * 
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_ORDERS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = __Pyx_PyString_Join(__pyx_kp_s__3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_kp_s_order_must_be_one_of, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __PYX_ERR(0, 96, __pyx_L1_error)
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":95
+ * 
+ * def _order_code(order):
+ *     if order not in ORDERS:             # <<<<<<<<<<<<<<
+ *         raise ValueError("order must be one of " + ", ".join(ORDERS))
+ *     return ORDERS[order]
+ */
+  }
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":97
+ *     if order not in ORDERS:
+ *         raise ValueError("order must be one of " + ", ".join(ORDERS))
+ *     return ORDERS[order]             # <<<<<<<<<<<<<<
+ * 
+ * cdef _vector(const double * data, int n):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ORDERS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_v_order); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":94
+ *     return FORMS[form]
+ * 
+ * def _order_code(order):             # <<<<<<<<<<<<<<
+ *     if order not in ORDERS:
+ *         raise ValueError("order must be one of " + ", ".join(ORDERS))
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("kalman._cykalman._order_code", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":99
+ *     return ORDERS[order]
+ * 
+ * cdef _vector(const double * data, int n):             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray[double, ndim=1, mode='c'] out = np.empty([n])
+ *     cdef int i
+ */
+
+static PyObject *__pyx_f_6kalman_9_cykalman__vector(double const *__pyx_v_data, int __pyx_v_n) {
+  PyArrayObject *__pyx_v_out = 0;
+  int __pyx_v_i;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_out;
+  __Pyx_Buffer __pyx_pybuffer_out;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyArrayObject *__pyx_t_5 = NULL;
+  int __pyx_t_6;
+  int __pyx_t_7;
+  int __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
+  int __pyx_t_10;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_vector", 0);
+  __pyx_pybuffer_out.pybuffer.buf = NULL;
+  __pyx_pybuffer_out.refcount = 0;
+  __pyx_pybuffernd_out.data = NULL;
+  __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":100
+ * 
+ * cdef _vector(const double * data, int n):
+ *     cdef np.ndarray[double, ndim=1, mode='c'] out = np.empty([n])             # <<<<<<<<<<<<<<
+ *     cdef int i
+ *     for i in range(n):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
+  __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_5 = ((PyArrayObject *)__pyx_t_1);
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)__pyx_t_5, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {
+      __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
+      __PYX_ERR(0, 100, __pyx_L1_error)
+    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0];
+    }
+  }
+  __pyx_t_5 = 0;
+  __pyx_v_out = ((PyArrayObject *)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":102
+ *     cdef np.ndarray[double, ndim=1, mode='c'] out = np.empty([n])
+ *     cdef int i
+ *     for i in range(n):             # <<<<<<<<<<<<<<
+ *         out[i] = data[i]
+ *     return out
+ */
+  __pyx_t_6 = __pyx_v_n;
+  __pyx_t_7 = __pyx_t_6;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":103
+ *     cdef int i
+ *     for i in range(n):
+ *         out[i] = data[i]             # <<<<<<<<<<<<<<
+ *     return out
+ * 
+ */
+    __pyx_t_9 = __pyx_v_i;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_pybuffernd_out.diminfo[0].shape;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_pybuffernd_out.diminfo[0].shape)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+      __PYX_ERR(0, 103, __pyx_L1_error)
+    }
+    *__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_out.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_out.diminfo[0].strides) = (__pyx_v_data[__pyx_v_i]);
+  }
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":104
+ *     for i in range(n):
+ *         out[i] = data[i]
+ *     return out             # <<<<<<<<<<<<<<
+ * 
+ * cdef _matrix(const double * data, int n):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(((PyObject *)__pyx_v_out));
+  __pyx_r = ((PyObject *)__pyx_v_out);
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":99
+ *     return ORDERS[order]
+ * 
+ * cdef _vector(const double * data, int n):             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray[double, ndim=1, mode='c'] out = np.empty([n])
+ *     cdef int i
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("kalman._cykalman._vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_out);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":106
+ *     return out
+ * 
+ * cdef _matrix(const double * data, int n):             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray[double, ndim=2, mode='c'] out = np.empty([n, n])
+ *     cdef int i, k
+ */
+
+static PyObject *__pyx_f_6kalman_9_cykalman__matrix(double const *__pyx_v_data, int __pyx_v_n) {
+  PyArrayObject *__pyx_v_out = 0;
+  int __pyx_v_i;
+  int __pyx_v_k;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_out;
+  __Pyx_Buffer __pyx_pybuffer_out;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyArrayObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
+  int __pyx_t_8;
+  int __pyx_t_9;
+  int __pyx_t_10;
+  int __pyx_t_11;
+  int __pyx_t_12;
+  Py_ssize_t __pyx_t_13;
+  Py_ssize_t __pyx_t_14;
+  int __pyx_t_15;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_matrix", 0);
+  __pyx_pybuffer_out.pybuffer.buf = NULL;
+  __pyx_pybuffer_out.refcount = 0;
+  __pyx_pybuffernd_out.data = NULL;
+  __pyx_pybuffernd_out.rcbuffer = &__pyx_pybuffer_out;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":107
+ * 
+ * cdef _matrix(const double * data, int n):
+ *     cdef np.ndarray[double, ndim=2, mode='c'] out = np.empty([n, n])             # <<<<<<<<<<<<<<
+ *     cdef int i, k
+ *     for i in range(n):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = PyList_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyList_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyList_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
+  __pyx_t_2 = 0;
+  __pyx_t_4 = 0;
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_6 = ((PyArrayObject *)__pyx_t_1);
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_out.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {
+      __pyx_v_out = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_out.rcbuffer->pybuffer.buf = NULL;
+      __PYX_ERR(0, 107, __pyx_L1_error)
+    } else {__pyx_pybuffernd_out.diminfo[0].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_out.diminfo[0].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_out.diminfo[1].strides = __pyx_pybuffernd_out.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_out.diminfo[1].shape = __pyx_pybuffernd_out.rcbuffer->pybuffer.shape[1];
+    }
+  }
+  __pyx_t_6 = 0;
+  __pyx_v_out = ((PyArrayObject *)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":109
+ *     cdef np.ndarray[double, ndim=2, mode='c'] out = np.empty([n, n])
+ *     cdef int i, k
+ *     for i in range(n):             # <<<<<<<<<<<<<<
+ *         for k in range(n):
+ *             out[i, k] = data[n * i + k]
+ */
+  __pyx_t_7 = __pyx_v_n;
+  __pyx_t_8 = __pyx_t_7;
+  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+    __pyx_v_i = __pyx_t_9;
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":110
+ *     cdef int i, k
+ *     for i in range(n):
+ *         for k in range(n):             # <<<<<<<<<<<<<<
+ *             out[i, k] = data[n * i + k]
+ *     return out
+ */
+    __pyx_t_10 = __pyx_v_n;
+    __pyx_t_11 = __pyx_t_10;
+    for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+      __pyx_v_k = __pyx_t_12;
+
+      /* "lib/jerk/python/kalman_jerk_python.pxi":111
+ *     for i in range(n):
+ *         for k in range(n):
+ *             out[i, k] = data[n * i + k]             # <<<<<<<<<<<<<<
+ *     return out
+ * 
+ */
+      __pyx_t_13 = __pyx_v_i;
+      __pyx_t_14 = __pyx_v_k;
+      __pyx_t_15 = -1;
+      if (__pyx_t_13 < 0) {
+        __pyx_t_13 += __pyx_pybuffernd_out.diminfo[0].shape;
+        if (unlikely(__pyx_t_13 < 0)) __pyx_t_15 = 0;
+      } else if (unlikely(__pyx_t_13 >= __pyx_pybuffernd_out.diminfo[0].shape)) __pyx_t_15 = 0;
+      if (__pyx_t_14 < 0) {
+        __pyx_t_14 += __pyx_pybuffernd_out.diminfo[1].shape;
+        if (unlikely(__pyx_t_14 < 0)) __pyx_t_15 = 1;
+      } else if (unlikely(__pyx_t_14 >= __pyx_pybuffernd_out.diminfo[1].shape)) __pyx_t_15 = 1;
+      if (unlikely(__pyx_t_15 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_15);
+        __PYX_ERR(0, 111, __pyx_L1_error)
+      }
+      *__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_out.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_out.diminfo[0].strides, __pyx_t_14, __pyx_pybuffernd_out.diminfo[1].strides) = (__pyx_v_data[((__pyx_v_n * __pyx_v_i) + __pyx_v_k)]);
+    }
+  }
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":112
+ *         for k in range(n):
+ *             out[i, k] = data[n * i + k]
+ *     return out             # <<<<<<<<<<<<<<
+ * 
+ * cdef class KalmanJerk2D:
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(((PyObject *)__pyx_v_out));
+  __pyx_r = ((PyObject *)__pyx_v_out);
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":106
+ *     return out
+ * 
+ * cdef _matrix(const double * data, int n):             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray[double, ndim=2, mode='c'] out = np.empty([n, n])
+ *     cdef int i, k
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("kalman._cykalman._matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_out.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_out);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":117
+ *     cdef KalmanJerk2DPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double x_resolution_error, double x_jerk_error, bint time_is_relative = False, double x_acceleration_error = 0.0, form = 'small_alpha_t'):             # <<<<<<<<<<<<<<
+ *         self.c_kalman = new KalmanJerk2DPython(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_acceleration_error, _form_code(form))
+ * 
+ */
+
+/* Python wrapper */
+static int __pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_alpha;
+  double __pyx_v_x_resolution_error;
+  double __pyx_v_x_jerk_error;
+  int __pyx_v_time_is_relative;
+  double __pyx_v_x_acceleration_error;
+  PyObject *__pyx_v_form = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_alpha,&__pyx_n_s_x_resolution_error,&__pyx_n_s_x_jerk_error,&__pyx_n_s_time_is_relative,&__pyx_n_s_x_acceleration_error,&__pyx_n_s_form,0};
+    PyObject* values[6] = {0,0,0,0,0,0};
+    values[5] = ((PyObject *)__pyx_n_s_small_alpha_t);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_resolution_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 6, 1); __PYX_ERR(0, 117, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_jerk_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 6, 2); __PYX_ERR(0, 117, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time_is_relative);
+          if (value) { values[3] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_acceleration_error);
+          if (value) { values[4] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_form);
+          if (value) { values[5] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 117, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
+    __pyx_v_x_resolution_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_x_resolution_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
+    __pyx_v_x_jerk_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_x_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
+    if (values[3]) {
+      __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
+    } else {
+      __pyx_v_time_is_relative = ((int)0);
+    }
+    if (values[4]) {
+      __pyx_v_x_acceleration_error = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_x_acceleration_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
+    } else {
+      __pyx_v_x_acceleration_error = ((double)0.0);
+    }
+    __pyx_v_form = values[5];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 117, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D___cinit__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self), __pyx_v_alpha, __pyx_v_x_resolution_error, __pyx_v_x_jerk_error, __pyx_v_time_is_relative, __pyx_v_x_acceleration_error, __pyx_v_form);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_x_resolution_error, double __pyx_v_x_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_x_acceleration_error, PyObject *__pyx_v_form) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
+  kaepek::python::KalmanJerk2DPython *__pyx_t_5;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":118
+ * 
+ *     def __cinit__(self, double alpha, double x_resolution_error, double x_jerk_error, bint time_is_relative = False, double x_acceleration_error = 0.0, form = 'small_alpha_t'):
+ *         self.c_kalman = new KalmanJerk2DPython(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_acceleration_error, _form_code(form))             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_form_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_form) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_form);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  try {
+    __pyx_t_5 = new kaepek::python::KalmanJerk2DPython(__pyx_v_alpha, __pyx_v_x_resolution_error, __pyx_v_x_jerk_error, __pyx_v_time_is_relative, __pyx_v_x_acceleration_error, __pyx_t_4);
+  } catch(...) {
+    __Pyx_CppExn2PyErr();
+    __PYX_ERR(0, 118, __pyx_L1_error)
+  }
+  __pyx_v_self->c_kalman = __pyx_t_5;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":117
+ *     cdef KalmanJerk2DPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double x_resolution_error, double x_jerk_error, bint time_is_relative = False, double x_acceleration_error = 0.0, form = 'small_alpha_t'):             # <<<<<<<<<<<<<<
+ *         self.c_kalman = new KalmanJerk2DPython(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_acceleration_error, _form_code(form))
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":120
+ *         self.c_kalman = new KalmanJerk2DPython(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_acceleration_error, _form_code(form))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+/* Python wrapper */
+static void __pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_3__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_2__dealloc__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":121
+ * 
+ *     def __dealloc__(self):
+ *         del self.c_kalman             # <<<<<<<<<<<<<<
+ * 
+ *     def step(self, double time, x, R = None):
+ */
+  delete __pyx_v_self->c_kalman;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":120
+ *         self.c_kalman = new KalmanJerk2DPython(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_acceleration_error, _form_code(form))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":123
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, x, R = None):             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=1, mode='c'] xv = np.ascontiguousarray(x, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_time;
+  PyObject *__pyx_v_x = 0;
+  PyObject *__pyx_v_R = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("step (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_time,&__pyx_n_s_x,&__pyx_n_s_R,0};
+    PyObject* values[3] = {0,0,0};
+    values[2] = ((PyObject *)Py_None);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 0, 2, 3, 1); __PYX_ERR(0, 123, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_R);
+          if (value) { values[2] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(0, 123, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L3_error)
+    __pyx_v_x = values[1];
+    __pyx_v_R = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("step", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 123, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_4step(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self), __pyx_v_time, __pyx_v_x, __pyx_v_R);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self, double __pyx_v_time, PyObject *__pyx_v_x, PyObject *__pyx_v_R) {
+  PyArrayObject *__pyx_v_xv = 0;
+  PyArrayObject *__pyx_v_Rv = 0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_Rv;
+  __Pyx_Buffer __pyx_pybuffer_Rv;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_xv;
+  __Pyx_Buffer __pyx_pybuffer_xv;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyArrayObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
+  int __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
+  int __pyx_t_10;
+  PyArrayObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_12 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
+  Py_ssize_t __pyx_t_15;
+  Py_ssize_t __pyx_t_16;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("step", 0);
+  __pyx_pybuffer_xv.pybuffer.buf = NULL;
+  __pyx_pybuffer_xv.refcount = 0;
+  __pyx_pybuffernd_xv.data = NULL;
+  __pyx_pybuffernd_xv.rcbuffer = &__pyx_pybuffer_xv;
+  __pyx_pybuffer_Rv.pybuffer.buf = NULL;
+  __pyx_pybuffer_Rv.refcount = 0;
+  __pyx_pybuffernd_Rv.data = NULL;
+  __pyx_pybuffernd_Rv.rcbuffer = &__pyx_pybuffer_Rv;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":124
+ * 
+ *     def step(self, double time, x, R = None):
+ *         cdef np.ndarray[double, ndim=1, mode='c'] xv = np.ascontiguousarray(x, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_v_x);
+  __Pyx_GIVEREF(__pyx_v_x);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_x);
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_6 = ((PyArrayObject *)__pyx_t_5);
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_xv.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) {
+      __pyx_v_xv = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_xv.rcbuffer->pybuffer.buf = NULL;
+      __PYX_ERR(0, 124, __pyx_L1_error)
+    } else {__pyx_pybuffernd_xv.diminfo[0].strides = __pyx_pybuffernd_xv.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_xv.diminfo[0].shape = __pyx_pybuffernd_xv.rcbuffer->pybuffer.shape[0];
+    }
+  }
+  __pyx_t_6 = 0;
+  __pyx_v_xv = ((PyArrayObject *)__pyx_t_5);
+  __pyx_t_5 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":126
+ *         cdef np.ndarray[double, ndim=1, mode='c'] xv = np.ascontiguousarray(x, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step(time, &xv[0])
+ *         else:
+ */
+  __pyx_t_7 = (__pyx_v_R == Py_None);
+  __pyx_t_8 = (__pyx_t_7 != 0);
+  if (__pyx_t_8) {
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":127
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:
+ *             self.c_kalman.step(time, &xv[0])             # <<<<<<<<<<<<<<
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)
+ */
+    __pyx_t_9 = 0;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_pybuffernd_xv.diminfo[0].shape;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_pybuffernd_xv.diminfo[0].shape)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+      __PYX_ERR(0, 127, __pyx_L1_error)
+    }
+    __pyx_v_self->c_kalman->step(__pyx_v_time, (&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_xv.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_xv.diminfo[0].strides))));
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":126
+ *         cdef np.ndarray[double, ndim=1, mode='c'] xv = np.ascontiguousarray(x, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step(time, &xv[0])
+ *         else:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":129
+ *             self.c_kalman.step(time, &xv[0])
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step_covariance(time, &xv[0], &Rv[0, 0])
+ * 
+ */
+  /*else*/ {
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_INCREF(__pyx_v_R);
+    __Pyx_GIVEREF(__pyx_v_R);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_R);
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_11 = ((PyArrayObject *)__pyx_t_4);
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+      __pyx_t_10 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer, (PyObject*)__pyx_t_11, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_10 < 0)) {
+        PyErr_Fetch(&__pyx_t_12, &__pyx_t_13, &__pyx_t_14);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer, (PyObject*)__pyx_v_Rv, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_12); Py_XDECREF(__pyx_t_13); Py_XDECREF(__pyx_t_14);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_12, __pyx_t_13, __pyx_t_14);
+        }
+        __pyx_t_12 = __pyx_t_13 = __pyx_t_14 = 0;
+      }
+      __pyx_pybuffernd_Rv.diminfo[0].strides = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_Rv.diminfo[0].shape = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_Rv.diminfo[1].strides = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_Rv.diminfo[1].shape = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.shape[1];
+      if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 129, __pyx_L1_error)
+    }
+    __pyx_t_11 = 0;
+    __pyx_v_Rv = ((PyArrayObject *)__pyx_t_4);
+    __pyx_t_4 = 0;
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":130
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)
+ *             self.c_kalman.step_covariance(time, &xv[0], &Rv[0, 0])             # <<<<<<<<<<<<<<
+ * 
+ *     def get_kalman_vector(self):
+ */
+    __pyx_t_9 = 0;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_pybuffernd_xv.diminfo[0].shape;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_pybuffernd_xv.diminfo[0].shape)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+      __PYX_ERR(0, 130, __pyx_L1_error)
+    }
+    __pyx_t_15 = 0;
+    __pyx_t_16 = 0;
+    __pyx_t_10 = -1;
+    if (__pyx_t_15 < 0) {
+      __pyx_t_15 += __pyx_pybuffernd_Rv.diminfo[0].shape;
+      if (unlikely(__pyx_t_15 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_15 >= __pyx_pybuffernd_Rv.diminfo[0].shape)) __pyx_t_10 = 0;
+    if (__pyx_t_16 < 0) {
+      __pyx_t_16 += __pyx_pybuffernd_Rv.diminfo[1].shape;
+      if (unlikely(__pyx_t_16 < 0)) __pyx_t_10 = 1;
+    } else if (unlikely(__pyx_t_16 >= __pyx_pybuffernd_Rv.diminfo[1].shape)) __pyx_t_10 = 1;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+      __PYX_ERR(0, 130, __pyx_L1_error)
+    }
+    __pyx_v_self->c_kalman->step_covariance(__pyx_v_time, (&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_xv.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_xv.diminfo[0].strides))), (&(*__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_Rv.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_Rv.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_Rv.diminfo[1].strides))));
+  }
+  __pyx_L3:;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":123
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, x, R = None):             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=1, mode='c'] xv = np.ascontiguousarray(x, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_xv.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_xv.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_xv);
+  __Pyx_XDECREF((PyObject *)__pyx_v_Rv);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":132
+ *             self.c_kalman.step_covariance(time, &xv[0], &Rv[0, 0])
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_7get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_7get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_kalman_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_6get_kalman_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_6get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_kalman_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":133
+ * 
+ *     def get_kalman_vector(self):
+ *         return _vector(self.c_kalman.kalman_vector(), 8)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_covariance_matrix(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->kalman_vector(), 8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":132
+ *             self.c_kalman.step_covariance(time, &xv[0], &Rv[0, 0])
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.get_kalman_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":135
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_covariance_matrix (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_8get_covariance_matrix(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_8get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_covariance_matrix", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":136
+ * 
+ *     def get_covariance_matrix(self):
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_eular_vector(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->covariance_matrix(), 8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":135
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.get_covariance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":138
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ *     def get_eular_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.eular_vector(), 9)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_11get_eular_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_11get_eular_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_eular_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_10get_eular_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_10get_eular_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_eular_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":139
+ * 
+ *     def get_eular_vector(self):
+ *         return _vector(self.c_kalman.eular_vector(), 9)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->eular_vector(), 9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":138
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ *     def get_eular_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.eular_vector(), 9)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.get_eular_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":141
+ *         return _vector(self.c_kalman.eular_vector(), 9)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_13get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_13get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_12get_innovation(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_12get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":142
+ * 
+ *     def get_innovation(self):
+ *         return _vector(self.c_kalman.innovation(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->innovation(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":141
+ *         return _vector(self.c_kalman.eular_vector(), 9)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.get_innovation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":144
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_15get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_15get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_14get_innovation_covariance(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_14get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":145
+ * 
+ *     def get_innovation_covariance(self):
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":144
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.get_innovation_covariance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":147
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_17get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_17get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_16get_innovation_covariance_inverse(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_16get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":148
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance_inverse(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":147
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.get_innovation_covariance_inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":150
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_19get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_19get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_18get_innovation_covariance_determinant(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_18get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":151
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ *         return self.c_kalman.innovation_covariance_determinant()             # <<<<<<<<<<<<<<
+ * 
+ * cdef class KalmanJerk3D:
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->c_kalman->innovation_covariance_determinant()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":150
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.get_innovation_covariance_determinant", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_21__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_21__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_20__reduce_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 2, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_23__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_23__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_22__setstate_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk2D_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 4, __pyx_L1_error)
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2D.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":156
+ *     cdef KalmanJerk3DPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double x_resolution_error, double x_jerk_error, bint time_is_relative = False, double x_acceleration_error = 0.0, form = 'small_alpha_t'):             # <<<<<<<<<<<<<<
+ *         self.c_kalman = new KalmanJerk3DPython(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_acceleration_error, _form_code(form))
+ * 
+ */
+
+/* Python wrapper */
+static int __pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_alpha;
+  double __pyx_v_x_resolution_error;
+  double __pyx_v_x_jerk_error;
+  int __pyx_v_time_is_relative;
+  double __pyx_v_x_acceleration_error;
+  PyObject *__pyx_v_form = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_alpha,&__pyx_n_s_x_resolution_error,&__pyx_n_s_x_jerk_error,&__pyx_n_s_time_is_relative,&__pyx_n_s_x_acceleration_error,&__pyx_n_s_form,0};
+    PyObject* values[6] = {0,0,0,0,0,0};
+    values[5] = ((PyObject *)__pyx_n_s_small_alpha_t);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_resolution_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 6, 1); __PYX_ERR(0, 156, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_jerk_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 6, 2); __PYX_ERR(0, 156, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time_is_relative);
+          if (value) { values[3] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_acceleration_error);
+          if (value) { values[4] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_form);
+          if (value) { values[5] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 156, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L3_error)
+    __pyx_v_x_resolution_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_x_resolution_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L3_error)
+    __pyx_v_x_jerk_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_x_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L3_error)
+    if (values[3]) {
+      __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L3_error)
+    } else {
+      __pyx_v_time_is_relative = ((int)0);
+    }
+    if (values[4]) {
+      __pyx_v_x_acceleration_error = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_x_acceleration_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L3_error)
+    } else {
+      __pyx_v_x_acceleration_error = ((double)0.0);
+    }
+    __pyx_v_form = values[5];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 156, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D___cinit__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self), __pyx_v_alpha, __pyx_v_x_resolution_error, __pyx_v_x_jerk_error, __pyx_v_time_is_relative, __pyx_v_x_acceleration_error, __pyx_v_form);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_x_resolution_error, double __pyx_v_x_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_x_acceleration_error, PyObject *__pyx_v_form) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
+  kaepek::python::KalmanJerk3DPython *__pyx_t_5;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":157
+ * 
+ *     def __cinit__(self, double alpha, double x_resolution_error, double x_jerk_error, bint time_is_relative = False, double x_acceleration_error = 0.0, form = 'small_alpha_t'):
+ *         self.c_kalman = new KalmanJerk3DPython(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_acceleration_error, _form_code(form))             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_form_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_form) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_form);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  try {
+    __pyx_t_5 = new kaepek::python::KalmanJerk3DPython(__pyx_v_alpha, __pyx_v_x_resolution_error, __pyx_v_x_jerk_error, __pyx_v_time_is_relative, __pyx_v_x_acceleration_error, __pyx_t_4);
+  } catch(...) {
+    __Pyx_CppExn2PyErr();
+    __PYX_ERR(0, 157, __pyx_L1_error)
+  }
+  __pyx_v_self->c_kalman = __pyx_t_5;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":156
+ *     cdef KalmanJerk3DPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double x_resolution_error, double x_jerk_error, bint time_is_relative = False, double x_acceleration_error = 0.0, form = 'small_alpha_t'):             # <<<<<<<<<<<<<<
+ *         self.c_kalman = new KalmanJerk3DPython(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_acceleration_error, _form_code(form))
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":159
+ *         self.c_kalman = new KalmanJerk3DPython(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_acceleration_error, _form_code(form))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+/* Python wrapper */
+static void __pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_3__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_2__dealloc__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":160
+ * 
+ *     def __dealloc__(self):
+ *         del self.c_kalman             # <<<<<<<<<<<<<<
+ * 
+ *     def step(self, double time, x, R = None):
+ */
+  delete __pyx_v_self->c_kalman;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":159
+ *         self.c_kalman = new KalmanJerk3DPython(alpha, x_resolution_error, x_jerk_error, time_is_relative, x_acceleration_error, _form_code(form))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":162
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, x, R = None):             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=1, mode='c'] xv = np.ascontiguousarray(x, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_time;
+  PyObject *__pyx_v_x = 0;
+  PyObject *__pyx_v_R = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("step (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_time,&__pyx_n_s_x,&__pyx_n_s_R,0};
+    PyObject* values[3] = {0,0,0};
+    values[2] = ((PyObject *)Py_None);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 0, 2, 3, 1); __PYX_ERR(0, 162, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_R);
+          if (value) { values[2] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(0, 162, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 162, __pyx_L3_error)
+    __pyx_v_x = values[1];
+    __pyx_v_R = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("step", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 162, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_4step(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self), __pyx_v_time, __pyx_v_x, __pyx_v_R);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self, double __pyx_v_time, PyObject *__pyx_v_x, PyObject *__pyx_v_R) {
+  PyArrayObject *__pyx_v_xv = 0;
+  PyArrayObject *__pyx_v_Rv = 0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_Rv;
+  __Pyx_Buffer __pyx_pybuffer_Rv;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_xv;
+  __Pyx_Buffer __pyx_pybuffer_xv;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyArrayObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
+  int __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
+  int __pyx_t_10;
+  PyArrayObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_12 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
+  Py_ssize_t __pyx_t_15;
+  Py_ssize_t __pyx_t_16;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("step", 0);
+  __pyx_pybuffer_xv.pybuffer.buf = NULL;
+  __pyx_pybuffer_xv.refcount = 0;
+  __pyx_pybuffernd_xv.data = NULL;
+  __pyx_pybuffernd_xv.rcbuffer = &__pyx_pybuffer_xv;
+  __pyx_pybuffer_Rv.pybuffer.buf = NULL;
+  __pyx_pybuffer_Rv.refcount = 0;
+  __pyx_pybuffernd_Rv.data = NULL;
+  __pyx_pybuffernd_Rv.rcbuffer = &__pyx_pybuffer_Rv;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":163
+ * 
+ *     def step(self, double time, x, R = None):
+ *         cdef np.ndarray[double, ndim=1, mode='c'] xv = np.ascontiguousarray(x, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_v_x);
+  __Pyx_GIVEREF(__pyx_v_x);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_x);
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_6 = ((PyArrayObject *)__pyx_t_5);
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_xv.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) {
+      __pyx_v_xv = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_xv.rcbuffer->pybuffer.buf = NULL;
+      __PYX_ERR(0, 163, __pyx_L1_error)
+    } else {__pyx_pybuffernd_xv.diminfo[0].strides = __pyx_pybuffernd_xv.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_xv.diminfo[0].shape = __pyx_pybuffernd_xv.rcbuffer->pybuffer.shape[0];
+    }
+  }
+  __pyx_t_6 = 0;
+  __pyx_v_xv = ((PyArrayObject *)__pyx_t_5);
+  __pyx_t_5 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":165
+ *         cdef np.ndarray[double, ndim=1, mode='c'] xv = np.ascontiguousarray(x, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step(time, &xv[0])
+ *         else:
+ */
+  __pyx_t_7 = (__pyx_v_R == Py_None);
+  __pyx_t_8 = (__pyx_t_7 != 0);
+  if (__pyx_t_8) {
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":166
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:
+ *             self.c_kalman.step(time, &xv[0])             # <<<<<<<<<<<<<<
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)
+ */
+    __pyx_t_9 = 0;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_pybuffernd_xv.diminfo[0].shape;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_pybuffernd_xv.diminfo[0].shape)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+      __PYX_ERR(0, 166, __pyx_L1_error)
+    }
+    __pyx_v_self->c_kalman->step(__pyx_v_time, (&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_xv.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_xv.diminfo[0].strides))));
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":165
+ *         cdef np.ndarray[double, ndim=1, mode='c'] xv = np.ascontiguousarray(x, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step(time, &xv[0])
+ *         else:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":168
+ *             self.c_kalman.step(time, &xv[0])
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step_covariance(time, &xv[0], &Rv[0, 0])
+ * 
+ */
+  /*else*/ {
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_INCREF(__pyx_v_R);
+    __Pyx_GIVEREF(__pyx_v_R);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_R);
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_11 = ((PyArrayObject *)__pyx_t_4);
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+      __pyx_t_10 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer, (PyObject*)__pyx_t_11, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_10 < 0)) {
+        PyErr_Fetch(&__pyx_t_12, &__pyx_t_13, &__pyx_t_14);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer, (PyObject*)__pyx_v_Rv, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_12); Py_XDECREF(__pyx_t_13); Py_XDECREF(__pyx_t_14);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_12, __pyx_t_13, __pyx_t_14);
+        }
+        __pyx_t_12 = __pyx_t_13 = __pyx_t_14 = 0;
+      }
+      __pyx_pybuffernd_Rv.diminfo[0].strides = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_Rv.diminfo[0].shape = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_Rv.diminfo[1].strides = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_Rv.diminfo[1].shape = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.shape[1];
+      if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
+    }
+    __pyx_t_11 = 0;
+    __pyx_v_Rv = ((PyArrayObject *)__pyx_t_4);
+    __pyx_t_4 = 0;
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":169
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)
+ *             self.c_kalman.step_covariance(time, &xv[0], &Rv[0, 0])             # <<<<<<<<<<<<<<
+ * 
+ *     def get_kalman_vector(self):
+ */
+    __pyx_t_9 = 0;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_pybuffernd_xv.diminfo[0].shape;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_pybuffernd_xv.diminfo[0].shape)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+      __PYX_ERR(0, 169, __pyx_L1_error)
+    }
+    __pyx_t_15 = 0;
+    __pyx_t_16 = 0;
+    __pyx_t_10 = -1;
+    if (__pyx_t_15 < 0) {
+      __pyx_t_15 += __pyx_pybuffernd_Rv.diminfo[0].shape;
+      if (unlikely(__pyx_t_15 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_15 >= __pyx_pybuffernd_Rv.diminfo[0].shape)) __pyx_t_10 = 0;
+    if (__pyx_t_16 < 0) {
+      __pyx_t_16 += __pyx_pybuffernd_Rv.diminfo[1].shape;
+      if (unlikely(__pyx_t_16 < 0)) __pyx_t_10 = 1;
+    } else if (unlikely(__pyx_t_16 >= __pyx_pybuffernd_Rv.diminfo[1].shape)) __pyx_t_10 = 1;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+      __PYX_ERR(0, 169, __pyx_L1_error)
+    }
+    __pyx_v_self->c_kalman->step_covariance(__pyx_v_time, (&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_xv.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_xv.diminfo[0].strides))), (&(*__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_Rv.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_Rv.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_Rv.diminfo[1].strides))));
+  }
+  __pyx_L3:;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":162
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, x, R = None):             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=1, mode='c'] xv = np.ascontiguousarray(x, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_xv.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_xv.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_xv);
+  __Pyx_XDECREF((PyObject *)__pyx_v_Rv);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":171
+ *             self.c_kalman.step_covariance(time, &xv[0], &Rv[0, 0])
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_7get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_7get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_kalman_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_6get_kalman_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_6get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_kalman_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":172
+ * 
+ *     def get_kalman_vector(self):
+ *         return _vector(self.c_kalman.kalman_vector(), 12)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_covariance_matrix(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->kalman_vector(), 12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":171
+ *             self.c_kalman.step_covariance(time, &xv[0], &Rv[0, 0])
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.get_kalman_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":174
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_covariance_matrix (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_8get_covariance_matrix(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_8get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_covariance_matrix", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":175
+ * 
+ *     def get_covariance_matrix(self):
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_eular_vector(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->covariance_matrix(), 12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":174
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.get_covariance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":177
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ *     def get_eular_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.eular_vector(), 13)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_11get_eular_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_11get_eular_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_eular_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_10get_eular_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_10get_eular_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_eular_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":178
+ * 
+ *     def get_eular_vector(self):
+ *         return _vector(self.c_kalman.eular_vector(), 13)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->eular_vector(), 13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":177
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ *     def get_eular_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.eular_vector(), 13)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.get_eular_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":180
+ *         return _vector(self.c_kalman.eular_vector(), 13)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 3)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_13get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_13get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_12get_innovation(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_12get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":181
+ * 
+ *     def get_innovation(self):
+ *         return _vector(self.c_kalman.innovation(), 3)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->innovation(), 3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":180
+ *         return _vector(self.c_kalman.eular_vector(), 13)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 3)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.get_innovation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":183
+ *         return _vector(self.c_kalman.innovation(), 3)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 3)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_15get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_15get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_14get_innovation_covariance(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_14get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":184
+ * 
+ *     def get_innovation_covariance(self):
+ *         return _matrix(self.c_kalman.innovation_covariance(), 3)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance(), 3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":183
+ *         return _vector(self.c_kalman.innovation(), 3)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 3)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.get_innovation_covariance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":186
+ *         return _matrix(self.c_kalman.innovation_covariance(), 3)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 3)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_17get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_17get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_16get_innovation_covariance_inverse(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_16get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":187
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 3)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance_inverse(), 3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":186
+ *         return _matrix(self.c_kalman.innovation_covariance(), 3)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 3)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.get_innovation_covariance_inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":189
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 3)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_19get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_19get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_18get_innovation_covariance_determinant(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_18get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":190
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ *         return self.c_kalman.innovation_covariance_determinant()             # <<<<<<<<<<<<<<
+ * 
+ * cdef class KalmanJerk2DPolar:
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->c_kalman->innovation_covariance_determinant()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":189
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 3)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.get_innovation_covariance_determinant", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_21__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_21__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_20__reduce_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 2, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_23__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_23__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_22__setstate_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_12KalmanJerk3D_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 4, __pyx_L1_error)
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3D.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":195
+ *     cdef KalmanJerk2DPolarPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double range_error, double angle_error, double jerk_error, bint time_is_relative = False, double acceleration_error = 0.0, form = 'small_alpha_t'):             # <<<<<<<<<<<<<<
+ *         self.c_kalman = new KalmanJerk2DPolarPython(alpha, range_error, angle_error, jerk_error, time_is_relative, acceleration_error, _form_code(form))
+ * 
+ */
+
+/* Python wrapper */
+static int __pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_alpha;
+  double __pyx_v_range_error;
+  double __pyx_v_angle_error;
+  double __pyx_v_jerk_error;
+  int __pyx_v_time_is_relative;
+  double __pyx_v_acceleration_error;
+  PyObject *__pyx_v_form = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_alpha,&__pyx_n_s_range_error,&__pyx_n_s_angle_error,&__pyx_n_s_jerk_error,&__pyx_n_s_time_is_relative,&__pyx_n_s_acceleration_error,&__pyx_n_s_form,0};
+    PyObject* values[7] = {0,0,0,0,0,0,0};
+    values[6] = ((PyObject *)__pyx_n_s_small_alpha_t);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        CYTHON_FALLTHROUGH;
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_range_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 7, 1); __PYX_ERR(0, 195, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_angle_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 7, 2); __PYX_ERR(0, 195, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_jerk_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 7, 3); __PYX_ERR(0, 195, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time_is_relative);
+          if (value) { values[4] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_acceleration_error);
+          if (value) { values[5] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  6:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_form);
+          if (value) { values[6] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 195, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        CYTHON_FALLTHROUGH;
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+    __pyx_v_range_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_range_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+    __pyx_v_angle_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_angle_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+    __pyx_v_jerk_error = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+    if (values[4]) {
+      __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+    } else {
+      __pyx_v_time_is_relative = ((int)0);
+    }
+    if (values[5]) {
+      __pyx_v_acceleration_error = __pyx_PyFloat_AsDouble(values[5]); if (unlikely((__pyx_v_acceleration_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+    } else {
+      __pyx_v_acceleration_error = ((double)0.0);
+    }
+    __pyx_v_form = values[6];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 195, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar___cinit__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self), __pyx_v_alpha, __pyx_v_range_error, __pyx_v_angle_error, __pyx_v_jerk_error, __pyx_v_time_is_relative, __pyx_v_acceleration_error, __pyx_v_form);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_range_error, double __pyx_v_angle_error, double __pyx_v_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_acceleration_error, PyObject *__pyx_v_form) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
+  kaepek::python::KalmanJerk2DPolarPython *__pyx_t_5;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":196
+ * 
+ *     def __cinit__(self, double alpha, double range_error, double angle_error, double jerk_error, bint time_is_relative = False, double acceleration_error = 0.0, form = 'small_alpha_t'):
+ *         self.c_kalman = new KalmanJerk2DPolarPython(alpha, range_error, angle_error, jerk_error, time_is_relative, acceleration_error, _form_code(form))             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_form_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_form) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_form);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  try {
+    __pyx_t_5 = new kaepek::python::KalmanJerk2DPolarPython(__pyx_v_alpha, __pyx_v_range_error, __pyx_v_angle_error, __pyx_v_jerk_error, __pyx_v_time_is_relative, __pyx_v_acceleration_error, __pyx_t_4);
+  } catch(...) {
+    __Pyx_CppExn2PyErr();
+    __PYX_ERR(0, 196, __pyx_L1_error)
+  }
+  __pyx_v_self->c_kalman = __pyx_t_5;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":195
+ *     cdef KalmanJerk2DPolarPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double range_error, double angle_error, double jerk_error, bint time_is_relative = False, double acceleration_error = 0.0, form = 'small_alpha_t'):             # <<<<<<<<<<<<<<
+ *         self.c_kalman = new KalmanJerk2DPolarPython(alpha, range_error, angle_error, jerk_error, time_is_relative, acceleration_error, _form_code(form))
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":198
+ *         self.c_kalman = new KalmanJerk2DPolarPython(alpha, range_error, angle_error, jerk_error, time_is_relative, acceleration_error, _form_code(form))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+/* Python wrapper */
+static void __pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_3__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_2__dealloc__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":199
+ * 
+ *     def __dealloc__(self):
+ *         del self.c_kalman             # <<<<<<<<<<<<<<
+ * 
+ *     def step(self, double time, double range, double angle):
+ */
+  delete __pyx_v_self->c_kalman;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":198
+ *         self.c_kalman = new KalmanJerk2DPolarPython(alpha, range_error, angle_error, jerk_error, time_is_relative, acceleration_error, _form_code(form))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":201
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, double range, double angle):             # <<<<<<<<<<<<<<
+ *         self.c_kalman.step(time, range, angle)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_time;
+  double __pyx_v_range;
+  double __pyx_v_angle;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("step (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_time,&__pyx_n_s_range,&__pyx_n_s_angle,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_range)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 1, 3, 3, 1); __PYX_ERR(0, 201, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_angle)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 1, 3, 3, 2); __PYX_ERR(0, 201, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(0, 201, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+    }
+    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
+    __pyx_v_range = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_range == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
+    __pyx_v_angle = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_angle == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("step", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 201, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_4step(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self), __pyx_v_time, __pyx_v_range, __pyx_v_angle);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self, double __pyx_v_time, double __pyx_v_range, double __pyx_v_angle) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("step", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":202
+ * 
+ *     def step(self, double time, double range, double angle):
+ *         self.c_kalman.step(time, range, angle)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_kalman_vector(self):
+ */
+  __pyx_v_self->c_kalman->step(__pyx_v_time, __pyx_v_range, __pyx_v_angle);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":201
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, double range, double angle):             # <<<<<<<<<<<<<<
+ *         self.c_kalman.step(time, range, angle)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":204
+ *         self.c_kalman.step(time, range, angle)
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_7get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_7get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_kalman_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_6get_kalman_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_6get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_kalman_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":205
+ * 
+ *     def get_kalman_vector(self):
+ *         return _vector(self.c_kalman.kalman_vector(), 8)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_covariance_matrix(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->kalman_vector(), 8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":204
+ *         self.c_kalman.step(time, range, angle)
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.get_kalman_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":207
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_covariance_matrix (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_8get_covariance_matrix(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_8get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_covariance_matrix", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":208
+ * 
+ *     def get_covariance_matrix(self):
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->covariance_matrix(), 8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":207
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.get_covariance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":210
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_11get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_11get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_10get_innovation(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_10get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":211
+ * 
+ *     def get_innovation(self):
+ *         return _vector(self.c_kalman.innovation(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->innovation(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":210
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.get_innovation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":213
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_13get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_13get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_12get_innovation_covariance(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_12get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":214
+ * 
+ *     def get_innovation_covariance(self):
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":213
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.get_innovation_covariance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":216
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_15get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_15get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_14get_innovation_covariance_inverse(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_14get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":217
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance_inverse(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":216
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.get_innovation_covariance_inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":219
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_17get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_17get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_16get_innovation_covariance_determinant(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_16get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":220
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ *         return self.c_kalman.innovation_covariance_determinant()             # <<<<<<<<<<<<<<
+ * 
+ * cdef class KalmanJerk3DSpherical:
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->c_kalman->innovation_covariance_determinant()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":219
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.get_innovation_covariance_determinant", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_19__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_19__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_18__reduce_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_18__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 2, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_21__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_21__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_20__setstate_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_17KalmanJerk2DPolar_20__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 4, __pyx_L1_error)
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DPolar.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":225
+ *     cdef KalmanJerk3DSphericalPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double range_error, double azimuth_error, double elevation_error, double jerk_error, bint time_is_relative = False, double acceleration_error = 0.0, form = 'small_alpha_t'):             # <<<<<<<<<<<<<<
+ *         self.c_kalman = new KalmanJerk3DSphericalPython(alpha, range_error, azimuth_error, elevation_error, jerk_error, time_is_relative, acceleration_error, _form_code(form))
+ * 
+ */
+
+/* Python wrapper */
+static int __pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_alpha;
+  double __pyx_v_range_error;
+  double __pyx_v_azimuth_error;
+  double __pyx_v_elevation_error;
+  double __pyx_v_jerk_error;
+  int __pyx_v_time_is_relative;
+  double __pyx_v_acceleration_error;
+  PyObject *__pyx_v_form = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_alpha,&__pyx_n_s_range_error,&__pyx_n_s_azimuth_error,&__pyx_n_s_elevation_error,&__pyx_n_s_jerk_error,&__pyx_n_s_time_is_relative,&__pyx_n_s_acceleration_error,&__pyx_n_s_form,0};
+    PyObject* values[8] = {0,0,0,0,0,0,0,0};
+    values[7] = ((PyObject *)__pyx_n_s_small_alpha_t);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  8: values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        CYTHON_FALLTHROUGH;
+        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        CYTHON_FALLTHROUGH;
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_range_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 5, 8, 1); __PYX_ERR(0, 225, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_azimuth_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 5, 8, 2); __PYX_ERR(0, 225, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_elevation_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 5, 8, 3); __PYX_ERR(0, 225, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_jerk_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 5, 8, 4); __PYX_ERR(0, 225, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time_is_relative);
+          if (value) { values[5] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  6:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_acceleration_error);
+          if (value) { values[6] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  7:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_form);
+          if (value) { values[7] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 225, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  8: values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        CYTHON_FALLTHROUGH;
+        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        CYTHON_FALLTHROUGH;
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+    __pyx_v_range_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_range_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+    __pyx_v_azimuth_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_azimuth_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+    __pyx_v_elevation_error = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_elevation_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+    __pyx_v_jerk_error = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+    if (values[5]) {
+      __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[5]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+    } else {
+      __pyx_v_time_is_relative = ((int)0);
+    }
+    if (values[6]) {
+      __pyx_v_acceleration_error = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_acceleration_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+    } else {
+      __pyx_v_acceleration_error = ((double)0.0);
+    }
+    __pyx_v_form = values[7];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 5, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 225, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical___cinit__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self), __pyx_v_alpha, __pyx_v_range_error, __pyx_v_azimuth_error, __pyx_v_elevation_error, __pyx_v_jerk_error, __pyx_v_time_is_relative, __pyx_v_acceleration_error, __pyx_v_form);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_range_error, double __pyx_v_azimuth_error, double __pyx_v_elevation_error, double __pyx_v_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_acceleration_error, PyObject *__pyx_v_form) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
+  kaepek::python::KalmanJerk3DSphericalPython *__pyx_t_5;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":226
+ * 
+ *     def __cinit__(self, double alpha, double range_error, double azimuth_error, double elevation_error, double jerk_error, bint time_is_relative = False, double acceleration_error = 0.0, form = 'small_alpha_t'):
+ *         self.c_kalman = new KalmanJerk3DSphericalPython(alpha, range_error, azimuth_error, elevation_error, jerk_error, time_is_relative, acceleration_error, _form_code(form))             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_form_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_form) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_form);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  try {
+    __pyx_t_5 = new kaepek::python::KalmanJerk3DSphericalPython(__pyx_v_alpha, __pyx_v_range_error, __pyx_v_azimuth_error, __pyx_v_elevation_error, __pyx_v_jerk_error, __pyx_v_time_is_relative, __pyx_v_acceleration_error, __pyx_t_4);
+  } catch(...) {
+    __Pyx_CppExn2PyErr();
+    __PYX_ERR(0, 226, __pyx_L1_error)
+  }
+  __pyx_v_self->c_kalman = __pyx_t_5;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":225
+ *     cdef KalmanJerk3DSphericalPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double range_error, double azimuth_error, double elevation_error, double jerk_error, bint time_is_relative = False, double acceleration_error = 0.0, form = 'small_alpha_t'):             # <<<<<<<<<<<<<<
+ *         self.c_kalman = new KalmanJerk3DSphericalPython(alpha, range_error, azimuth_error, elevation_error, jerk_error, time_is_relative, acceleration_error, _form_code(form))
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":228
+ *         self.c_kalman = new KalmanJerk3DSphericalPython(alpha, range_error, azimuth_error, elevation_error, jerk_error, time_is_relative, acceleration_error, _form_code(form))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+/* Python wrapper */
+static void __pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_3__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_2__dealloc__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":229
+ * 
+ *     def __dealloc__(self):
+ *         del self.c_kalman             # <<<<<<<<<<<<<<
+ * 
+ *     def step(self, double time, double range, double azimuth, double elevation):
+ */
+  delete __pyx_v_self->c_kalman;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":228
+ *         self.c_kalman = new KalmanJerk3DSphericalPython(alpha, range_error, azimuth_error, elevation_error, jerk_error, time_is_relative, acceleration_error, _form_code(form))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":231
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, double range, double azimuth, double elevation):             # <<<<<<<<<<<<<<
+ *         self.c_kalman.step(time, range, azimuth, elevation)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_time;
+  double __pyx_v_range;
+  double __pyx_v_azimuth;
+  double __pyx_v_elevation;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("step (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_time,&__pyx_n_s_range,&__pyx_n_s_azimuth,&__pyx_n_s_elevation,0};
+    PyObject* values[4] = {0,0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_range)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 1, 4, 4, 1); __PYX_ERR(0, 231, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_azimuth)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 1, 4, 4, 2); __PYX_ERR(0, 231, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_elevation)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 1, 4, 4, 3); __PYX_ERR(0, 231, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(0, 231, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+      values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+    }
+    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L3_error)
+    __pyx_v_range = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_range == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L3_error)
+    __pyx_v_azimuth = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_azimuth == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L3_error)
+    __pyx_v_elevation = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_elevation == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("step", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 231, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_4step(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self), __pyx_v_time, __pyx_v_range, __pyx_v_azimuth, __pyx_v_elevation);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self, double __pyx_v_time, double __pyx_v_range, double __pyx_v_azimuth, double __pyx_v_elevation) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("step", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":232
+ * 
+ *     def step(self, double time, double range, double azimuth, double elevation):
+ *         self.c_kalman.step(time, range, azimuth, elevation)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_kalman_vector(self):
+ */
+  __pyx_v_self->c_kalman->step(__pyx_v_time, __pyx_v_range, __pyx_v_azimuth, __pyx_v_elevation);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":231
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, double range, double azimuth, double elevation):             # <<<<<<<<<<<<<<
+ *         self.c_kalman.step(time, range, azimuth, elevation)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":234
+ *         self.c_kalman.step(time, range, azimuth, elevation)
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_7get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_7get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_kalman_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_6get_kalman_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_6get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_kalman_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":235
+ * 
+ *     def get_kalman_vector(self):
+ *         return _vector(self.c_kalman.kalman_vector(), 12)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_covariance_matrix(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->kalman_vector(), 12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":234
+ *         self.c_kalman.step(time, range, azimuth, elevation)
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.get_kalman_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":237
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_9get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_covariance_matrix (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_8get_covariance_matrix(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_8get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_covariance_matrix", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":238
+ * 
+ *     def get_covariance_matrix(self):
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->covariance_matrix(), 12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":237
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.get_covariance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":240
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 3)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_11get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_11get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_10get_innovation(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_10get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":241
+ * 
+ *     def get_innovation(self):
+ *         return _vector(self.c_kalman.innovation(), 3)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->innovation(), 3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":240
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 3)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.get_innovation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":243
+ *         return _vector(self.c_kalman.innovation(), 3)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 3)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_13get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_13get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_12get_innovation_covariance(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_12get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":244
+ * 
+ *     def get_innovation_covariance(self):
+ *         return _matrix(self.c_kalman.innovation_covariance(), 3)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance(), 3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":243
+ *         return _vector(self.c_kalman.innovation(), 3)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 3)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.get_innovation_covariance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":246
+ *         return _matrix(self.c_kalman.innovation_covariance(), 3)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 3)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_15get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_15get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_14get_innovation_covariance_inverse(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_14get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":247
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 3)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance_inverse(), 3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":246
+ *         return _matrix(self.c_kalman.innovation_covariance(), 3)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 3)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.get_innovation_covariance_inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":249
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 3)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_17get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_17get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_16get_innovation_covariance_determinant(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_16get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":250
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ *         return self.c_kalman.innovation_covariance_determinant()             # <<<<<<<<<<<<<<
+ * 
+ * cdef class KalmanJerk2DAzEl:
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->c_kalman->innovation_covariance_determinant()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":249
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 3)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.get_innovation_covariance_determinant", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_19__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_19__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_18__reduce_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_18__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 2, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_21__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_21__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_20__setstate_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_21KalmanJerk3DSpherical_20__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 4, __pyx_L1_error)
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk3DSpherical.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":255
+ *     cdef KalmanJerk2DAzElPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double direction_error, double jerk_error, bint time_is_relative = False, double acceleration_error = 0.0, int substeps = 4, form = 'small_alpha_t', order = 'first'):             # <<<<<<<<<<<<<<
+ *         self.c_kalman = new KalmanJerk2DAzElPython(alpha, direction_error, jerk_error, time_is_relative, acceleration_error, substeps, _form_code(form), _order_code(order))
+ * 
+ */
+
+/* Python wrapper */
+static int __pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_alpha;
+  double __pyx_v_direction_error;
+  double __pyx_v_jerk_error;
+  int __pyx_v_time_is_relative;
+  double __pyx_v_acceleration_error;
+  int __pyx_v_substeps;
+  PyObject *__pyx_v_form = 0;
+  PyObject *__pyx_v_order = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_alpha,&__pyx_n_s_direction_error,&__pyx_n_s_jerk_error,&__pyx_n_s_time_is_relative,&__pyx_n_s_acceleration_error,&__pyx_n_s_substeps,&__pyx_n_s_form,&__pyx_n_s_order,0};
+    PyObject* values[8] = {0,0,0,0,0,0,0,0};
+    values[6] = ((PyObject *)__pyx_n_s_small_alpha_t);
+    values[7] = ((PyObject *)__pyx_n_s_first);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  8: values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        CYTHON_FALLTHROUGH;
+        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        CYTHON_FALLTHROUGH;
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_direction_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 8, 1); __PYX_ERR(0, 255, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_jerk_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 8, 2); __PYX_ERR(0, 255, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time_is_relative);
+          if (value) { values[3] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_acceleration_error);
+          if (value) { values[4] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_substeps);
+          if (value) { values[5] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  6:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_form);
+          if (value) { values[6] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  7:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_order);
+          if (value) { values[7] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 255, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  8: values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        CYTHON_FALLTHROUGH;
+        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        CYTHON_FALLTHROUGH;
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L3_error)
+    __pyx_v_direction_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_direction_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L3_error)
+    __pyx_v_jerk_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L3_error)
+    if (values[3]) {
+      __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L3_error)
+    } else {
+      __pyx_v_time_is_relative = ((int)0);
+    }
+    if (values[4]) {
+      __pyx_v_acceleration_error = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_acceleration_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L3_error)
+    } else {
+      __pyx_v_acceleration_error = ((double)0.0);
+    }
+    if (values[5]) {
+      __pyx_v_substeps = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_substeps == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L3_error)
+    } else {
+      __pyx_v_substeps = ((int)4);
+    }
+    __pyx_v_form = values[6];
+    __pyx_v_order = values[7];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 3, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 255, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl___cinit__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self), __pyx_v_alpha, __pyx_v_direction_error, __pyx_v_jerk_error, __pyx_v_time_is_relative, __pyx_v_acceleration_error, __pyx_v_substeps, __pyx_v_form, __pyx_v_order);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_direction_error, double __pyx_v_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_acceleration_error, int __pyx_v_substeps, PyObject *__pyx_v_form, PyObject *__pyx_v_order) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
+  int __pyx_t_5;
+  kaepek::python::KalmanJerk2DAzElPython *__pyx_t_6;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":256
+ * 
+ *     def __cinit__(self, double alpha, double direction_error, double jerk_error, bint time_is_relative = False, double acceleration_error = 0.0, int substeps = 4, form = 'small_alpha_t', order = 'first'):
+ *         self.c_kalman = new KalmanJerk2DAzElPython(alpha, direction_error, jerk_error, time_is_relative, acceleration_error, substeps, _form_code(form), _order_code(order))             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_form_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_form) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_form);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_order_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_order) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_order);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  try {
+    __pyx_t_6 = new kaepek::python::KalmanJerk2DAzElPython(__pyx_v_alpha, __pyx_v_direction_error, __pyx_v_jerk_error, __pyx_v_time_is_relative, __pyx_v_acceleration_error, __pyx_v_substeps, __pyx_t_4, __pyx_t_5);
+  } catch(...) {
+    __Pyx_CppExn2PyErr();
+    __PYX_ERR(0, 256, __pyx_L1_error)
+  }
+  __pyx_v_self->c_kalman = __pyx_t_6;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":255
+ *     cdef KalmanJerk2DAzElPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double direction_error, double jerk_error, bint time_is_relative = False, double acceleration_error = 0.0, int substeps = 4, form = 'small_alpha_t', order = 'first'):             # <<<<<<<<<<<<<<
+ *         self.c_kalman = new KalmanJerk2DAzElPython(alpha, direction_error, jerk_error, time_is_relative, acceleration_error, substeps, _form_code(form), _order_code(order))
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":258
+ *         self.c_kalman = new KalmanJerk2DAzElPython(alpha, direction_error, jerk_error, time_is_relative, acceleration_error, substeps, _form_code(form), _order_code(order))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+/* Python wrapper */
+static void __pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_3__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_2__dealloc__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":259
+ * 
+ *     def __dealloc__(self):
+ *         del self.c_kalman             # <<<<<<<<<<<<<<
+ * 
+ *     def step(self, double time, double azimuth, double elevation, R = None):
+ */
+  delete __pyx_v_self->c_kalman;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":258
+ *         self.c_kalman = new KalmanJerk2DAzElPython(alpha, direction_error, jerk_error, time_is_relative, acceleration_error, substeps, _form_code(form), _order_code(order))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":261
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, double azimuth, double elevation, R = None):             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_time;
+  double __pyx_v_azimuth;
+  double __pyx_v_elevation;
+  PyObject *__pyx_v_R = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("step (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_time,&__pyx_n_s_azimuth,&__pyx_n_s_elevation,&__pyx_n_s_R,0};
+    PyObject* values[4] = {0,0,0,0};
+    values[3] = ((PyObject *)Py_None);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_azimuth)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 0, 3, 4, 1); __PYX_ERR(0, 261, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_elevation)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 0, 3, 4, 2); __PYX_ERR(0, 261, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_R);
+          if (value) { values[3] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(0, 261, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L3_error)
+    __pyx_v_azimuth = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_azimuth == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L3_error)
+    __pyx_v_elevation = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_elevation == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L3_error)
+    __pyx_v_R = values[3];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("step", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 261, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_4step(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self), __pyx_v_time, __pyx_v_azimuth, __pyx_v_elevation, __pyx_v_R);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self, double __pyx_v_time, double __pyx_v_azimuth, double __pyx_v_elevation, PyObject *__pyx_v_R) {
+  PyArrayObject *__pyx_v_Rv = 0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_Rv;
+  __Pyx_Buffer __pyx_pybuffer_Rv;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  PyArrayObject *__pyx_t_8 = NULL;
+  int __pyx_t_9;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_12 = NULL;
+  Py_ssize_t __pyx_t_13;
+  Py_ssize_t __pyx_t_14;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("step", 0);
+  __pyx_pybuffer_Rv.pybuffer.buf = NULL;
+  __pyx_pybuffer_Rv.refcount = 0;
+  __pyx_pybuffernd_Rv.data = NULL;
+  __pyx_pybuffernd_Rv.rcbuffer = &__pyx_pybuffer_Rv;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":263
+ *     def step(self, double time, double azimuth, double elevation, R = None):
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step(time, azimuth, elevation)
+ *         else:
+ */
+  __pyx_t_1 = (__pyx_v_R == Py_None);
+  __pyx_t_2 = (__pyx_t_1 != 0);
+  if (__pyx_t_2) {
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":264
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:
+ *             self.c_kalman.step(time, azimuth, elevation)             # <<<<<<<<<<<<<<
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)
+ */
+    __pyx_v_self->c_kalman->step(__pyx_v_time, __pyx_v_azimuth, __pyx_v_elevation);
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":263
+ *     def step(self, double time, double azimuth, double elevation, R = None):
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step(time, azimuth, elevation)
+ *         else:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":266
+ *             self.c_kalman.step(time, azimuth, elevation)
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step_covariance(time, azimuth, elevation, &Rv[0, 0])
+ * 
+ */
+  /*else*/ {
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ascontiguousarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx_v_R);
+    __Pyx_GIVEREF(__pyx_v_R);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_R);
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_float64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_7) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 266, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 266, __pyx_L1_error)
+    __pyx_t_8 = ((PyArrayObject *)__pyx_t_7);
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+      __pyx_t_9 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer, (PyObject*)__pyx_t_8, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_9 < 0)) {
+        PyErr_Fetch(&__pyx_t_10, &__pyx_t_11, &__pyx_t_12);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer, (PyObject*)__pyx_v_Rv, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_12);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_10, __pyx_t_11, __pyx_t_12);
+        }
+        __pyx_t_10 = __pyx_t_11 = __pyx_t_12 = 0;
+      }
+      __pyx_pybuffernd_Rv.diminfo[0].strides = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_Rv.diminfo[0].shape = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_Rv.diminfo[1].strides = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_Rv.diminfo[1].shape = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.shape[1];
+      if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 266, __pyx_L1_error)
+    }
+    __pyx_t_8 = 0;
+    __pyx_v_Rv = ((PyArrayObject *)__pyx_t_7);
+    __pyx_t_7 = 0;
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":267
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)
+ *             self.c_kalman.step_covariance(time, azimuth, elevation, &Rv[0, 0])             # <<<<<<<<<<<<<<
+ * 
+ *     @staticmethod
+ */
+    __pyx_t_13 = 0;
+    __pyx_t_14 = 0;
+    __pyx_t_9 = -1;
+    if (__pyx_t_13 < 0) {
+      __pyx_t_13 += __pyx_pybuffernd_Rv.diminfo[0].shape;
+      if (unlikely(__pyx_t_13 < 0)) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_13 >= __pyx_pybuffernd_Rv.diminfo[0].shape)) __pyx_t_9 = 0;
+    if (__pyx_t_14 < 0) {
+      __pyx_t_14 += __pyx_pybuffernd_Rv.diminfo[1].shape;
+      if (unlikely(__pyx_t_14 < 0)) __pyx_t_9 = 1;
+    } else if (unlikely(__pyx_t_14 >= __pyx_pybuffernd_Rv.diminfo[1].shape)) __pyx_t_9 = 1;
+    if (unlikely(__pyx_t_9 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_9);
+      __PYX_ERR(0, 267, __pyx_L1_error)
+    }
+    __pyx_v_self->c_kalman->step_covariance(__pyx_v_time, __pyx_v_azimuth, __pyx_v_elevation, (&(*__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_Rv.rcbuffer->pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_Rv.diminfo[0].strides, __pyx_t_14, __pyx_pybuffernd_Rv.diminfo[1].strides))));
+  }
+  __pyx_L3:;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":261
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, double azimuth, double elevation, R = None):             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_Rv);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":270
+ * 
+ *     @staticmethod
+ *     def azel_noise_to_tangent(double elevation, double azimuth_error, double elevation_error):             # <<<<<<<<<<<<<<
+ *         c = np.cos(elevation)
+ *         return np.array([[azimuth_error * azimuth_error * c * c, 0.0], [0.0, elevation_error * elevation_error]])
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_7azel_noise_to_tangent(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6kalman_9_cykalman_16KalmanJerk2DAzEl_7azel_noise_to_tangent = {"azel_noise_to_tangent", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_7azel_noise_to_tangent, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_7azel_noise_to_tangent(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_elevation;
+  double __pyx_v_azimuth_error;
+  double __pyx_v_elevation_error;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("azel_noise_to_tangent (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_elevation,&__pyx_n_s_azimuth_error,&__pyx_n_s_elevation_error,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_elevation)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_azimuth_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("azel_noise_to_tangent", 1, 3, 3, 1); __PYX_ERR(0, 270, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_elevation_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("azel_noise_to_tangent", 1, 3, 3, 2); __PYX_ERR(0, 270, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "azel_noise_to_tangent") < 0)) __PYX_ERR(0, 270, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+    }
+    __pyx_v_elevation = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_elevation == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L3_error)
+    __pyx_v_azimuth_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_azimuth_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L3_error)
+    __pyx_v_elevation_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_elevation_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 270, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("azel_noise_to_tangent", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 270, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.azel_noise_to_tangent", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_6azel_noise_to_tangent(__pyx_v_elevation, __pyx_v_azimuth_error, __pyx_v_elevation_error);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_6azel_noise_to_tangent(double __pyx_v_elevation, double __pyx_v_azimuth_error, double __pyx_v_elevation_error) {
+  PyObject *__pyx_v_c = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("azel_noise_to_tangent", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":271
+ *     @staticmethod
+ *     def azel_noise_to_tangent(double elevation, double azimuth_error, double elevation_error):
+ *         c = np.cos(elevation)             # <<<<<<<<<<<<<<
+ *         return np.array([[azimuth_error * azimuth_error * c * c, 0.0], [0.0, elevation_error * elevation_error]])
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cos); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_elevation); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_v_c = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":272
+ *     def azel_noise_to_tangent(double elevation, double azimuth_error, double elevation_error):
+ *         c = np.cos(elevation)
+ *         return np.array([[azimuth_error * azimuth_error * c * c, 0.0], [0.0, elevation_error * elevation_error]])             # <<<<<<<<<<<<<<
+ * 
+ *     def azimuth_defined(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyFloat_FromDouble((__pyx_v_azimuth_error * __pyx_v_azimuth_error)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_v_c); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_4, __pyx_v_c); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
+  __Pyx_INCREF(__pyx_float_0_0);
+  __Pyx_GIVEREF(__pyx_float_0_0);
+  PyList_SET_ITEM(__pyx_t_4, 1, __pyx_float_0_0);
+  __pyx_t_3 = 0;
+  __pyx_t_3 = PyFloat_FromDouble((__pyx_v_elevation_error * __pyx_v_elevation_error)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = PyList_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_INCREF(__pyx_float_0_0);
+  __Pyx_GIVEREF(__pyx_float_0_0);
+  PyList_SET_ITEM(__pyx_t_5, 0, __pyx_float_0_0);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_5, 1, __pyx_t_3);
+  __pyx_t_3 = 0;
+  __pyx_t_3 = PyList_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyList_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyList_SET_ITEM(__pyx_t_3, 1, __pyx_t_5);
+  __pyx_t_4 = 0;
+  __pyx_t_5 = 0;
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_5);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":270
+ * 
+ *     @staticmethod
+ *     def azel_noise_to_tangent(double elevation, double azimuth_error, double elevation_error):             # <<<<<<<<<<<<<<
+ *         c = np.cos(elevation)
+ *         return np.array([[azimuth_error * azimuth_error * c * c, 0.0], [0.0, elevation_error * elevation_error]])
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.azel_noise_to_tangent", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_c);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":274
+ *         return np.array([[azimuth_error * azimuth_error * c * c, 0.0], [0.0, elevation_error * elevation_error]])
+ * 
+ *     def azimuth_defined(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.azimuth_defined()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_9azimuth_defined(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_9azimuth_defined(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("azimuth_defined (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_8azimuth_defined(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_8azimuth_defined(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("azimuth_defined", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":275
+ * 
+ *     def azimuth_defined(self):
+ *         return self.c_kalman.azimuth_defined()             # <<<<<<<<<<<<<<
+ * 
+ *     def get_kalman_vector(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->c_kalman->azimuth_defined()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":274
+ *         return np.array([[azimuth_error * azimuth_error * c * c, 0.0], [0.0, elevation_error * elevation_error]])
+ * 
+ *     def azimuth_defined(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.azimuth_defined()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.azimuth_defined", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":277
+ *         return self.c_kalman.azimuth_defined()
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_11get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_11get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_kalman_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_10get_kalman_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_10get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_kalman_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":278
+ * 
+ *     def get_kalman_vector(self):
+ *         return _vector(self.c_kalman.kalman_vector(), 8)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_covariance_matrix(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->kalman_vector(), 8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":277
+ *         return self.c_kalman.azimuth_defined()
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.get_kalman_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":280
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_13get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_13get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_covariance_matrix (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_12get_covariance_matrix(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_12get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_covariance_matrix", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":281
+ * 
+ *     def get_covariance_matrix(self):
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_state_vector(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->covariance_matrix(), 8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 281, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":280
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.get_covariance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":283
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ *     def get_state_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.state_vector(), 12)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_15get_state_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_15get_state_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_state_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_14get_state_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_14get_state_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_state_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":284
+ * 
+ *     def get_state_vector(self):
+ *         return _vector(self.c_kalman.state_vector(), 12)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_basis(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->state_vector(), 12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":283
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ *     def get_state_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.state_vector(), 12)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.get_state_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":286
+ *         return _vector(self.c_kalman.state_vector(), 12)
+ * 
+ *     def get_basis(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.basis(), 6)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_17get_basis(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_17get_basis(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_basis (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_16get_basis(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_16get_basis(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_basis", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":287
+ * 
+ *     def get_basis(self):
+ *         return _vector(self.c_kalman.basis(), 6)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_basis_covariance_matrix(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->basis(), 6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":286
+ *         return _vector(self.c_kalman.state_vector(), 12)
+ * 
+ *     def get_basis(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.basis(), 6)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.get_basis", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":289
+ *         return _vector(self.c_kalman.basis(), 6)
+ * 
+ *     def get_basis_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.basis_covariance_matrix(), 8)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_19get_basis_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_19get_basis_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_basis_covariance_matrix (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_18get_basis_covariance_matrix(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_18get_basis_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_basis_covariance_matrix", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":290
+ * 
+ *     def get_basis_covariance_matrix(self):
+ *         return _matrix(self.c_kalman.basis_covariance_matrix(), 8)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->basis_covariance_matrix(), 8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":289
+ *         return _vector(self.c_kalman.basis(), 6)
+ * 
+ *     def get_basis_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.basis_covariance_matrix(), 8)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.get_basis_covariance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":292
+ *         return _matrix(self.c_kalman.basis_covariance_matrix(), 8)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_21get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_21get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_20get_innovation(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_20get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":293
+ * 
+ *     def get_innovation(self):
+ *         return _vector(self.c_kalman.innovation(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->innovation(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":292
+ *         return _matrix(self.c_kalman.basis_covariance_matrix(), 8)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.get_innovation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":295
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_23get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_23get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_22get_innovation_covariance(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_22get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":296
+ * 
+ *     def get_innovation_covariance(self):
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":295
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.get_innovation_covariance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":298
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_25get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_25get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_24get_innovation_covariance_inverse(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_24get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":299
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance_inverse(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 299, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":298
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.get_innovation_covariance_inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":301
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_27get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_27get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_26get_innovation_covariance_determinant(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_26get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":302
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ *         return self.c_kalman.innovation_covariance_determinant()             # <<<<<<<<<<<<<<
+ * 
+ * cdef class KalmanJerk1DBearingMovingSensor:
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->c_kalman->innovation_covariance_determinant()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":301
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.get_innovation_covariance_determinant", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_29__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_29__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_28__reduce_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_28__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 2, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_31__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_31__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_30__setstate_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_16KalmanJerk2DAzEl_30__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 4, __pyx_L1_error)
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzEl.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":307
+ *     cdef KalmanJerk1DBearingMovingSensorPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double bearing_error, double jerk_error, bint time_is_relative, double range_min, double range_max,             # <<<<<<<<<<<<<<
+ *                   double log_range_rate_error, double log_range_acceleration_error, double log_range_jerk_error, double acceleration_error = 0.0,
+ *                   form = 'small_alpha_t', order = 'first'):
+ */
+
+/* Python wrapper */
+static int __pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_alpha;
+  double __pyx_v_bearing_error;
+  double __pyx_v_jerk_error;
+  int __pyx_v_time_is_relative;
+  double __pyx_v_range_min;
+  double __pyx_v_range_max;
+  double __pyx_v_log_range_rate_error;
+  double __pyx_v_log_range_acceleration_error;
+  double __pyx_v_log_range_jerk_error;
+  double __pyx_v_acceleration_error;
+  PyObject *__pyx_v_form = 0;
+  PyObject *__pyx_v_order = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_alpha,&__pyx_n_s_bearing_error,&__pyx_n_s_jerk_error,&__pyx_n_s_time_is_relative,&__pyx_n_s_range_min,&__pyx_n_s_range_max,&__pyx_n_s_log_range_rate_error,&__pyx_n_s_log_range_acceleration_error,&__pyx_n_s_log_range_jerk_error,&__pyx_n_s_acceleration_error,&__pyx_n_s_form,&__pyx_n_s_order,0};
+    PyObject* values[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
+    values[10] = ((PyObject *)__pyx_n_s_small_alpha_t);
+    values[11] = ((PyObject *)__pyx_n_s_first);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case 12: values[11] = PyTuple_GET_ITEM(__pyx_args, 11);
+        CYTHON_FALLTHROUGH;
+        case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
+        CYTHON_FALLTHROUGH;
+        case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
+        CYTHON_FALLTHROUGH;
+        case  9: values[8] = PyTuple_GET_ITEM(__pyx_args, 8);
+        CYTHON_FALLTHROUGH;
+        case  8: values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        CYTHON_FALLTHROUGH;
+        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        CYTHON_FALLTHROUGH;
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_bearing_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 1); __PYX_ERR(0, 307, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_jerk_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 2); __PYX_ERR(0, 307, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time_is_relative)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 3); __PYX_ERR(0, 307, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_range_min)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 4); __PYX_ERR(0, 307, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_range_max)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 5); __PYX_ERR(0, 307, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  6:
+        if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_log_range_rate_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 6); __PYX_ERR(0, 307, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  7:
+        if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_log_range_acceleration_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 7); __PYX_ERR(0, 307, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  8:
+        if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_log_range_jerk_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 8); __PYX_ERR(0, 307, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  9:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_acceleration_error);
+          if (value) { values[9] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case 10:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_form);
+          if (value) { values[10] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case 11:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_order);
+          if (value) { values[11] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 307, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case 12: values[11] = PyTuple_GET_ITEM(__pyx_args, 11);
+        CYTHON_FALLTHROUGH;
+        case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
+        CYTHON_FALLTHROUGH;
+        case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
+        CYTHON_FALLTHROUGH;
+        case  9: values[8] = PyTuple_GET_ITEM(__pyx_args, 8);
+        values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L3_error)
+    __pyx_v_bearing_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_bearing_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L3_error)
+    __pyx_v_jerk_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L3_error)
+    __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L3_error)
+    __pyx_v_range_min = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_range_min == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L3_error)
+    __pyx_v_range_max = __pyx_PyFloat_AsDouble(values[5]); if (unlikely((__pyx_v_range_max == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L3_error)
+    __pyx_v_log_range_rate_error = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_log_range_rate_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 308, __pyx_L3_error)
+    __pyx_v_log_range_acceleration_error = __pyx_PyFloat_AsDouble(values[7]); if (unlikely((__pyx_v_log_range_acceleration_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 308, __pyx_L3_error)
+    __pyx_v_log_range_jerk_error = __pyx_PyFloat_AsDouble(values[8]); if (unlikely((__pyx_v_log_range_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 308, __pyx_L3_error)
+    if (values[9]) {
+      __pyx_v_acceleration_error = __pyx_PyFloat_AsDouble(values[9]); if (unlikely((__pyx_v_acceleration_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 308, __pyx_L3_error)
+    } else {
+      __pyx_v_acceleration_error = ((double)0.0);
+    }
+    __pyx_v_form = values[10];
+    __pyx_v_order = values[11];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 307, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor___cinit__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self), __pyx_v_alpha, __pyx_v_bearing_error, __pyx_v_jerk_error, __pyx_v_time_is_relative, __pyx_v_range_min, __pyx_v_range_max, __pyx_v_log_range_rate_error, __pyx_v_log_range_acceleration_error, __pyx_v_log_range_jerk_error, __pyx_v_acceleration_error, __pyx_v_form, __pyx_v_order);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_bearing_error, double __pyx_v_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_range_min, double __pyx_v_range_max, double __pyx_v_log_range_rate_error, double __pyx_v_log_range_acceleration_error, double __pyx_v_log_range_jerk_error, double __pyx_v_acceleration_error, PyObject *__pyx_v_form, PyObject *__pyx_v_order) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
+  int __pyx_t_5;
+  kaepek::python::KalmanJerk1DBearingMovingSensorPython *__pyx_t_6;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":312
+ *         self.c_kalman = new KalmanJerk1DBearingMovingSensorPython(alpha, bearing_error, jerk_error, time_is_relative, range_min, range_max,
+ *                                                                   log_range_rate_error, log_range_acceleration_error, log_range_jerk_error,
+ *                                                                   acceleration_error, _form_code(form), _order_code(order))             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_form_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 312, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_form) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_form);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 312, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_order_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 312, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_order) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_order);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 312, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":310
+ *                   double log_range_rate_error, double log_range_acceleration_error, double log_range_jerk_error, double acceleration_error = 0.0,
+ *                   form = 'small_alpha_t', order = 'first'):
+ *         self.c_kalman = new KalmanJerk1DBearingMovingSensorPython(alpha, bearing_error, jerk_error, time_is_relative, range_min, range_max,             # <<<<<<<<<<<<<<
+ *                                                                   log_range_rate_error, log_range_acceleration_error, log_range_jerk_error,
+ *                                                                   acceleration_error, _form_code(form), _order_code(order))
+ */
+  try {
+    __pyx_t_6 = new kaepek::python::KalmanJerk1DBearingMovingSensorPython(__pyx_v_alpha, __pyx_v_bearing_error, __pyx_v_jerk_error, __pyx_v_time_is_relative, __pyx_v_range_min, __pyx_v_range_max, __pyx_v_log_range_rate_error, __pyx_v_log_range_acceleration_error, __pyx_v_log_range_jerk_error, __pyx_v_acceleration_error, __pyx_t_4, __pyx_t_5);
+  } catch(...) {
+    __Pyx_CppExn2PyErr();
+    __PYX_ERR(0, 310, __pyx_L1_error)
+  }
+  __pyx_v_self->c_kalman = __pyx_t_6;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":307
+ *     cdef KalmanJerk1DBearingMovingSensorPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double bearing_error, double jerk_error, bint time_is_relative, double range_min, double range_max,             # <<<<<<<<<<<<<<
+ *                   double log_range_rate_error, double log_range_acceleration_error, double log_range_jerk_error, double acceleration_error = 0.0,
+ *                   form = 'small_alpha_t', order = 'first'):
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":314
+ *                                                                   acceleration_error, _form_code(form), _order_code(order))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+/* Python wrapper */
+static void __pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_3__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_2__dealloc__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":315
+ * 
+ *     def __dealloc__(self):
+ *         del self.c_kalman             # <<<<<<<<<<<<<<
+ * 
+ *     def step(self, double time, double bearing, sensor):
+ */
+  delete __pyx_v_self->c_kalman;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":314
+ *                                                                   acceleration_error, _form_code(form), _order_code(order))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":317
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, double bearing, sensor):             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=1, mode='c'] s = np.ascontiguousarray(sensor, dtype=np.float64)
+ *         self.c_kalman.step(time, bearing, &s[0])
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_time;
+  double __pyx_v_bearing;
+  PyObject *__pyx_v_sensor = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("step (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_time,&__pyx_n_s_bearing,&__pyx_n_s_sensor,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_bearing)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 1, 3, 3, 1); __PYX_ERR(0, 317, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_sensor)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 1, 3, 3, 2); __PYX_ERR(0, 317, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(0, 317, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+    }
+    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 317, __pyx_L3_error)
+    __pyx_v_bearing = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_bearing == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 317, __pyx_L3_error)
+    __pyx_v_sensor = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("step", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 317, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_4step(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self), __pyx_v_time, __pyx_v_bearing, __pyx_v_sensor);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self, double __pyx_v_time, double __pyx_v_bearing, PyObject *__pyx_v_sensor) {
+  PyArrayObject *__pyx_v_s = 0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_s;
+  __Pyx_Buffer __pyx_pybuffer_s;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyArrayObject *__pyx_t_6 = NULL;
+  Py_ssize_t __pyx_t_7;
+  int __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("step", 0);
+  __pyx_pybuffer_s.pybuffer.buf = NULL;
+  __pyx_pybuffer_s.refcount = 0;
+  __pyx_pybuffernd_s.data = NULL;
+  __pyx_pybuffernd_s.rcbuffer = &__pyx_pybuffer_s;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":318
+ * 
+ *     def step(self, double time, double bearing, sensor):
+ *         cdef np.ndarray[double, ndim=1, mode='c'] s = np.ascontiguousarray(sensor, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *         self.c_kalman.step(time, bearing, &s[0])
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_v_sensor);
+  __Pyx_GIVEREF(__pyx_v_sensor);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_sensor);
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 318, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 318, __pyx_L1_error)
+  __pyx_t_6 = ((PyArrayObject *)__pyx_t_5);
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_s.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) {
+      __pyx_v_s = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_s.rcbuffer->pybuffer.buf = NULL;
+      __PYX_ERR(0, 318, __pyx_L1_error)
+    } else {__pyx_pybuffernd_s.diminfo[0].strides = __pyx_pybuffernd_s.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_s.diminfo[0].shape = __pyx_pybuffernd_s.rcbuffer->pybuffer.shape[0];
+    }
+  }
+  __pyx_t_6 = 0;
+  __pyx_v_s = ((PyArrayObject *)__pyx_t_5);
+  __pyx_t_5 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":319
+ *     def step(self, double time, double bearing, sensor):
+ *         cdef np.ndarray[double, ndim=1, mode='c'] s = np.ascontiguousarray(sensor, dtype=np.float64)
+ *         self.c_kalman.step(time, bearing, &s[0])             # <<<<<<<<<<<<<<
+ * 
+ *     def get_range(self):
+ */
+  __pyx_t_7 = 0;
+  __pyx_t_8 = -1;
+  if (__pyx_t_7 < 0) {
+    __pyx_t_7 += __pyx_pybuffernd_s.diminfo[0].shape;
+    if (unlikely(__pyx_t_7 < 0)) __pyx_t_8 = 0;
+  } else if (unlikely(__pyx_t_7 >= __pyx_pybuffernd_s.diminfo[0].shape)) __pyx_t_8 = 0;
+  if (unlikely(__pyx_t_8 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_8);
+    __PYX_ERR(0, 319, __pyx_L1_error)
+  }
+  __pyx_v_self->c_kalman->step(__pyx_v_time, __pyx_v_bearing, (&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_s.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_s.diminfo[0].strides))));
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":317
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, double bearing, sensor):             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=1, mode='c'] s = np.ascontiguousarray(sensor, dtype=np.float64)
+ *         self.c_kalman.step(time, bearing, &s[0])
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_s.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_s.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_s);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":321
+ *         self.c_kalman.step(time, bearing, &s[0])
+ * 
+ *     def get_range(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.range()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_7get_range(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_7get_range(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_range (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_6get_range(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_6get_range(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_range", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":322
+ * 
+ *     def get_range(self):
+ *         return self.c_kalman.range()             # <<<<<<<<<<<<<<
+ * 
+ *     def get_kalman_vector(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->c_kalman->range()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":321
+ *         self.c_kalman.step(time, bearing, &s[0])
+ * 
+ *     def get_range(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.range()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.get_range", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":324
+ *         return self.c_kalman.range()
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_9get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_9get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_kalman_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_8get_kalman_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_8get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_kalman_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":325
+ * 
+ *     def get_kalman_vector(self):
+ *         return _vector(self.c_kalman.kalman_vector(), 8)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_covariance_matrix(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->kalman_vector(), 8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":324
+ *         return self.c_kalman.range()
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.get_kalman_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":327
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_11get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_11get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_covariance_matrix (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_10get_covariance_matrix(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_10get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_covariance_matrix", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":328
+ * 
+ *     def get_covariance_matrix(self):
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->covariance_matrix(), 8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":327
+ *         return _vector(self.c_kalman.kalman_vector(), 8)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.get_covariance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":330
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 1)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_13get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_13get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_12get_innovation(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_12get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":331
+ * 
+ *     def get_innovation(self):
+ *         return _vector(self.c_kalman.innovation(), 1)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->innovation(), 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":330
+ *         return _matrix(self.c_kalman.covariance_matrix(), 8)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 1)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.get_innovation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":333
+ *         return _vector(self.c_kalman.innovation(), 1)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 1)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_15get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_15get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_14get_innovation_covariance(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_14get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":334
+ * 
+ *     def get_innovation_covariance(self):
+ *         return _matrix(self.c_kalman.innovation_covariance(), 1)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance(), 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":333
+ *         return _vector(self.c_kalman.innovation(), 1)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 1)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.get_innovation_covariance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":336
+ *         return _matrix(self.c_kalman.innovation_covariance(), 1)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 1)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_17get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_17get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_16get_innovation_covariance_inverse(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_16get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":337
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 1)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance_inverse(), 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 337, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":336
+ *         return _matrix(self.c_kalman.innovation_covariance(), 1)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 1)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.get_innovation_covariance_inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":339
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 1)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_19get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_19get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_18get_innovation_covariance_determinant(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_18get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":340
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ *         return self.c_kalman.innovation_covariance_determinant()             # <<<<<<<<<<<<<<
+ * 
+ * cdef class KalmanJerk2DAzElMovingSensor:
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->c_kalman->innovation_covariance_determinant()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":339
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 1)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.get_innovation_covariance_determinant", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_21__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_21__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_20__reduce_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 2, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_23__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_23__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_22__setstate_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 4, __pyx_L1_error)
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk1DBearingMovingSensor.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":345
+ *     cdef KalmanJerk2DAzElMovingSensorPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double direction_error, double jerk_error, bint time_is_relative, double range_min, double range_max,             # <<<<<<<<<<<<<<
+ *                   double log_range_rate_error, double log_range_acceleration_error, double log_range_jerk_error, double acceleration_error = 0.0,
+ *                   form = 'small_alpha_t', order = 'first'):
+ */
+
+/* Python wrapper */
+static int __pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_alpha;
+  double __pyx_v_direction_error;
+  double __pyx_v_jerk_error;
+  int __pyx_v_time_is_relative;
+  double __pyx_v_range_min;
+  double __pyx_v_range_max;
+  double __pyx_v_log_range_rate_error;
+  double __pyx_v_log_range_acceleration_error;
+  double __pyx_v_log_range_jerk_error;
+  double __pyx_v_acceleration_error;
+  PyObject *__pyx_v_form = 0;
+  PyObject *__pyx_v_order = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_alpha,&__pyx_n_s_direction_error,&__pyx_n_s_jerk_error,&__pyx_n_s_time_is_relative,&__pyx_n_s_range_min,&__pyx_n_s_range_max,&__pyx_n_s_log_range_rate_error,&__pyx_n_s_log_range_acceleration_error,&__pyx_n_s_log_range_jerk_error,&__pyx_n_s_acceleration_error,&__pyx_n_s_form,&__pyx_n_s_order,0};
+    PyObject* values[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
+    values[10] = ((PyObject *)__pyx_n_s_small_alpha_t);
+    values[11] = ((PyObject *)__pyx_n_s_first);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case 12: values[11] = PyTuple_GET_ITEM(__pyx_args, 11);
+        CYTHON_FALLTHROUGH;
+        case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
+        CYTHON_FALLTHROUGH;
+        case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
+        CYTHON_FALLTHROUGH;
+        case  9: values[8] = PyTuple_GET_ITEM(__pyx_args, 8);
+        CYTHON_FALLTHROUGH;
+        case  8: values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        CYTHON_FALLTHROUGH;
+        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        CYTHON_FALLTHROUGH;
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_direction_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 1); __PYX_ERR(0, 345, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_jerk_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 2); __PYX_ERR(0, 345, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time_is_relative)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 3); __PYX_ERR(0, 345, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_range_min)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 4); __PYX_ERR(0, 345, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_range_max)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 5); __PYX_ERR(0, 345, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  6:
+        if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_log_range_rate_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 6); __PYX_ERR(0, 345, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  7:
+        if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_log_range_acceleration_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 7); __PYX_ERR(0, 345, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  8:
+        if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_log_range_jerk_error)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, 8); __PYX_ERR(0, 345, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  9:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_acceleration_error);
+          if (value) { values[9] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case 10:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_form);
+          if (value) { values[10] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case 11:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_order);
+          if (value) { values[11] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 345, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case 12: values[11] = PyTuple_GET_ITEM(__pyx_args, 11);
+        CYTHON_FALLTHROUGH;
+        case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
+        CYTHON_FALLTHROUGH;
+        case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
+        CYTHON_FALLTHROUGH;
+        case  9: values[8] = PyTuple_GET_ITEM(__pyx_args, 8);
+        values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_alpha = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_alpha == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 345, __pyx_L3_error)
+    __pyx_v_direction_error = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_direction_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 345, __pyx_L3_error)
+    __pyx_v_jerk_error = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 345, __pyx_L3_error)
+    __pyx_v_time_is_relative = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_time_is_relative == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 345, __pyx_L3_error)
+    __pyx_v_range_min = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_range_min == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 345, __pyx_L3_error)
+    __pyx_v_range_max = __pyx_PyFloat_AsDouble(values[5]); if (unlikely((__pyx_v_range_max == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 345, __pyx_L3_error)
+    __pyx_v_log_range_rate_error = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_log_range_rate_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L3_error)
+    __pyx_v_log_range_acceleration_error = __pyx_PyFloat_AsDouble(values[7]); if (unlikely((__pyx_v_log_range_acceleration_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L3_error)
+    __pyx_v_log_range_jerk_error = __pyx_PyFloat_AsDouble(values[8]); if (unlikely((__pyx_v_log_range_jerk_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L3_error)
+    if (values[9]) {
+      __pyx_v_acceleration_error = __pyx_PyFloat_AsDouble(values[9]); if (unlikely((__pyx_v_acceleration_error == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L3_error)
+    } else {
+      __pyx_v_acceleration_error = ((double)0.0);
+    }
+    __pyx_v_form = values[10];
+    __pyx_v_order = values[11];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 9, 12, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 345, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor___cinit__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self), __pyx_v_alpha, __pyx_v_direction_error, __pyx_v_jerk_error, __pyx_v_time_is_relative, __pyx_v_range_min, __pyx_v_range_max, __pyx_v_log_range_rate_error, __pyx_v_log_range_acceleration_error, __pyx_v_log_range_jerk_error, __pyx_v_acceleration_error, __pyx_v_form, __pyx_v_order);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor___cinit__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self, double __pyx_v_alpha, double __pyx_v_direction_error, double __pyx_v_jerk_error, int __pyx_v_time_is_relative, double __pyx_v_range_min, double __pyx_v_range_max, double __pyx_v_log_range_rate_error, double __pyx_v_log_range_acceleration_error, double __pyx_v_log_range_jerk_error, double __pyx_v_acceleration_error, PyObject *__pyx_v_form, PyObject *__pyx_v_order) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
+  int __pyx_t_5;
+  kaepek::python::KalmanJerk2DAzElMovingSensorPython *__pyx_t_6;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":350
+ *         self.c_kalman = new KalmanJerk2DAzElMovingSensorPython(alpha, direction_error, jerk_error, time_is_relative, range_min, range_max,
+ *                                                                log_range_rate_error, log_range_acceleration_error, log_range_jerk_error,
+ *                                                                acceleration_error, _form_code(form), _order_code(order))             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_form_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 350, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_form) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_form);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 350, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_order_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 350, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_order) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_order);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 350, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":348
+ *                   double log_range_rate_error, double log_range_acceleration_error, double log_range_jerk_error, double acceleration_error = 0.0,
+ *                   form = 'small_alpha_t', order = 'first'):
+ *         self.c_kalman = new KalmanJerk2DAzElMovingSensorPython(alpha, direction_error, jerk_error, time_is_relative, range_min, range_max,             # <<<<<<<<<<<<<<
+ *                                                                log_range_rate_error, log_range_acceleration_error, log_range_jerk_error,
+ *                                                                acceleration_error, _form_code(form), _order_code(order))
+ */
+  try {
+    __pyx_t_6 = new kaepek::python::KalmanJerk2DAzElMovingSensorPython(__pyx_v_alpha, __pyx_v_direction_error, __pyx_v_jerk_error, __pyx_v_time_is_relative, __pyx_v_range_min, __pyx_v_range_max, __pyx_v_log_range_rate_error, __pyx_v_log_range_acceleration_error, __pyx_v_log_range_jerk_error, __pyx_v_acceleration_error, __pyx_t_4, __pyx_t_5);
+  } catch(...) {
+    __Pyx_CppExn2PyErr();
+    __PYX_ERR(0, 348, __pyx_L1_error)
+  }
+  __pyx_v_self->c_kalman = __pyx_t_6;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":345
+ *     cdef KalmanJerk2DAzElMovingSensorPython* c_kalman
+ * 
+ *     def __cinit__(self, double alpha, double direction_error, double jerk_error, bint time_is_relative, double range_min, double range_max,             # <<<<<<<<<<<<<<
+ *                   double log_range_rate_error, double log_range_acceleration_error, double log_range_jerk_error, double acceleration_error = 0.0,
+ *                   form = 'small_alpha_t', order = 'first'):
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":352
+ *                                                                acceleration_error, _form_code(form), _order_code(order))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+/* Python wrapper */
+static void __pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_3__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_2__dealloc__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_2__dealloc__(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":353
+ * 
+ *     def __dealloc__(self):
+ *         del self.c_kalman             # <<<<<<<<<<<<<<
+ * 
+ *     def step(self, double time, double azimuth, double elevation, sensor, R = None):
+ */
+  delete __pyx_v_self->c_kalman;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":352
+ *                                                                acceleration_error, _form_code(form), _order_code(order))
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.c_kalman
+ * 
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":355
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, double azimuth, double elevation, sensor, R = None):             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=1, mode='c'] s = np.ascontiguousarray(sensor, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_5step(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  double __pyx_v_time;
+  double __pyx_v_azimuth;
+  double __pyx_v_elevation;
+  PyObject *__pyx_v_sensor = 0;
+  PyObject *__pyx_v_R = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("step (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_time,&__pyx_n_s_azimuth,&__pyx_n_s_elevation,&__pyx_n_s_sensor,&__pyx_n_s_R,0};
+    PyObject* values[5] = {0,0,0,0,0};
+    values[4] = ((PyObject *)Py_None);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_time)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_azimuth)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 0, 4, 5, 1); __PYX_ERR(0, 355, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_elevation)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 0, 4, 5, 2); __PYX_ERR(0, 355, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_sensor)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("step", 0, 4, 5, 3); __PYX_ERR(0, 355, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_R);
+          if (value) { values[4] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(0, 355, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_time = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_time == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 355, __pyx_L3_error)
+    __pyx_v_azimuth = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_azimuth == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 355, __pyx_L3_error)
+    __pyx_v_elevation = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_elevation == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 355, __pyx_L3_error)
+    __pyx_v_sensor = values[3];
+    __pyx_v_R = values[4];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("step", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 355, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_4step(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self), __pyx_v_time, __pyx_v_azimuth, __pyx_v_elevation, __pyx_v_sensor, __pyx_v_R);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_4step(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self, double __pyx_v_time, double __pyx_v_azimuth, double __pyx_v_elevation, PyObject *__pyx_v_sensor, PyObject *__pyx_v_R) {
+  PyArrayObject *__pyx_v_s = 0;
+  PyArrayObject *__pyx_v_Rv = 0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_Rv;
+  __Pyx_Buffer __pyx_pybuffer_Rv;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_s;
+  __Pyx_Buffer __pyx_pybuffer_s;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyArrayObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
+  int __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
+  int __pyx_t_10;
+  PyArrayObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_12 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
+  Py_ssize_t __pyx_t_15;
+  Py_ssize_t __pyx_t_16;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("step", 0);
+  __pyx_pybuffer_s.pybuffer.buf = NULL;
+  __pyx_pybuffer_s.refcount = 0;
+  __pyx_pybuffernd_s.data = NULL;
+  __pyx_pybuffernd_s.rcbuffer = &__pyx_pybuffer_s;
+  __pyx_pybuffer_Rv.pybuffer.buf = NULL;
+  __pyx_pybuffer_Rv.refcount = 0;
+  __pyx_pybuffernd_Rv.data = NULL;
+  __pyx_pybuffernd_Rv.rcbuffer = &__pyx_pybuffer_Rv;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":356
+ * 
+ *     def step(self, double time, double azimuth, double elevation, sensor, R = None):
+ *         cdef np.ndarray[double, ndim=1, mode='c'] s = np.ascontiguousarray(sensor, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_v_sensor);
+  __Pyx_GIVEREF(__pyx_v_sensor);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_sensor);
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 356, __pyx_L1_error)
+  __pyx_t_6 = ((PyArrayObject *)__pyx_t_5);
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_s.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) {
+      __pyx_v_s = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_s.rcbuffer->pybuffer.buf = NULL;
+      __PYX_ERR(0, 356, __pyx_L1_error)
+    } else {__pyx_pybuffernd_s.diminfo[0].strides = __pyx_pybuffernd_s.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_s.diminfo[0].shape = __pyx_pybuffernd_s.rcbuffer->pybuffer.shape[0];
+    }
+  }
+  __pyx_t_6 = 0;
+  __pyx_v_s = ((PyArrayObject *)__pyx_t_5);
+  __pyx_t_5 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":358
+ *         cdef np.ndarray[double, ndim=1, mode='c'] s = np.ascontiguousarray(sensor, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step(time, azimuth, elevation, &s[0])
+ *         else:
+ */
+  __pyx_t_7 = (__pyx_v_R == Py_None);
+  __pyx_t_8 = (__pyx_t_7 != 0);
+  if (__pyx_t_8) {
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":359
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:
+ *             self.c_kalman.step(time, azimuth, elevation, &s[0])             # <<<<<<<<<<<<<<
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)
+ */
+    __pyx_t_9 = 0;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_pybuffernd_s.diminfo[0].shape;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_pybuffernd_s.diminfo[0].shape)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+      __PYX_ERR(0, 359, __pyx_L1_error)
+    }
+    __pyx_v_self->c_kalman->step(__pyx_v_time, __pyx_v_azimuth, __pyx_v_elevation, (&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_s.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_s.diminfo[0].strides))));
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":358
+ *         cdef np.ndarray[double, ndim=1, mode='c'] s = np.ascontiguousarray(sensor, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ *         if R is None:             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step(time, azimuth, elevation, &s[0])
+ *         else:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":361
+ *             self.c_kalman.step(time, azimuth, elevation, &s[0])
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)             # <<<<<<<<<<<<<<
+ *             self.c_kalman.step_covariance(time, azimuth, elevation, &s[0], &Rv[0, 0])
+ * 
+ */
+  /*else*/ {
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_ascontiguousarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_INCREF(__pyx_v_R);
+    __Pyx_GIVEREF(__pyx_v_R);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_R);
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 361, __pyx_L1_error)
+    __pyx_t_11 = ((PyArrayObject *)__pyx_t_4);
+    {
+      __Pyx_BufFmt_StackElem __pyx_stack[1];
+      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+      __pyx_t_10 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer, (PyObject*)__pyx_t_11, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack);
+      if (unlikely(__pyx_t_10 < 0)) {
+        PyErr_Fetch(&__pyx_t_12, &__pyx_t_13, &__pyx_t_14);
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer, (PyObject*)__pyx_v_Rv, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack) == -1)) {
+          Py_XDECREF(__pyx_t_12); Py_XDECREF(__pyx_t_13); Py_XDECREF(__pyx_t_14);
+          __Pyx_RaiseBufferFallbackError();
+        } else {
+          PyErr_Restore(__pyx_t_12, __pyx_t_13, __pyx_t_14);
+        }
+        __pyx_t_12 = __pyx_t_13 = __pyx_t_14 = 0;
+      }
+      __pyx_pybuffernd_Rv.diminfo[0].strides = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_Rv.diminfo[0].shape = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_Rv.diminfo[1].strides = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_Rv.diminfo[1].shape = __pyx_pybuffernd_Rv.rcbuffer->pybuffer.shape[1];
+      if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 361, __pyx_L1_error)
+    }
+    __pyx_t_11 = 0;
+    __pyx_v_Rv = ((PyArrayObject *)__pyx_t_4);
+    __pyx_t_4 = 0;
+
+    /* "lib/jerk/python/kalman_jerk_python.pxi":362
+ *         else:
+ *             Rv = np.ascontiguousarray(R, dtype=np.float64)
+ *             self.c_kalman.step_covariance(time, azimuth, elevation, &s[0], &Rv[0, 0])             # <<<<<<<<<<<<<<
+ * 
+ *     def get_range(self):
+ */
+    __pyx_t_9 = 0;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_pybuffernd_s.diminfo[0].shape;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_pybuffernd_s.diminfo[0].shape)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+      __PYX_ERR(0, 362, __pyx_L1_error)
+    }
+    __pyx_t_15 = 0;
+    __pyx_t_16 = 0;
+    __pyx_t_10 = -1;
+    if (__pyx_t_15 < 0) {
+      __pyx_t_15 += __pyx_pybuffernd_Rv.diminfo[0].shape;
+      if (unlikely(__pyx_t_15 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_15 >= __pyx_pybuffernd_Rv.diminfo[0].shape)) __pyx_t_10 = 0;
+    if (__pyx_t_16 < 0) {
+      __pyx_t_16 += __pyx_pybuffernd_Rv.diminfo[1].shape;
+      if (unlikely(__pyx_t_16 < 0)) __pyx_t_10 = 1;
+    } else if (unlikely(__pyx_t_16 >= __pyx_pybuffernd_Rv.diminfo[1].shape)) __pyx_t_10 = 1;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+      __PYX_ERR(0, 362, __pyx_L1_error)
+    }
+    __pyx_v_self->c_kalman->step_covariance(__pyx_v_time, __pyx_v_azimuth, __pyx_v_elevation, (&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_s.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_s.diminfo[0].strides))), (&(*__Pyx_BufPtrCContig2d(double *, __pyx_pybuffernd_Rv.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_Rv.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_Rv.diminfo[1].strides))));
+  }
+  __pyx_L3:;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":355
+ *         del self.c_kalman
+ * 
+ *     def step(self, double time, double azimuth, double elevation, sensor, R = None):             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[double, ndim=1, mode='c'] s = np.ascontiguousarray(sensor, dtype=np.float64)
+ *         cdef np.ndarray[double, ndim=2, mode='c'] Rv
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_s.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Rv.rcbuffer->pybuffer);
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_s.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_s);
+  __Pyx_XDECREF((PyObject *)__pyx_v_Rv);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":364
+ *             self.c_kalman.step_covariance(time, azimuth, elevation, &s[0], &Rv[0, 0])
+ * 
+ *     def get_range(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.range()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_7get_range(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_7get_range(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_range (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_6get_range(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_6get_range(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_range", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":365
+ * 
+ *     def get_range(self):
+ *         return self.c_kalman.range()             # <<<<<<<<<<<<<<
+ * 
+ *     def get_kalman_vector(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->c_kalman->range()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":364
+ *             self.c_kalman.step_covariance(time, azimuth, elevation, &s[0], &Rv[0, 0])
+ * 
+ *     def get_range(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.range()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.get_range", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":367
+ *         return self.c_kalman.range()
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_9get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_9get_kalman_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_kalman_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_8get_kalman_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_8get_kalman_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_kalman_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":368
+ * 
+ *     def get_kalman_vector(self):
+ *         return _vector(self.c_kalman.kalman_vector(), 12)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_covariance_matrix(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->kalman_vector(), 12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":367
+ *         return self.c_kalman.range()
+ * 
+ *     def get_kalman_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.get_kalman_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":370
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_11get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_11get_covariance_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_covariance_matrix (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_10get_covariance_matrix(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_10get_covariance_matrix(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_covariance_matrix", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":371
+ * 
+ *     def get_covariance_matrix(self):
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_state_vector(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->covariance_matrix(), 12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":370
+ *         return _vector(self.c_kalman.kalman_vector(), 12)
+ * 
+ *     def get_covariance_matrix(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.get_covariance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":373
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ *     def get_state_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.state_vector(), 12)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_13get_state_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_13get_state_vector(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_state_vector (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_12get_state_vector(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_12get_state_vector(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_state_vector", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":374
+ * 
+ *     def get_state_vector(self):
+ *         return _vector(self.c_kalman.state_vector(), 12)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_basis(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->state_vector(), 12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":373
+ *         return _matrix(self.c_kalman.covariance_matrix(), 12)
+ * 
+ *     def get_state_vector(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.state_vector(), 12)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.get_state_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":376
+ *         return _vector(self.c_kalman.state_vector(), 12)
+ * 
+ *     def get_basis(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.basis(), 6)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_15get_basis(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_15get_basis(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_basis (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_14get_basis(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_14get_basis(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_basis", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":377
+ * 
+ *     def get_basis(self):
+ *         return _vector(self.c_kalman.basis(), 6)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->basis(), 6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":376
+ *         return _vector(self.c_kalman.state_vector(), 12)
+ * 
+ *     def get_basis(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.basis(), 6)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.get_basis", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":379
+ *         return _vector(self.c_kalman.basis(), 6)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_17get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_17get_innovation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_16get_innovation(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_16get_innovation(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":380
+ * 
+ *     def get_innovation(self):
+ *         return _vector(self.c_kalman.innovation(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__vector(__pyx_v_self->c_kalman->innovation(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 380, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":379
+ *         return _vector(self.c_kalman.basis(), 6)
+ * 
+ *     def get_innovation(self):             # <<<<<<<<<<<<<<
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.get_innovation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":382
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_19get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_19get_innovation_covariance(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_18get_innovation_covariance(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_18get_innovation_covariance(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":383
+ * 
+ *     def get_innovation_covariance(self):
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 383, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":382
+ *         return _vector(self.c_kalman.innovation(), 2)
+ * 
+ *     def get_innovation_covariance(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.get_innovation_covariance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":385
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_21get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_21get_innovation_covariance_inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_20get_innovation_covariance_inverse(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_20get_innovation_covariance_inverse(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_inverse", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":386
+ * 
+ *     def get_innovation_covariance_inverse(self):
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6kalman_9_cykalman__matrix(__pyx_v_self->c_kalman->innovation_covariance_inverse(), 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":385
+ *         return _matrix(self.c_kalman.innovation_covariance(), 2)
+ * 
+ *     def get_innovation_covariance_inverse(self):             # <<<<<<<<<<<<<<
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.get_innovation_covariance_inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "lib/jerk/python/kalman_jerk_python.pxi":388
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_23get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_23get_innovation_covariance_determinant(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_22get_innovation_covariance_determinant(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_22get_innovation_covariance_determinant(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_innovation_covariance_determinant", 0);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":389
+ * 
+ *     def get_innovation_covariance_determinant(self):
+ *         return self.c_kalman.innovation_covariance_determinant()             # <<<<<<<<<<<<<<
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->c_kalman->innovation_covariance_determinant()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 389, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":388
+ *         return _matrix(self.c_kalman.innovation_covariance_inverse(), 2)
+ * 
+ *     def get_innovation_covariance_determinant(self):             # <<<<<<<<<<<<<<
+ *         return self.c_kalman.innovation_covariance_determinant()
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.get_innovation_covariance_determinant", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_25__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_25__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_24__reduce_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_24__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 2, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_27__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_27__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_26__setstate_cython__(((struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_26__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 4, __pyx_L1_error)
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("kalman._cykalman.KalmanJerk2DAzElMovingSensor.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -3527,7 +12520,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
  * cdef inline object PyArray_MultiIterNew2(a, b):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyArray_MultiIterNew(1, ((void *)__pyx_v_a)); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 735, __pyx_L1_error)
+  __pyx_t_1 = PyArray_MultiIterNew(1, ((void *)__pyx_v_a)); if (unlikely(!__pyx_t_1)) __PYX_ERR(3, 735, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3577,7 +12570,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyArray_MultiIterNew(2, ((void *)__pyx_v_a), ((void *)__pyx_v_b)); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 738, __pyx_L1_error)
+  __pyx_t_1 = PyArray_MultiIterNew(2, ((void *)__pyx_v_a), ((void *)__pyx_v_b)); if (unlikely(!__pyx_t_1)) __PYX_ERR(3, 738, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3627,7 +12620,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyArray_MultiIterNew(3, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c)); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 741, __pyx_L1_error)
+  __pyx_t_1 = PyArray_MultiIterNew(3, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c)); if (unlikely(!__pyx_t_1)) __PYX_ERR(3, 741, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3677,7 +12670,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyArray_MultiIterNew(4, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c), ((void *)__pyx_v_d)); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 744, __pyx_L1_error)
+  __pyx_t_1 = PyArray_MultiIterNew(4, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c), ((void *)__pyx_v_d)); if (unlikely(!__pyx_t_1)) __PYX_ERR(3, 744, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3727,7 +12720,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyArray_MultiIterNew(5, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c), ((void *)__pyx_v_d), ((void *)__pyx_v_e)); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 747, __pyx_L1_error)
+  __pyx_t_1 = PyArray_MultiIterNew(5, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c), ((void *)__pyx_v_d), ((void *)__pyx_v_e)); if (unlikely(!__pyx_t_1)) __PYX_ERR(3, 747, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3996,7 +12989,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")
  */
-      __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 942, __pyx_L3_error)
+      __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(3, 942, __pyx_L3_error)
 
       /* "env/lib/python3.10/site-packages/numpy/__init__.pxd":941
  * # Cython code.
@@ -4022,7 +13015,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 943, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(3, 943, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
@@ -4034,11 +13027,11 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 944, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(3, 944, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(2, 944, __pyx_L5_except_error)
+      __PYX_ERR(3, 944, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
@@ -4128,7 +13121,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 948, __pyx_L3_error)
+      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(3, 948, __pyx_L3_error)
 
       /* "env/lib/python3.10/site-packages/numpy/__init__.pxd":947
  * 
@@ -4154,7 +13147,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_umath", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 949, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(3, 949, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
@@ -4166,11 +13159,11 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 950, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(3, 950, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(2, 950, __pyx_L5_except_error)
+      __PYX_ERR(3, 950, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
@@ -4260,7 +13253,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 954, __pyx_L3_error)
+      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(3, 954, __pyx_L3_error)
 
       /* "env/lib/python3.10/site-packages/numpy/__init__.pxd":953
  * 
@@ -4286,7 +13279,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_ufunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 955, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(3, 955, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
@@ -4298,11 +13291,11 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  * 
  * cdef extern from *:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 956, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(3, 956, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(2, 956, __pyx_L5_except_error)
+      __PYX_ERR(3, 956, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
@@ -4519,7 +13512,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_8CyKalman_KalmanJerk1D(PyTypeObject *t, PyObject *a, PyObject *k) {
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk1D(PyTypeObject *t, PyObject *a, PyObject *k) {
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -4527,14 +13520,14 @@ static PyObject *__pyx_tp_new_8CyKalman_KalmanJerk1D(PyTypeObject *t, PyObject *
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  if (unlikely(__pyx_pw_8CyKalman_12KalmanJerk1D_1__cinit__(o, a, k) < 0)) goto bad;
+  if (unlikely(__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_8CyKalman_KalmanJerk1D(PyObject *o) {
+static void __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk1D(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -4544,29 +13537,29 @@ static void __pyx_tp_dealloc_8CyKalman_KalmanJerk1D(PyObject *o) {
     PyObject *etype, *eval, *etb;
     PyErr_Fetch(&etype, &eval, &etb);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
-    __pyx_pw_8CyKalman_12KalmanJerk1D_3__dealloc__(o);
+    __pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_3__dealloc__(o);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
     PyErr_Restore(etype, eval, etb);
   }
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyMethodDef __pyx_methods_8CyKalman_KalmanJerk1D[] = {
-  {"get_kalman_vector", (PyCFunction)__pyx_pw_8CyKalman_12KalmanJerk1D_5get_kalman_vector, METH_NOARGS, 0},
-  {"get_eular_vector", (PyCFunction)__pyx_pw_8CyKalman_12KalmanJerk1D_7get_eular_vector, METH_NOARGS, 0},
-  {"get_covariance_matrix", (PyCFunction)__pyx_pw_8CyKalman_12KalmanJerk1D_9get_covariance_matrix, METH_NOARGS, 0},
-  {"step", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8CyKalman_12KalmanJerk1D_11step, METH_VARARGS|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_8CyKalman_12KalmanJerk1D_13__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_8CyKalman_12KalmanJerk1D_15__setstate_cython__, METH_O, 0},
+static PyMethodDef __pyx_methods_6kalman_9_cykalman_KalmanJerk1D[] = {
+  {"get_kalman_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_5get_kalman_vector, METH_NOARGS, 0},
+  {"get_eular_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_7get_eular_vector, METH_NOARGS, 0},
+  {"get_covariance_matrix", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_9get_covariance_matrix, METH_NOARGS, 0},
+  {"step", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_11step, METH_VARARGS|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_13__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk1D_15__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_8CyKalman_KalmanJerk1D = {
+static PyTypeObject __pyx_type_6kalman_9_cykalman_KalmanJerk1D = {
   PyVarObject_HEAD_INIT(0, 0)
-  "CyKalman.KalmanJerk1D", /*tp_name*/
-  sizeof(struct __pyx_obj_8CyKalman_KalmanJerk1D), /*tp_basicsize*/
+  "kalman._cykalman.KalmanJerk1D", /*tp_name*/
+  sizeof(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1D), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_8CyKalman_KalmanJerk1D, /*tp_dealloc*/
+  __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk1D, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -4599,7 +13592,7 @@ static PyTypeObject __pyx_type_8CyKalman_KalmanJerk1D = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_8CyKalman_KalmanJerk1D, /*tp_methods*/
+  __pyx_methods_6kalman_9_cykalman_KalmanJerk1D, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -4609,7 +13602,837 @@ static PyTypeObject __pyx_type_8CyKalman_KalmanJerk1D = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_8CyKalman_KalmanJerk1D, /*tp_new*/
+  __pyx_tp_new_6kalman_9_cykalman_KalmanJerk1D, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b1 && (!CYTHON_COMPILING_IN_PYPY || PYPY_VERSION_NUM >= 0x07030800)
+  0, /*tp_vectorcall*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
+  0, /*tp_print*/
+  #endif
+  #if CYTHON_COMPILING_IN_PYPY && PY_VERSION_HEX >= 0x03090000
+  0, /*tp_pypy_flags*/
+  #endif
+};
+
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk2D(PyTypeObject *t, PyObject *a, PyObject *k) {
+  PyObject *o;
+  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
+    o = (*t->tp_alloc)(t, 0);
+  } else {
+    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
+  }
+  if (unlikely(!o)) return 0;
+  if (unlikely(__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_1__cinit__(o, a, k) < 0)) goto bad;
+  return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
+}
+
+static void __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk2D(PyObject *o) {
+  #if CYTHON_USE_TP_FINALIZE
+  if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
+    if (PyObject_CallFinalizerFromDealloc(o)) return;
+  }
+  #endif
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_3__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
+  (*Py_TYPE(o)->tp_free)(o);
+}
+
+static PyMethodDef __pyx_methods_6kalman_9_cykalman_KalmanJerk2D[] = {
+  {"step", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_5step, METH_VARARGS|METH_KEYWORDS, 0},
+  {"get_kalman_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_7get_kalman_vector, METH_NOARGS, 0},
+  {"get_covariance_matrix", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_9get_covariance_matrix, METH_NOARGS, 0},
+  {"get_eular_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_11get_eular_vector, METH_NOARGS, 0},
+  {"get_innovation", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_13get_innovation, METH_NOARGS, 0},
+  {"get_innovation_covariance", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_15get_innovation_covariance, METH_NOARGS, 0},
+  {"get_innovation_covariance_inverse", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_17get_innovation_covariance_inverse, METH_NOARGS, 0},
+  {"get_innovation_covariance_determinant", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_19get_innovation_covariance_determinant, METH_NOARGS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_21__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk2D_23__setstate_cython__, METH_O, 0},
+  {0, 0, 0, 0}
+};
+
+static PyTypeObject __pyx_type_6kalman_9_cykalman_KalmanJerk2D = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "kalman._cykalman.KalmanJerk2D", /*tp_name*/
+  sizeof(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2D), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk2D, /*tp_dealloc*/
+  #if PY_VERSION_HEX < 0x030800b4
+  0, /*tp_print*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4
+  0, /*tp_vectorcall_offset*/
+  #endif
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
+  0, /*tp_doc*/
+  0, /*tp_traverse*/
+  0, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_6kalman_9_cykalman_KalmanJerk2D, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_6kalman_9_cykalman_KalmanJerk2D, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b1 && (!CYTHON_COMPILING_IN_PYPY || PYPY_VERSION_NUM >= 0x07030800)
+  0, /*tp_vectorcall*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
+  0, /*tp_print*/
+  #endif
+  #if CYTHON_COMPILING_IN_PYPY && PY_VERSION_HEX >= 0x03090000
+  0, /*tp_pypy_flags*/
+  #endif
+};
+
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk3D(PyTypeObject *t, PyObject *a, PyObject *k) {
+  PyObject *o;
+  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
+    o = (*t->tp_alloc)(t, 0);
+  } else {
+    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
+  }
+  if (unlikely(!o)) return 0;
+  if (unlikely(__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_1__cinit__(o, a, k) < 0)) goto bad;
+  return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
+}
+
+static void __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk3D(PyObject *o) {
+  #if CYTHON_USE_TP_FINALIZE
+  if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
+    if (PyObject_CallFinalizerFromDealloc(o)) return;
+  }
+  #endif
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_3__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
+  (*Py_TYPE(o)->tp_free)(o);
+}
+
+static PyMethodDef __pyx_methods_6kalman_9_cykalman_KalmanJerk3D[] = {
+  {"step", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_5step, METH_VARARGS|METH_KEYWORDS, 0},
+  {"get_kalman_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_7get_kalman_vector, METH_NOARGS, 0},
+  {"get_covariance_matrix", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_9get_covariance_matrix, METH_NOARGS, 0},
+  {"get_eular_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_11get_eular_vector, METH_NOARGS, 0},
+  {"get_innovation", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_13get_innovation, METH_NOARGS, 0},
+  {"get_innovation_covariance", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_15get_innovation_covariance, METH_NOARGS, 0},
+  {"get_innovation_covariance_inverse", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_17get_innovation_covariance_inverse, METH_NOARGS, 0},
+  {"get_innovation_covariance_determinant", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_19get_innovation_covariance_determinant, METH_NOARGS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_21__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_12KalmanJerk3D_23__setstate_cython__, METH_O, 0},
+  {0, 0, 0, 0}
+};
+
+static PyTypeObject __pyx_type_6kalman_9_cykalman_KalmanJerk3D = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "kalman._cykalman.KalmanJerk3D", /*tp_name*/
+  sizeof(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3D), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk3D, /*tp_dealloc*/
+  #if PY_VERSION_HEX < 0x030800b4
+  0, /*tp_print*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4
+  0, /*tp_vectorcall_offset*/
+  #endif
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
+  0, /*tp_doc*/
+  0, /*tp_traverse*/
+  0, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_6kalman_9_cykalman_KalmanJerk3D, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_6kalman_9_cykalman_KalmanJerk3D, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b1 && (!CYTHON_COMPILING_IN_PYPY || PYPY_VERSION_NUM >= 0x07030800)
+  0, /*tp_vectorcall*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
+  0, /*tp_print*/
+  #endif
+  #if CYTHON_COMPILING_IN_PYPY && PY_VERSION_HEX >= 0x03090000
+  0, /*tp_pypy_flags*/
+  #endif
+};
+
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk2DPolar(PyTypeObject *t, PyObject *a, PyObject *k) {
+  PyObject *o;
+  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
+    o = (*t->tp_alloc)(t, 0);
+  } else {
+    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
+  }
+  if (unlikely(!o)) return 0;
+  if (unlikely(__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_1__cinit__(o, a, k) < 0)) goto bad;
+  return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
+}
+
+static void __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk2DPolar(PyObject *o) {
+  #if CYTHON_USE_TP_FINALIZE
+  if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
+    if (PyObject_CallFinalizerFromDealloc(o)) return;
+  }
+  #endif
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_3__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
+  (*Py_TYPE(o)->tp_free)(o);
+}
+
+static PyMethodDef __pyx_methods_6kalman_9_cykalman_KalmanJerk2DPolar[] = {
+  {"step", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_5step, METH_VARARGS|METH_KEYWORDS, 0},
+  {"get_kalman_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_7get_kalman_vector, METH_NOARGS, 0},
+  {"get_covariance_matrix", (PyCFunction)__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_9get_covariance_matrix, METH_NOARGS, 0},
+  {"get_innovation", (PyCFunction)__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_11get_innovation, METH_NOARGS, 0},
+  {"get_innovation_covariance", (PyCFunction)__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_13get_innovation_covariance, METH_NOARGS, 0},
+  {"get_innovation_covariance_inverse", (PyCFunction)__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_15get_innovation_covariance_inverse, METH_NOARGS, 0},
+  {"get_innovation_covariance_determinant", (PyCFunction)__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_17get_innovation_covariance_determinant, METH_NOARGS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_19__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_17KalmanJerk2DPolar_21__setstate_cython__, METH_O, 0},
+  {0, 0, 0, 0}
+};
+
+static PyTypeObject __pyx_type_6kalman_9_cykalman_KalmanJerk2DPolar = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "kalman._cykalman.KalmanJerk2DPolar", /*tp_name*/
+  sizeof(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DPolar), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk2DPolar, /*tp_dealloc*/
+  #if PY_VERSION_HEX < 0x030800b4
+  0, /*tp_print*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4
+  0, /*tp_vectorcall_offset*/
+  #endif
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
+  0, /*tp_doc*/
+  0, /*tp_traverse*/
+  0, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_6kalman_9_cykalman_KalmanJerk2DPolar, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_6kalman_9_cykalman_KalmanJerk2DPolar, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b1 && (!CYTHON_COMPILING_IN_PYPY || PYPY_VERSION_NUM >= 0x07030800)
+  0, /*tp_vectorcall*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
+  0, /*tp_print*/
+  #endif
+  #if CYTHON_COMPILING_IN_PYPY && PY_VERSION_HEX >= 0x03090000
+  0, /*tp_pypy_flags*/
+  #endif
+};
+
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk3DSpherical(PyTypeObject *t, PyObject *a, PyObject *k) {
+  PyObject *o;
+  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
+    o = (*t->tp_alloc)(t, 0);
+  } else {
+    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
+  }
+  if (unlikely(!o)) return 0;
+  if (unlikely(__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_1__cinit__(o, a, k) < 0)) goto bad;
+  return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
+}
+
+static void __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk3DSpherical(PyObject *o) {
+  #if CYTHON_USE_TP_FINALIZE
+  if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
+    if (PyObject_CallFinalizerFromDealloc(o)) return;
+  }
+  #endif
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_3__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
+  (*Py_TYPE(o)->tp_free)(o);
+}
+
+static PyMethodDef __pyx_methods_6kalman_9_cykalman_KalmanJerk3DSpherical[] = {
+  {"step", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_5step, METH_VARARGS|METH_KEYWORDS, 0},
+  {"get_kalman_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_7get_kalman_vector, METH_NOARGS, 0},
+  {"get_covariance_matrix", (PyCFunction)__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_9get_covariance_matrix, METH_NOARGS, 0},
+  {"get_innovation", (PyCFunction)__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_11get_innovation, METH_NOARGS, 0},
+  {"get_innovation_covariance", (PyCFunction)__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_13get_innovation_covariance, METH_NOARGS, 0},
+  {"get_innovation_covariance_inverse", (PyCFunction)__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_15get_innovation_covariance_inverse, METH_NOARGS, 0},
+  {"get_innovation_covariance_determinant", (PyCFunction)__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_17get_innovation_covariance_determinant, METH_NOARGS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_19__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_21KalmanJerk3DSpherical_21__setstate_cython__, METH_O, 0},
+  {0, 0, 0, 0}
+};
+
+static PyTypeObject __pyx_type_6kalman_9_cykalman_KalmanJerk3DSpherical = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "kalman._cykalman.KalmanJerk3DSpherical", /*tp_name*/
+  sizeof(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk3DSpherical), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk3DSpherical, /*tp_dealloc*/
+  #if PY_VERSION_HEX < 0x030800b4
+  0, /*tp_print*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4
+  0, /*tp_vectorcall_offset*/
+  #endif
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
+  0, /*tp_doc*/
+  0, /*tp_traverse*/
+  0, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_6kalman_9_cykalman_KalmanJerk3DSpherical, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_6kalman_9_cykalman_KalmanJerk3DSpherical, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b1 && (!CYTHON_COMPILING_IN_PYPY || PYPY_VERSION_NUM >= 0x07030800)
+  0, /*tp_vectorcall*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
+  0, /*tp_print*/
+  #endif
+  #if CYTHON_COMPILING_IN_PYPY && PY_VERSION_HEX >= 0x03090000
+  0, /*tp_pypy_flags*/
+  #endif
+};
+
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk2DAzEl(PyTypeObject *t, PyObject *a, PyObject *k) {
+  PyObject *o;
+  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
+    o = (*t->tp_alloc)(t, 0);
+  } else {
+    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
+  }
+  if (unlikely(!o)) return 0;
+  if (unlikely(__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_1__cinit__(o, a, k) < 0)) goto bad;
+  return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
+}
+
+static void __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk2DAzEl(PyObject *o) {
+  #if CYTHON_USE_TP_FINALIZE
+  if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
+    if (PyObject_CallFinalizerFromDealloc(o)) return;
+  }
+  #endif
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_3__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
+  (*Py_TYPE(o)->tp_free)(o);
+}
+
+static PyMethodDef __pyx_methods_6kalman_9_cykalman_KalmanJerk2DAzEl[] = {
+  {"step", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_5step, METH_VARARGS|METH_KEYWORDS, 0},
+  {"azel_noise_to_tangent", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_7azel_noise_to_tangent, METH_VARARGS|METH_KEYWORDS, 0},
+  {"azimuth_defined", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_9azimuth_defined, METH_NOARGS, 0},
+  {"get_kalman_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_11get_kalman_vector, METH_NOARGS, 0},
+  {"get_covariance_matrix", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_13get_covariance_matrix, METH_NOARGS, 0},
+  {"get_state_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_15get_state_vector, METH_NOARGS, 0},
+  {"get_basis", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_17get_basis, METH_NOARGS, 0},
+  {"get_basis_covariance_matrix", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_19get_basis_covariance_matrix, METH_NOARGS, 0},
+  {"get_innovation", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_21get_innovation, METH_NOARGS, 0},
+  {"get_innovation_covariance", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_23get_innovation_covariance, METH_NOARGS, 0},
+  {"get_innovation_covariance_inverse", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_25get_innovation_covariance_inverse, METH_NOARGS, 0},
+  {"get_innovation_covariance_determinant", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_27get_innovation_covariance_determinant, METH_NOARGS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_29__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_16KalmanJerk2DAzEl_31__setstate_cython__, METH_O, 0},
+  {0, 0, 0, 0}
+};
+
+static PyTypeObject __pyx_type_6kalman_9_cykalman_KalmanJerk2DAzEl = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "kalman._cykalman.KalmanJerk2DAzEl", /*tp_name*/
+  sizeof(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzEl), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk2DAzEl, /*tp_dealloc*/
+  #if PY_VERSION_HEX < 0x030800b4
+  0, /*tp_print*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4
+  0, /*tp_vectorcall_offset*/
+  #endif
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
+  0, /*tp_doc*/
+  0, /*tp_traverse*/
+  0, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_6kalman_9_cykalman_KalmanJerk2DAzEl, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_6kalman_9_cykalman_KalmanJerk2DAzEl, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b1 && (!CYTHON_COMPILING_IN_PYPY || PYPY_VERSION_NUM >= 0x07030800)
+  0, /*tp_vectorcall*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
+  0, /*tp_print*/
+  #endif
+  #if CYTHON_COMPILING_IN_PYPY && PY_VERSION_HEX >= 0x03090000
+  0, /*tp_pypy_flags*/
+  #endif
+};
+
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor(PyTypeObject *t, PyObject *a, PyObject *k) {
+  PyObject *o;
+  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
+    o = (*t->tp_alloc)(t, 0);
+  } else {
+    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
+  }
+  if (unlikely(!o)) return 0;
+  if (unlikely(__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_1__cinit__(o, a, k) < 0)) goto bad;
+  return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
+}
+
+static void __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor(PyObject *o) {
+  #if CYTHON_USE_TP_FINALIZE
+  if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
+    if (PyObject_CallFinalizerFromDealloc(o)) return;
+  }
+  #endif
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_3__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
+  (*Py_TYPE(o)->tp_free)(o);
+}
+
+static PyMethodDef __pyx_methods_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor[] = {
+  {"step", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_5step, METH_VARARGS|METH_KEYWORDS, 0},
+  {"get_range", (PyCFunction)__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_7get_range, METH_NOARGS, 0},
+  {"get_kalman_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_9get_kalman_vector, METH_NOARGS, 0},
+  {"get_covariance_matrix", (PyCFunction)__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_11get_covariance_matrix, METH_NOARGS, 0},
+  {"get_innovation", (PyCFunction)__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_13get_innovation, METH_NOARGS, 0},
+  {"get_innovation_covariance", (PyCFunction)__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_15get_innovation_covariance, METH_NOARGS, 0},
+  {"get_innovation_covariance_inverse", (PyCFunction)__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_17get_innovation_covariance_inverse, METH_NOARGS, 0},
+  {"get_innovation_covariance_determinant", (PyCFunction)__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_19get_innovation_covariance_determinant, METH_NOARGS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_21__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_31KalmanJerk1DBearingMovingSensor_23__setstate_cython__, METH_O, 0},
+  {0, 0, 0, 0}
+};
+
+static PyTypeObject __pyx_type_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "kalman._cykalman.KalmanJerk1DBearingMovingSensor", /*tp_name*/
+  sizeof(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor, /*tp_dealloc*/
+  #if PY_VERSION_HEX < 0x030800b4
+  0, /*tp_print*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4
+  0, /*tp_vectorcall_offset*/
+  #endif
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
+  0, /*tp_doc*/
+  0, /*tp_traverse*/
+  0, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b1 && (!CYTHON_COMPILING_IN_PYPY || PYPY_VERSION_NUM >= 0x07030800)
+  0, /*tp_vectorcall*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
+  0, /*tp_print*/
+  #endif
+  #if CYTHON_COMPILING_IN_PYPY && PY_VERSION_HEX >= 0x03090000
+  0, /*tp_pypy_flags*/
+  #endif
+};
+
+static PyObject *__pyx_tp_new_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor(PyTypeObject *t, PyObject *a, PyObject *k) {
+  PyObject *o;
+  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
+    o = (*t->tp_alloc)(t, 0);
+  } else {
+    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
+  }
+  if (unlikely(!o)) return 0;
+  if (unlikely(__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_1__cinit__(o, a, k) < 0)) goto bad;
+  return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
+}
+
+static void __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor(PyObject *o) {
+  #if CYTHON_USE_TP_FINALIZE
+  if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
+    if (PyObject_CallFinalizerFromDealloc(o)) return;
+  }
+  #endif
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_3__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
+  (*Py_TYPE(o)->tp_free)(o);
+}
+
+static PyMethodDef __pyx_methods_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor[] = {
+  {"step", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_5step, METH_VARARGS|METH_KEYWORDS, 0},
+  {"get_range", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_7get_range, METH_NOARGS, 0},
+  {"get_kalman_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_9get_kalman_vector, METH_NOARGS, 0},
+  {"get_covariance_matrix", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_11get_covariance_matrix, METH_NOARGS, 0},
+  {"get_state_vector", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_13get_state_vector, METH_NOARGS, 0},
+  {"get_basis", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_15get_basis, METH_NOARGS, 0},
+  {"get_innovation", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_17get_innovation, METH_NOARGS, 0},
+  {"get_innovation_covariance", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_19get_innovation_covariance, METH_NOARGS, 0},
+  {"get_innovation_covariance_inverse", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_21get_innovation_covariance_inverse, METH_NOARGS, 0},
+  {"get_innovation_covariance_determinant", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_23get_innovation_covariance_determinant, METH_NOARGS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_25__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6kalman_9_cykalman_28KalmanJerk2DAzElMovingSensor_27__setstate_cython__, METH_O, 0},
+  {0, 0, 0, 0}
+};
+
+static PyTypeObject __pyx_type_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "kalman._cykalman.KalmanJerk2DAzElMovingSensor", /*tp_name*/
+  sizeof(struct __pyx_obj_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor, /*tp_dealloc*/
+  #if PY_VERSION_HEX < 0x030800b4
+  0, /*tp_print*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030800b4
+  0, /*tp_vectorcall_offset*/
+  #endif
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
+  0, /*tp_doc*/
+  0, /*tp_traverse*/
+  0, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -4640,17 +14463,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_CyKalman(PyObject* module); /*proto*/
+static int __pyx_pymod_exec__cykalman(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_CyKalman},
+  {Py_mod_exec, (void*)__pyx_pymod_exec__cykalman},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "CyKalman",
+    "_cykalman",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -4679,14 +14502,55 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
+  {&__pyx_n_s_FORMS, __pyx_k_FORMS, sizeof(__pyx_k_FORMS), 0, 0, 1, 1},
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
   {&__pyx_n_s_KalmanJerk1D, __pyx_k_KalmanJerk1D, sizeof(__pyx_k_KalmanJerk1D), 0, 0, 1, 1},
+  {&__pyx_n_s_KalmanJerk1DBearingMovingSensor, __pyx_k_KalmanJerk1DBearingMovingSensor, sizeof(__pyx_k_KalmanJerk1DBearingMovingSensor), 0, 0, 1, 1},
+  {&__pyx_n_s_KalmanJerk2D, __pyx_k_KalmanJerk2D, sizeof(__pyx_k_KalmanJerk2D), 0, 0, 1, 1},
+  {&__pyx_n_s_KalmanJerk2DAzEl, __pyx_k_KalmanJerk2DAzEl, sizeof(__pyx_k_KalmanJerk2DAzEl), 0, 0, 1, 1},
+  {&__pyx_n_s_KalmanJerk2DAzElMovingSensor, __pyx_k_KalmanJerk2DAzElMovingSensor, sizeof(__pyx_k_KalmanJerk2DAzElMovingSensor), 0, 0, 1, 1},
+  {&__pyx_n_s_KalmanJerk2DPolar, __pyx_k_KalmanJerk2DPolar, sizeof(__pyx_k_KalmanJerk2DPolar), 0, 0, 1, 1},
+  {&__pyx_n_s_KalmanJerk3D, __pyx_k_KalmanJerk3D, sizeof(__pyx_k_KalmanJerk3D), 0, 0, 1, 1},
+  {&__pyx_n_s_KalmanJerk3DSpherical, __pyx_k_KalmanJerk3DSpherical, sizeof(__pyx_k_KalmanJerk3DSpherical), 0, 0, 1, 1},
+  {&__pyx_n_s_ORDERS, __pyx_k_ORDERS, sizeof(__pyx_k_ORDERS), 0, 0, 1, 1},
+  {&__pyx_n_s_R, __pyx_k_R, sizeof(__pyx_k_R), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
+  {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
+  {&__pyx_kp_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 0},
+  {&__pyx_n_s_acceleration_error, __pyx_k_acceleration_error, sizeof(__pyx_k_acceleration_error), 0, 0, 1, 1},
   {&__pyx_n_s_alpha, __pyx_k_alpha, sizeof(__pyx_k_alpha), 0, 0, 1, 1},
+  {&__pyx_n_s_angle, __pyx_k_angle, sizeof(__pyx_k_angle), 0, 0, 1, 1},
+  {&__pyx_n_s_angle_error, __pyx_k_angle_error, sizeof(__pyx_k_angle_error), 0, 0, 1, 1},
+  {&__pyx_n_s_array, __pyx_k_array, sizeof(__pyx_k_array), 0, 0, 1, 1},
+  {&__pyx_n_s_ascontiguousarray, __pyx_k_ascontiguousarray, sizeof(__pyx_k_ascontiguousarray), 0, 0, 1, 1},
+  {&__pyx_n_s_azel_noise_to_tangent, __pyx_k_azel_noise_to_tangent, sizeof(__pyx_k_azel_noise_to_tangent), 0, 0, 1, 1},
+  {&__pyx_n_s_azimuth, __pyx_k_azimuth, sizeof(__pyx_k_azimuth), 0, 0, 1, 1},
+  {&__pyx_n_s_azimuth_error, __pyx_k_azimuth_error, sizeof(__pyx_k_azimuth_error), 0, 0, 1, 1},
+  {&__pyx_n_s_bearing, __pyx_k_bearing, sizeof(__pyx_k_bearing), 0, 0, 1, 1},
+  {&__pyx_n_s_bearing_error, __pyx_k_bearing_error, sizeof(__pyx_k_bearing_error), 0, 0, 1, 1},
+  {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
+  {&__pyx_n_s_cos, __pyx_k_cos, sizeof(__pyx_k_cos), 0, 0, 1, 1},
+  {&__pyx_n_s_direction_error, __pyx_k_direction_error, sizeof(__pyx_k_direction_error), 0, 0, 1, 1},
+  {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
+  {&__pyx_n_s_elevation, __pyx_k_elevation, sizeof(__pyx_k_elevation), 0, 0, 1, 1},
+  {&__pyx_n_s_elevation_error, __pyx_k_elevation_error, sizeof(__pyx_k_elevation_error), 0, 0, 1, 1},
   {&__pyx_n_s_empty, __pyx_k_empty, sizeof(__pyx_k_empty), 0, 0, 1, 1},
+  {&__pyx_n_s_exact, __pyx_k_exact, sizeof(__pyx_k_exact), 0, 0, 1, 1},
+  {&__pyx_n_s_first, __pyx_k_first, sizeof(__pyx_k_first), 0, 0, 1, 1},
+  {&__pyx_n_s_float64, __pyx_k_float64, sizeof(__pyx_k_float64), 0, 0, 1, 1},
+  {&__pyx_n_s_form, __pyx_k_form, sizeof(__pyx_k_form), 0, 0, 1, 1},
+  {&__pyx_n_s_form_code, __pyx_k_form_code, sizeof(__pyx_k_form_code), 0, 0, 1, 1},
+  {&__pyx_kp_s_form_must_be_one_of, __pyx_k_form_must_be_one_of, sizeof(__pyx_k_form_must_be_one_of), 0, 0, 1, 0},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
+  {&__pyx_n_s_jerk_error, __pyx_k_jerk_error, sizeof(__pyx_k_jerk_error), 0, 0, 1, 1},
+  {&__pyx_n_s_join, __pyx_k_join, sizeof(__pyx_k_join), 0, 0, 1, 1},
+  {&__pyx_n_s_kalman__cykalman, __pyx_k_kalman__cykalman, sizeof(__pyx_k_kalman__cykalman), 0, 0, 1, 1},
+  {&__pyx_kp_s_lib_jerk_python_kalman_jerk_pyth, __pyx_k_lib_jerk_python_kalman_jerk_pyth, sizeof(__pyx_k_lib_jerk_python_kalman_jerk_pyth), 0, 0, 1, 0},
+  {&__pyx_n_s_log_range_acceleration_error, __pyx_k_log_range_acceleration_error, sizeof(__pyx_k_log_range_acceleration_error), 0, 0, 1, 1},
+  {&__pyx_n_s_log_range_jerk_error, __pyx_k_log_range_jerk_error, sizeof(__pyx_k_log_range_jerk_error), 0, 0, 1, 1},
+  {&__pyx_n_s_log_range_rate_error, __pyx_k_log_range_rate_error, sizeof(__pyx_k_log_range_rate_error), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
@@ -4694,23 +14558,40 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
   {&__pyx_kp_s_numpy_core_multiarray_failed_to, __pyx_k_numpy_core_multiarray_failed_to, sizeof(__pyx_k_numpy_core_multiarray_failed_to), 0, 0, 1, 0},
   {&__pyx_kp_s_numpy_core_umath_failed_to_impor, __pyx_k_numpy_core_umath_failed_to_impor, sizeof(__pyx_k_numpy_core_umath_failed_to_impor), 0, 0, 1, 0},
+  {&__pyx_n_s_order, __pyx_k_order, sizeof(__pyx_k_order), 0, 0, 1, 1},
+  {&__pyx_n_s_order_code, __pyx_k_order_code, sizeof(__pyx_k_order_code), 0, 0, 1, 1},
+  {&__pyx_kp_s_order_must_be_one_of, __pyx_k_order_must_be_one_of, sizeof(__pyx_k_order_must_be_one_of), 0, 0, 1, 0},
+  {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
+  {&__pyx_n_s_range_error, __pyx_k_range_error, sizeof(__pyx_k_range_error), 0, 0, 1, 1},
+  {&__pyx_n_s_range_max, __pyx_k_range_max, sizeof(__pyx_k_range_max), 0, 0, 1, 1},
+  {&__pyx_n_s_range_min, __pyx_k_range_min, sizeof(__pyx_k_range_min), 0, 0, 1, 1},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
+  {&__pyx_n_s_second, __pyx_k_second, sizeof(__pyx_k_second), 0, 0, 1, 1},
+  {&__pyx_n_s_sensor, __pyx_k_sensor, sizeof(__pyx_k_sensor), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
+  {&__pyx_n_s_small_alpha_t, __pyx_k_small_alpha_t, sizeof(__pyx_k_small_alpha_t), 0, 0, 1, 1},
+  {&__pyx_n_s_staticmethod, __pyx_k_staticmethod, sizeof(__pyx_k_staticmethod), 0, 0, 1, 1},
+  {&__pyx_n_s_substeps, __pyx_k_substeps, sizeof(__pyx_k_substeps), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_time, __pyx_k_time, sizeof(__pyx_k_time), 0, 0, 1, 1},
   {&__pyx_n_s_time_is_relative, __pyx_k_time_is_relative, sizeof(__pyx_k_time_is_relative), 0, 0, 1, 1},
+  {&__pyx_n_s_unscented, __pyx_k_unscented, sizeof(__pyx_k_unscented), 0, 0, 1, 1},
   {&__pyx_n_s_x, __pyx_k_x, sizeof(__pyx_k_x), 0, 0, 1, 1},
+  {&__pyx_n_s_x_acceleration_error, __pyx_k_x_acceleration_error, sizeof(__pyx_k_x_acceleration_error), 0, 0, 1, 1},
   {&__pyx_n_s_x_jerk_error, __pyx_k_x_jerk_error, sizeof(__pyx_k_x_jerk_error), 0, 0, 1, 1},
   {&__pyx_n_s_x_mod_limit, __pyx_k_x_mod_limit, sizeof(__pyx_k_x_mod_limit), 0, 0, 1, 1},
   {&__pyx_n_s_x_resolution_error, __pyx_k_x_resolution_error, sizeof(__pyx_k_x_resolution_error), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 2, __pyx_L1_error)
-  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 944, __pyx_L1_error)
+  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(3, 944, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4726,7 +14607,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple_)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
@@ -4735,9 +14616,142 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__5);
+  __Pyx_GIVEREF(__pyx_tuple__5);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__11);
+  __Pyx_GIVEREF(__pyx_tuple__11);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__17);
+  __Pyx_GIVEREF(__pyx_tuple__17);
 
   /* "env/lib/python3.10/site-packages/numpy/__init__.pxd":944
  *         __pyx_import_array()
@@ -4746,9 +14760,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(2, 944, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__3);
-  __Pyx_GIVEREF(__pyx_tuple__3);
+  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(3, 944, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__18);
+  __Pyx_GIVEREF(__pyx_tuple__18);
 
   /* "env/lib/python3.10/site-packages/numpy/__init__.pxd":950
  *         _import_umath()
@@ -4757,9 +14771,45 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(2, 950, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__4);
-  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(3, 950, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":89
+ * ORDERS = {'first': 0, 'second': 1, 'unscented': 2}
+ * 
+ * def _form_code(form):             # <<<<<<<<<<<<<<
+ *     if form not in FORMS:
+ *         raise ValueError("form must be one of " + ", ".join(FORMS))
+ */
+  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_n_s_form); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__20);
+  __Pyx_GIVEREF(__pyx_tuple__20);
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_lib_jerk_python_kalman_jerk_pyth, __pyx_n_s_form_code, 89, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 89, __pyx_L1_error)
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":94
+ *     return FORMS[form]
+ * 
+ * def _order_code(order):             # <<<<<<<<<<<<<<
+ *     if order not in ORDERS:
+ *         raise ValueError("order must be one of " + ", ".join(ORDERS))
+ */
+  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_n_s_order); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_lib_jerk_python_kalman_jerk_pyth, __pyx_n_s_order_code, 94, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 94, __pyx_L1_error)
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":270
+ * 
+ *     @staticmethod
+ *     def azel_noise_to_tangent(double elevation, double azimuth_error, double elevation_error):             # <<<<<<<<<<<<<<
+ *         c = np.cos(elevation)
+ *         return np.array([[azimuth_error * azimuth_error * c * c, 0.0], [0.0, elevation_error * elevation_error]])
+ */
+  __pyx_tuple__24 = PyTuple_Pack(4, __pyx_n_s_elevation, __pyx_n_s_azimuth_error, __pyx_n_s_elevation_error, __pyx_n_s_c); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_lib_jerk_python_kalman_jerk_pyth, __pyx_n_s_azel_noise_to_tangent, 270, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 270, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4768,9 +14818,13 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 }
 
 static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
-  if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_int_4 = PyInt_FromLong(4); if (unlikely(!__pyx_int_4)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_int_5 = PyInt_FromLong(5); if (unlikely(!__pyx_int_5)) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_float_0_0 = PyFloat_FromDouble(0.0); if (unlikely(!__pyx_float_0_0)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_int_4 = PyInt_FromLong(4); if (unlikely(!__pyx_int_4)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_int_5 = PyInt_FromLong(5); if (unlikely(!__pyx_int_5)) __PYX_ERR(2, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4815,16 +14869,86 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_8CyKalman_KalmanJerk1D) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6kalman_9_cykalman_KalmanJerk1D) < 0) __PYX_ERR(2, 8, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_8CyKalman_KalmanJerk1D.tp_print = 0;
+  __pyx_type_6kalman_9_cykalman_KalmanJerk1D.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_8CyKalman_KalmanJerk1D.tp_dictoffset && __pyx_type_8CyKalman_KalmanJerk1D.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_8CyKalman_KalmanJerk1D.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6kalman_9_cykalman_KalmanJerk1D.tp_dictoffset && __pyx_type_6kalman_9_cykalman_KalmanJerk1D.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6kalman_9_cykalman_KalmanJerk1D.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk1D, (PyObject *)&__pyx_type_8CyKalman_KalmanJerk1D) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_8CyKalman_KalmanJerk1D) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
-  __pyx_ptype_8CyKalman_KalmanJerk1D = &__pyx_type_8CyKalman_KalmanJerk1D;
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk1D, (PyObject *)&__pyx_type_6kalman_9_cykalman_KalmanJerk1D) < 0) __PYX_ERR(2, 8, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6kalman_9_cykalman_KalmanJerk1D) < 0) __PYX_ERR(2, 8, __pyx_L1_error)
+  __pyx_ptype_6kalman_9_cykalman_KalmanJerk1D = &__pyx_type_6kalman_9_cykalman_KalmanJerk1D;
+  if (PyType_Ready(&__pyx_type_6kalman_9_cykalman_KalmanJerk2D) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  #if PY_VERSION_HEX < 0x030800B1
+  __pyx_type_6kalman_9_cykalman_KalmanJerk2D.tp_print = 0;
+  #endif
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6kalman_9_cykalman_KalmanJerk2D.tp_dictoffset && __pyx_type_6kalman_9_cykalman_KalmanJerk2D.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6kalman_9_cykalman_KalmanJerk2D.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  }
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk2D, (PyObject *)&__pyx_type_6kalman_9_cykalman_KalmanJerk2D) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6kalman_9_cykalman_KalmanJerk2D) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_ptype_6kalman_9_cykalman_KalmanJerk2D = &__pyx_type_6kalman_9_cykalman_KalmanJerk2D;
+  if (PyType_Ready(&__pyx_type_6kalman_9_cykalman_KalmanJerk3D) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+  #if PY_VERSION_HEX < 0x030800B1
+  __pyx_type_6kalman_9_cykalman_KalmanJerk3D.tp_print = 0;
+  #endif
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6kalman_9_cykalman_KalmanJerk3D.tp_dictoffset && __pyx_type_6kalman_9_cykalman_KalmanJerk3D.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6kalman_9_cykalman_KalmanJerk3D.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  }
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk3D, (PyObject *)&__pyx_type_6kalman_9_cykalman_KalmanJerk3D) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6kalman_9_cykalman_KalmanJerk3D) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_ptype_6kalman_9_cykalman_KalmanJerk3D = &__pyx_type_6kalman_9_cykalman_KalmanJerk3D;
+  if (PyType_Ready(&__pyx_type_6kalman_9_cykalman_KalmanJerk2DPolar) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
+  #if PY_VERSION_HEX < 0x030800B1
+  __pyx_type_6kalman_9_cykalman_KalmanJerk2DPolar.tp_print = 0;
+  #endif
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6kalman_9_cykalman_KalmanJerk2DPolar.tp_dictoffset && __pyx_type_6kalman_9_cykalman_KalmanJerk2DPolar.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6kalman_9_cykalman_KalmanJerk2DPolar.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  }
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk2DPolar, (PyObject *)&__pyx_type_6kalman_9_cykalman_KalmanJerk2DPolar) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6kalman_9_cykalman_KalmanJerk2DPolar) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_ptype_6kalman_9_cykalman_KalmanJerk2DPolar = &__pyx_type_6kalman_9_cykalman_KalmanJerk2DPolar;
+  if (PyType_Ready(&__pyx_type_6kalman_9_cykalman_KalmanJerk3DSpherical) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
+  #if PY_VERSION_HEX < 0x030800B1
+  __pyx_type_6kalman_9_cykalman_KalmanJerk3DSpherical.tp_print = 0;
+  #endif
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6kalman_9_cykalman_KalmanJerk3DSpherical.tp_dictoffset && __pyx_type_6kalman_9_cykalman_KalmanJerk3DSpherical.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6kalman_9_cykalman_KalmanJerk3DSpherical.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  }
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk3DSpherical, (PyObject *)&__pyx_type_6kalman_9_cykalman_KalmanJerk3DSpherical) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6kalman_9_cykalman_KalmanJerk3DSpherical) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_ptype_6kalman_9_cykalman_KalmanJerk3DSpherical = &__pyx_type_6kalman_9_cykalman_KalmanJerk3DSpherical;
+  if (PyType_Ready(&__pyx_type_6kalman_9_cykalman_KalmanJerk2DAzEl) < 0) __PYX_ERR(0, 252, __pyx_L1_error)
+  #if PY_VERSION_HEX < 0x030800B1
+  __pyx_type_6kalman_9_cykalman_KalmanJerk2DAzEl.tp_print = 0;
+  #endif
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6kalman_9_cykalman_KalmanJerk2DAzEl.tp_dictoffset && __pyx_type_6kalman_9_cykalman_KalmanJerk2DAzEl.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6kalman_9_cykalman_KalmanJerk2DAzEl.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  }
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk2DAzEl, (PyObject *)&__pyx_type_6kalman_9_cykalman_KalmanJerk2DAzEl) < 0) __PYX_ERR(0, 252, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6kalman_9_cykalman_KalmanJerk2DAzEl) < 0) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_ptype_6kalman_9_cykalman_KalmanJerk2DAzEl = &__pyx_type_6kalman_9_cykalman_KalmanJerk2DAzEl;
+  if (PyType_Ready(&__pyx_type_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor) < 0) __PYX_ERR(0, 304, __pyx_L1_error)
+  #if PY_VERSION_HEX < 0x030800B1
+  __pyx_type_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor.tp_print = 0;
+  #endif
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor.tp_dictoffset && __pyx_type_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  }
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk1DBearingMovingSensor, (PyObject *)&__pyx_type_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor) < 0) __PYX_ERR(0, 304, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor) < 0) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_ptype_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor = &__pyx_type_6kalman_9_cykalman_KalmanJerk1DBearingMovingSensor;
+  if (PyType_Ready(&__pyx_type_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor) < 0) __PYX_ERR(0, 342, __pyx_L1_error)
+  #if PY_VERSION_HEX < 0x030800B1
+  __pyx_type_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor.tp_print = 0;
+  #endif
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor.tp_dictoffset && __pyx_type_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  }
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_KalmanJerk2DAzElMovingSensor, (PyObject *)&__pyx_type_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor) < 0) __PYX_ERR(0, 342, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor) < 0) __PYX_ERR(0, 342, __pyx_L1_error)
+  __pyx_ptype_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor = &__pyx_type_6kalman_9_cykalman_KalmanJerk2DAzElMovingSensor;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4840,7 +14964,7 @@ static int __Pyx_modinit_type_import_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
-  __pyx_t_1 = PyImport_ImportModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_t_1)) __PYX_ERR(3, 9, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_t_1)) __PYX_ERR(4, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_ptype_7cpython_4type_type = __Pyx_ImportType(__pyx_t_1, __Pyx_BUILTIN_MODULE_NAME, "type", 
   #if defined(PYPY_VERSION_NUM) && PYPY_VERSION_NUM < 0x050B0000
@@ -4849,55 +14973,55 @@ static int __Pyx_modinit_type_import_code(void) {
   sizeof(PyHeapTypeObject), __PYX_GET_STRUCT_ALIGNMENT(PyHeapTypeObject),
   #endif
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_7cpython_4type_type) __PYX_ERR(3, 9, __pyx_L1_error)
+   if (!__pyx_ptype_7cpython_4type_type) __PYX_ERR(4, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyImport_ImportModule("numpy"); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 199, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule("numpy"); if (unlikely(!__pyx_t_1)) __PYX_ERR(3, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_ptype_5numpy_dtype = __Pyx_ImportType(__pyx_t_1, "numpy", "dtype", sizeof(PyArray_Descr), __PYX_GET_STRUCT_ALIGNMENT(PyArray_Descr),
   __Pyx_ImportType_CheckSize_Ignore);
-   if (!__pyx_ptype_5numpy_dtype) __PYX_ERR(2, 199, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_dtype) __PYX_ERR(3, 199, __pyx_L1_error)
   __pyx_ptype_5numpy_flatiter = __Pyx_ImportType(__pyx_t_1, "numpy", "flatiter", sizeof(PyArrayIterObject), __PYX_GET_STRUCT_ALIGNMENT(PyArrayIterObject),
   __Pyx_ImportType_CheckSize_Ignore);
-   if (!__pyx_ptype_5numpy_flatiter) __PYX_ERR(2, 222, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_flatiter) __PYX_ERR(3, 222, __pyx_L1_error)
   __pyx_ptype_5numpy_broadcast = __Pyx_ImportType(__pyx_t_1, "numpy", "broadcast", sizeof(PyArrayMultiIterObject), __PYX_GET_STRUCT_ALIGNMENT(PyArrayMultiIterObject),
   __Pyx_ImportType_CheckSize_Ignore);
-   if (!__pyx_ptype_5numpy_broadcast) __PYX_ERR(2, 226, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_broadcast) __PYX_ERR(3, 226, __pyx_L1_error)
   __pyx_ptype_5numpy_ndarray = __Pyx_ImportType(__pyx_t_1, "numpy", "ndarray", sizeof(PyArrayObject), __PYX_GET_STRUCT_ALIGNMENT(PyArrayObject),
   __Pyx_ImportType_CheckSize_Ignore);
-   if (!__pyx_ptype_5numpy_ndarray) __PYX_ERR(2, 238, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_ndarray) __PYX_ERR(3, 238, __pyx_L1_error)
   __pyx_ptype_5numpy_generic = __Pyx_ImportType(__pyx_t_1, "numpy", "generic", sizeof(PyObject), __PYX_GET_STRUCT_ALIGNMENT(PyObject),
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_5numpy_generic) __PYX_ERR(2, 770, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_generic) __PYX_ERR(3, 770, __pyx_L1_error)
   __pyx_ptype_5numpy_number = __Pyx_ImportType(__pyx_t_1, "numpy", "number", sizeof(PyObject), __PYX_GET_STRUCT_ALIGNMENT(PyObject),
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_5numpy_number) __PYX_ERR(2, 772, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_number) __PYX_ERR(3, 772, __pyx_L1_error)
   __pyx_ptype_5numpy_integer = __Pyx_ImportType(__pyx_t_1, "numpy", "integer", sizeof(PyObject), __PYX_GET_STRUCT_ALIGNMENT(PyObject),
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_5numpy_integer) __PYX_ERR(2, 774, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_integer) __PYX_ERR(3, 774, __pyx_L1_error)
   __pyx_ptype_5numpy_signedinteger = __Pyx_ImportType(__pyx_t_1, "numpy", "signedinteger", sizeof(PyObject), __PYX_GET_STRUCT_ALIGNMENT(PyObject),
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_5numpy_signedinteger) __PYX_ERR(2, 776, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_signedinteger) __PYX_ERR(3, 776, __pyx_L1_error)
   __pyx_ptype_5numpy_unsignedinteger = __Pyx_ImportType(__pyx_t_1, "numpy", "unsignedinteger", sizeof(PyObject), __PYX_GET_STRUCT_ALIGNMENT(PyObject),
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_5numpy_unsignedinteger) __PYX_ERR(2, 778, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_unsignedinteger) __PYX_ERR(3, 778, __pyx_L1_error)
   __pyx_ptype_5numpy_inexact = __Pyx_ImportType(__pyx_t_1, "numpy", "inexact", sizeof(PyObject), __PYX_GET_STRUCT_ALIGNMENT(PyObject),
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_5numpy_inexact) __PYX_ERR(2, 780, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_inexact) __PYX_ERR(3, 780, __pyx_L1_error)
   __pyx_ptype_5numpy_floating = __Pyx_ImportType(__pyx_t_1, "numpy", "floating", sizeof(PyObject), __PYX_GET_STRUCT_ALIGNMENT(PyObject),
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_5numpy_floating) __PYX_ERR(2, 782, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_floating) __PYX_ERR(3, 782, __pyx_L1_error)
   __pyx_ptype_5numpy_complexfloating = __Pyx_ImportType(__pyx_t_1, "numpy", "complexfloating", sizeof(PyObject), __PYX_GET_STRUCT_ALIGNMENT(PyObject),
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_5numpy_complexfloating) __PYX_ERR(2, 784, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_complexfloating) __PYX_ERR(3, 784, __pyx_L1_error)
   __pyx_ptype_5numpy_flexible = __Pyx_ImportType(__pyx_t_1, "numpy", "flexible", sizeof(PyObject), __PYX_GET_STRUCT_ALIGNMENT(PyObject),
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_5numpy_flexible) __PYX_ERR(2, 786, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_flexible) __PYX_ERR(3, 786, __pyx_L1_error)
   __pyx_ptype_5numpy_character = __Pyx_ImportType(__pyx_t_1, "numpy", "character", sizeof(PyObject), __PYX_GET_STRUCT_ALIGNMENT(PyObject),
   __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_5numpy_character) __PYX_ERR(2, 788, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_character) __PYX_ERR(3, 788, __pyx_L1_error)
   __pyx_ptype_5numpy_ufunc = __Pyx_ImportType(__pyx_t_1, "numpy", "ufunc", sizeof(PyUFuncObject), __PYX_GET_STRUCT_ALIGNMENT(PyUFuncObject),
   __Pyx_ImportType_CheckSize_Ignore);
-   if (!__pyx_ptype_5numpy_ufunc) __PYX_ERR(2, 826, __pyx_L1_error)
+   if (!__pyx_ptype_5numpy_ufunc) __PYX_ERR(3, 826, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -4942,11 +15066,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initCyKalman(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initCyKalman(void)
+__Pyx_PyMODINIT_FUNC init_cykalman(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC init_cykalman(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_CyKalman(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_CyKalman(void)
+__Pyx_PyMODINIT_FUNC PyInit__cykalman(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit__cykalman(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -5013,11 +15137,12 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_CyKalman(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec__cykalman(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
   PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -5025,7 +15150,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_CyKalman(PyObject *__pyx_pyinit_mo
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'CyKalman' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module '_cykalman' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -5040,31 +15165,31 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_CyKalman(void)", 0);
-  if (__Pyx_check_binary_version() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit__cykalman(void)", 0);
+  if (__Pyx_check_binary_version() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
   #endif
-  __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_empty_unicode = PyUnicode_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_unicode)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_empty_unicode = PyUnicode_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_unicode)) __PYX_ERR(2, 1, __pyx_L1_error)
   #ifdef __Pyx_CyFunction_USED
-  if (__pyx_CyFunction_init() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__pyx_CyFunction_init() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   #endif
   #ifdef __Pyx_FusedFunction_USED
-  if (__pyx_FusedFunction_init() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__pyx_FusedFunction_init() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   #endif
   #ifdef __Pyx_Coroutine_USED
-  if (__pyx_Coroutine_init() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__pyx_Coroutine_init() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   #endif
   #ifdef __Pyx_Generator_USED
-  if (__pyx_Generator_init() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__pyx_Generator_init() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   #endif
   #ifdef __Pyx_AsyncGen_USED
-  if (__pyx_AsyncGen_init() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__pyx_AsyncGen_init() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   #endif
   #ifdef __Pyx_StopAsyncIteration_USED
-  if (__pyx_StopAsyncIteration_init() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__pyx_StopAsyncIteration_init() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   #endif
   /*--- Library function declarations ---*/
   /*--- Threads initialization code ---*/
@@ -5077,50 +15202,50 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("CyKalman", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("_cykalman", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
-  if (unlikely(!__pyx_m)) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (unlikely(!__pyx_m)) __PYX_ERR(2, 1, __pyx_L1_error)
   #endif
-  __pyx_d = PyModule_GetDict(__pyx_m); if (unlikely(!__pyx_d)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_d = PyModule_GetDict(__pyx_m); if (unlikely(!__pyx_d)) __PYX_ERR(2, 1, __pyx_L1_error)
   Py_INCREF(__pyx_d);
-  __pyx_b = PyImport_AddModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_b)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_b = PyImport_AddModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_b)) __PYX_ERR(2, 1, __pyx_L1_error)
   Py_INCREF(__pyx_b);
-  __pyx_cython_runtime = PyImport_AddModule((char *) "cython_runtime"); if (unlikely(!__pyx_cython_runtime)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_cython_runtime = PyImport_AddModule((char *) "cython_runtime"); if (unlikely(!__pyx_cython_runtime)) __PYX_ERR(2, 1, __pyx_L1_error)
   Py_INCREF(__pyx_cython_runtime);
-  if (PyObject_SetAttrString(__pyx_m, "__builtins__", __pyx_b) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "__builtins__", __pyx_b) < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   /*--- Initialize various global constants etc. ---*/
-  if (__Pyx_InitGlobals() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__Pyx_InitGlobals() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
-  if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_CyKalman) {
-    if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__pyx_module_is_main_kalman___cykalman) {
+    if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
-    PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(1, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "CyKalman")) {
-      if (unlikely(PyDict_SetItemString(modules, "CyKalman", __pyx_m) < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
+    PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(2, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "kalman._cykalman")) {
+      if (unlikely(PyDict_SetItemString(modules, "kalman._cykalman", __pyx_m) < 0)) __PYX_ERR(2, 1, __pyx_L1_error)
     }
   }
   #endif
   /*--- Builtin init code ---*/
-  if (__Pyx_InitCachedBuiltins() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__Pyx_InitCachedBuiltins() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   /*--- Constants init code ---*/
-  if (__Pyx_InitCachedConstants() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__Pyx_InitCachedConstants() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   /*--- Global type/function init code ---*/
   (void)__Pyx_modinit_global_init_code();
   (void)__Pyx_modinit_variable_export_code();
   (void)__Pyx_modinit_function_export_code();
-  if (unlikely(__Pyx_modinit_type_init_code() < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
-  if (unlikely(__Pyx_modinit_type_import_code() < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (unlikely(__Pyx_modinit_type_init_code() < 0)) __PYX_ERR(2, 1, __pyx_L1_error)
+  if (unlikely(__Pyx_modinit_type_import_code() < 0)) __PYX_ERR(2, 1, __pyx_L1_error)
   (void)__Pyx_modinit_variable_import_code();
   (void)__Pyx_modinit_function_import_code();
   /*--- Execution code ---*/
   #if defined(__Pyx_Generator_USED) || defined(__Pyx_Coroutine_USED)
-  if (__Pyx_patch_abc() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  if (__Pyx_patch_abc() < 0) __PYX_ERR(2, 1, __pyx_L1_error)
   #endif
 
   /* "lib/jerk/KalmanJerk1D.pyx":3
@@ -5130,20 +15255,102 @@ if (!__Pyx_RefNanny) {
  * cimport numpy as np
  * from kalman_jerk cimport KalmanJerk1D as _KalmanJerk1D
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(2, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":86
+ *         double innovation_covariance_determinant()
+ * 
+ * FORMS = {'small_alpha_t': 0, 'exact': 1}             # <<<<<<<<<<<<<<
+ * ORDERS = {'first': 0, 'second': 1, 'unscented': 2}
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_small_alpha_t, __pyx_int_0) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_exact, __pyx_int_1) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FORMS, __pyx_t_1) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":87
+ * 
+ * FORMS = {'small_alpha_t': 0, 'exact': 1}
+ * ORDERS = {'first': 0, 'second': 1, 'unscented': 2}             # <<<<<<<<<<<<<<
+ * 
+ * def _form_code(form):
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_first, __pyx_int_0) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_second, __pyx_int_1) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_unscented, __pyx_int_2) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ORDERS, __pyx_t_1) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":89
+ * ORDERS = {'first': 0, 'second': 1, 'unscented': 2}
+ * 
+ * def _form_code(form):             # <<<<<<<<<<<<<<
+ *     if form not in FORMS:
+ *         raise ValueError("form must be one of " + ", ".join(FORMS))
+ */
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6kalman_9_cykalman_1_form_code, NULL, __pyx_n_s_kalman__cykalman); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_form_code, __pyx_t_1) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":94
+ *     return FORMS[form]
+ * 
+ * def _order_code(order):             # <<<<<<<<<<<<<<
+ *     if order not in ORDERS:
+ *         raise ValueError("order must be one of " + ", ".join(ORDERS))
+ */
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6kalman_9_cykalman_3_order_code, NULL, __pyx_n_s_kalman__cykalman); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_order_code, __pyx_t_1) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":270
+ * 
+ *     @staticmethod
+ *     def azel_noise_to_tangent(double elevation, double azimuth_error, double elevation_error):             # <<<<<<<<<<<<<<
+ *         c = np.cos(elevation)
+ *         return np.array([[azimuth_error * azimuth_error * c * c, 0.0], [0.0, elevation_error * elevation_error]])
+ */
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6kalman_9_cykalman_16KalmanJerk2DAzEl_7azel_noise_to_tangent, NULL, __pyx_n_s_kalman__cykalman); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_6kalman_9_cykalman_KalmanJerk2DAzEl->tp_dict, __pyx_n_s_azel_noise_to_tangent, __pyx_t_1) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_6kalman_9_cykalman_KalmanJerk2DAzEl);
+
+  /* "lib/jerk/python/kalman_jerk_python.pxi":269
+ *             self.c_kalman.step_covariance(time, azimuth, elevation, &Rv[0, 0])
+ * 
+ *     @staticmethod             # <<<<<<<<<<<<<<
+ *     def azel_noise_to_tangent(double elevation, double azimuth_error, double elevation_error):
+ *         c = np.cos(elevation)
+ */
+  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_6kalman_9_cykalman_KalmanJerk2DAzEl, __pyx_n_s_azel_noise_to_tangent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_6kalman_9_cykalman_KalmanJerk2DAzEl->tp_dict, __pyx_n_s_azel_noise_to_tangent, __pyx_t_2) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_6kalman_9_cykalman_KalmanJerk2DAzEl);
 
   /* "lib/jerk/KalmanJerk1D.pyx":1
  * # distutils: language = c++             # <<<<<<<<<<<<<<
  * 
  * import numpy as np
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "env/lib/python3.10/site-packages/numpy/__init__.pxd":1013
  * 
@@ -5158,13 +15365,14 @@ if (!__Pyx_RefNanny) {
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init CyKalman", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init kalman._cykalman", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init CyKalman");
+    PyErr_SetString(PyExc_ImportError, "init kalman._cykalman");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -6439,6 +16647,135 @@ bad:
 }
 #endif
 
+/* StringJoin */
+  #if !CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyBytes_Join(PyObject* sep, PyObject* values) {
+    return PyObject_CallMethodObjArgs(sep, __pyx_n_s_join, values, NULL);
+}
+#endif
+
+/* GetItemInt */
+  static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
+    PyObject *r;
+    if (!j) return NULL;
+    r = PyObject_GetItem(o, j);
+    Py_DECREF(j);
+    return r;
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
+                                                              CYTHON_NCP_UNUSED int wraparound,
+                                                              CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    Py_ssize_t wrapped_i = i;
+    if (wraparound & unlikely(i < 0)) {
+        wrapped_i += PyList_GET_SIZE(o);
+    }
+    if ((!boundscheck) || likely(__Pyx_is_valid_index(wrapped_i, PyList_GET_SIZE(o)))) {
+        PyObject *r = PyList_GET_ITEM(o, wrapped_i);
+        Py_INCREF(r);
+        return r;
+    }
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+#else
+    return PySequence_GetItem(o, i);
+#endif
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
+                                                              CYTHON_NCP_UNUSED int wraparound,
+                                                              CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    Py_ssize_t wrapped_i = i;
+    if (wraparound & unlikely(i < 0)) {
+        wrapped_i += PyTuple_GET_SIZE(o);
+    }
+    if ((!boundscheck) || likely(__Pyx_is_valid_index(wrapped_i, PyTuple_GET_SIZE(o)))) {
+        PyObject *r = PyTuple_GET_ITEM(o, wrapped_i);
+        Py_INCREF(r);
+        return r;
+    }
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+#else
+    return PySequence_GetItem(o, i);
+#endif
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, int is_list,
+                                                     CYTHON_NCP_UNUSED int wraparound,
+                                                     CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS && CYTHON_USE_TYPE_SLOTS
+    if (is_list || PyList_CheckExact(o)) {
+        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyList_GET_SIZE(o);
+        if ((!boundscheck) || (likely(__Pyx_is_valid_index(n, PyList_GET_SIZE(o))))) {
+            PyObject *r = PyList_GET_ITEM(o, n);
+            Py_INCREF(r);
+            return r;
+        }
+    }
+    else if (PyTuple_CheckExact(o)) {
+        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyTuple_GET_SIZE(o);
+        if ((!boundscheck) || likely(__Pyx_is_valid_index(n, PyTuple_GET_SIZE(o)))) {
+            PyObject *r = PyTuple_GET_ITEM(o, n);
+            Py_INCREF(r);
+            return r;
+        }
+    } else {
+        PySequenceMethods *m = Py_TYPE(o)->tp_as_sequence;
+        if (likely(m && m->sq_item)) {
+            if (wraparound && unlikely(i < 0) && likely(m->sq_length)) {
+                Py_ssize_t l = m->sq_length(o);
+                if (likely(l >= 0)) {
+                    i += l;
+                } else {
+                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
+                        return NULL;
+                    PyErr_Clear();
+                }
+            }
+            return m->sq_item(o, i);
+        }
+    }
+#else
+    if (is_list || PySequence_Check(o)) {
+        return PySequence_GetItem(o, i);
+    }
+#endif
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+}
+
+/* ObjectGetItem */
+  #if CYTHON_USE_TYPE_SLOTS
+static PyObject *__Pyx_PyObject_GetIndex(PyObject *obj, PyObject* index) {
+    PyObject *runerr = NULL;
+    Py_ssize_t key_value;
+    PySequenceMethods *m = Py_TYPE(obj)->tp_as_sequence;
+    if (unlikely(!(m && m->sq_item))) {
+        PyErr_Format(PyExc_TypeError, "'%.200s' object is not subscriptable", Py_TYPE(obj)->tp_name);
+        return NULL;
+    }
+    key_value = __Pyx_PyIndex_AsSsize_t(index);
+    if (likely(key_value != -1 || !(runerr = PyErr_Occurred()))) {
+        return __Pyx_GetItemInt_Fast(obj, key_value, 0, 1, 1);
+    }
+    if (PyErr_GivenExceptionMatches(runerr, PyExc_OverflowError)) {
+        PyErr_Clear();
+        PyErr_Format(PyExc_IndexError, "cannot fit '%.200s' into an index-sized integer", Py_TYPE(index)->tp_name);
+    }
+    return NULL;
+}
+static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
+    PyMappingMethods *m = Py_TYPE(obj)->tp_as_mapping;
+    if (likely(m && m->mp_subscript)) {
+        return m->mp_subscript(obj, key);
+    }
+    return __Pyx_PyObject_GetIndex(obj, key);
+}
+#endif
+
+/* BufferFallbackError */
+  static void __Pyx_RaiseBufferFallbackError(void) {
+  PyErr_SetString(PyExc_ValueError,
+     "Buffer acquisition failed on assignment; and then reacquiring the old buffer failed too!");
+}
+
 /* GetTopmostException */
   #if CYTHON_USE_EXC_INFO_STACK
 static _PyErr_StackItem *
@@ -6914,6 +17251,26 @@ bad:
     return module;
 }
 
+/* GetNameInClass */
+  static PyObject *__Pyx_GetGlobalNameAfterAttributeLookup(PyObject *name) {
+    PyObject *result;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    if (unlikely(!__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
+        return NULL;
+    __Pyx_PyErr_Clear();
+    __Pyx_GetModuleGlobalNameUncached(result, name);
+    return result;
+}
+static PyObject *__Pyx__GetNameInClass(PyObject *nmspace, PyObject *name) {
+    PyObject *result;
+    result = __Pyx_PyObject_GetAttrStr(nmspace, name);
+    if (!result) {
+        result = __Pyx_GetGlobalNameAfterAttributeLookup(name);
+    }
+    return result;
+}
+
 /* CLineInTraceback */
   #ifndef CYTHON_CLINE_IN_TRACEBACK
 static int __Pyx_CLineForTraceback(CYTHON_UNUSED PyThreadState *tstate, int c_line) {
@@ -7163,7 +17520,29 @@ static void __Pyx_ReleaseBuffer(Py_buffer *view) {
 #endif
 
 
-  /* Declarations */
+  /* CIntFromPyVerify */
+  #define __PYX_VERIFY_RETURN_INT(target_type, func_type, func_value)\
+    __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 0)
+#define __PYX_VERIFY_RETURN_INT_EXC(target_type, func_type, func_value)\
+    __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 1)
+#define __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, exc)\
+    {\
+        func_type value = func_value;\
+        if (sizeof(target_type) < sizeof(func_type)) {\
+            if (unlikely(value != (func_type) (target_type) value)) {\
+                func_type zero = 0;\
+                if (exc && unlikely(value == (func_type)-1 && PyErr_Occurred()))\
+                    return (target_type) -1;\
+                if (is_unsigned && unlikely(value < zero))\
+                    goto raise_neg_overflow;\
+                else\
+                    goto raise_overflow;\
+            }\
+        }\
+        return (target_type) value;\
+    }
+
+/* Declarations */
   #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
     static CYTHON_INLINE __pyx_t_float_complex __pyx_t_float_complex_from_parts(float x, float y) {
@@ -7471,6 +17850,240 @@ static void __Pyx_ReleaseBuffer(Py_buffer *view) {
     #endif
 #endif
 
+/* CIntFromPy */
+  static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *x) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const int neg_one = (int) -1, const_zero = (int) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if (sizeof(int) < sizeof(long)) {
+            __PYX_VERIFY_RETURN_INT(int, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (int) val;
+        }
+    } else
+#endif
+    if (likely(PyLong_Check(x))) {
+        if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (int) 0;
+                case  1: __PYX_VERIFY_RETURN_INT(int, digit, digits[0])
+                case 2:
+                    if (8 * sizeof(int) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(int) >= 2 * PyLong_SHIFT) {
+                            return (int) (((((int)digits[1]) << PyLong_SHIFT) | (int)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(int) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(int) >= 3 * PyLong_SHIFT) {
+                            return (int) (((((((int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(int) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(int) >= 4 * PyLong_SHIFT) {
+                            return (int) (((((((((int)digits[3]) << PyLong_SHIFT) | (int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0]));
+                        }
+                    }
+                    break;
+            }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+            if (unlikely(Py_SIZE(x) < 0)) {
+                goto raise_neg_overflow;
+            }
+#else
+            {
+                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+                if (unlikely(result < 0))
+                    return (int) -1;
+                if (unlikely(result == 1))
+                    goto raise_neg_overflow;
+            }
+#endif
+            if (sizeof(int) <= sizeof(unsigned long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(int, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(int, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+            }
+        } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (int) 0;
+                case -1: __PYX_VERIFY_RETURN_INT(int, sdigit, (sdigit) (-(sdigit)digits[0]))
+                case  1: __PYX_VERIFY_RETURN_INT(int,  digit, +digits[0])
+                case -2:
+                    if (8 * sizeof(int) - 1 > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(int, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(int) - 1 > 2 * PyLong_SHIFT) {
+                            return (int) (((int)-1)*(((((int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if (8 * sizeof(int) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(int) - 1 > 2 * PyLong_SHIFT) {
+                            return (int) ((((((int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if (8 * sizeof(int) - 1 > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(int, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(int) - 1 > 3 * PyLong_SHIFT) {
+                            return (int) (((int)-1)*(((((((int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(int) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(int) - 1 > 3 * PyLong_SHIFT) {
+                            return (int) ((((((((int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if (8 * sizeof(int) - 1 > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(int, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(int) - 1 > 4 * PyLong_SHIFT) {
+                            return (int) (((int)-1)*(((((((((int)digits[3]) << PyLong_SHIFT) | (int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(int) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(int) - 1 > 4 * PyLong_SHIFT) {
+                            return (int) ((((((((((int)digits[3]) << PyLong_SHIFT) | (int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
+                        }
+                    }
+                    break;
+            }
+#endif
+            if (sizeof(int) <= sizeof(long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(int, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(int, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+            }
+        }
+        {
+#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
+            PyErr_SetString(PyExc_RuntimeError,
+                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
+#else
+            int val;
+            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
+ #if PY_MAJOR_VERSION < 3
+            if (likely(v) && !PyLong_Check(v)) {
+                PyObject *tmp = v;
+                v = PyNumber_Long(tmp);
+                Py_DECREF(tmp);
+            }
+ #endif
+            if (likely(v)) {
+                int one = 1; int is_little = (int)*(unsigned char *)&one;
+                unsigned char *bytes = (unsigned char *)&val;
+                int ret = _PyLong_AsByteArray((PyLongObject *)v,
+                                              bytes, sizeof(val),
+                                              is_little, !is_unsigned);
+                Py_DECREF(v);
+                if (likely(!ret))
+                    return val;
+            }
+#endif
+            return (int) -1;
+        }
+    } else {
+        int val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (int) -1;
+        val = __Pyx_PyInt_As_int(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to int");
+    return (int) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to int");
+    return (int) -1;
+}
+
+/* CIntToPy */
+  static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const int neg_one = (int) -1, const_zero = (int) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(int) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(int) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(int) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(int),
+                                     little, !is_unsigned);
+    }
+}
+
 /* CIntToPy */
   static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
@@ -7508,28 +18121,6 @@ static void __Pyx_ReleaseBuffer(Py_buffer *view) {
                                      little, !is_unsigned);
     }
 }
-
-/* CIntFromPyVerify */
-  #define __PYX_VERIFY_RETURN_INT(target_type, func_type, func_value)\
-    __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 0)
-#define __PYX_VERIFY_RETURN_INT_EXC(target_type, func_type, func_value)\
-    __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 1)
-#define __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, exc)\
-    {\
-        func_type value = func_value;\
-        if (sizeof(target_type) < sizeof(func_type)) {\
-            if (unlikely(value != (func_type) (target_type) value)) {\
-                func_type zero = 0;\
-                if (exc && unlikely(value == (func_type)-1 && PyErr_Occurred()))\
-                    return (target_type) -1;\
-                if (is_unsigned && unlikely(value < zero))\
-                    goto raise_neg_overflow;\
-                else\
-                    goto raise_overflow;\
-            }\
-        }\
-        return (target_type) value;\
-    }
 
 /* CIntFromPy */
   static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
@@ -7725,202 +18316,6 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to long");
     return (long) -1;
-}
-
-/* CIntFromPy */
-  static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *x) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const int neg_one = (int) -1, const_zero = (int) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-#if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_Check(x))) {
-        if (sizeof(int) < sizeof(long)) {
-            __PYX_VERIFY_RETURN_INT(int, long, PyInt_AS_LONG(x))
-        } else {
-            long val = PyInt_AS_LONG(x);
-            if (is_unsigned && unlikely(val < 0)) {
-                goto raise_neg_overflow;
-            }
-            return (int) val;
-        }
-    } else
-#endif
-    if (likely(PyLong_Check(x))) {
-        if (is_unsigned) {
-#if CYTHON_USE_PYLONG_INTERNALS
-            const digit* digits = ((PyLongObject*)x)->ob_digit;
-            switch (Py_SIZE(x)) {
-                case  0: return (int) 0;
-                case  1: __PYX_VERIFY_RETURN_INT(int, digit, digits[0])
-                case 2:
-                    if (8 * sizeof(int) > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(int) >= 2 * PyLong_SHIFT) {
-                            return (int) (((((int)digits[1]) << PyLong_SHIFT) | (int)digits[0]));
-                        }
-                    }
-                    break;
-                case 3:
-                    if (8 * sizeof(int) > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(int) >= 3 * PyLong_SHIFT) {
-                            return (int) (((((((int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0]));
-                        }
-                    }
-                    break;
-                case 4:
-                    if (8 * sizeof(int) > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(int) >= 4 * PyLong_SHIFT) {
-                            return (int) (((((((((int)digits[3]) << PyLong_SHIFT) | (int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0]));
-                        }
-                    }
-                    break;
-            }
-#endif
-#if CYTHON_COMPILING_IN_CPYTHON
-            if (unlikely(Py_SIZE(x) < 0)) {
-                goto raise_neg_overflow;
-            }
-#else
-            {
-                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
-                if (unlikely(result < 0))
-                    return (int) -1;
-                if (unlikely(result == 1))
-                    goto raise_neg_overflow;
-            }
-#endif
-            if (sizeof(int) <= sizeof(unsigned long)) {
-                __PYX_VERIFY_RETURN_INT_EXC(int, unsigned long, PyLong_AsUnsignedLong(x))
-#ifdef HAVE_LONG_LONG
-            } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
-                __PYX_VERIFY_RETURN_INT_EXC(int, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
-#endif
-            }
-        } else {
-#if CYTHON_USE_PYLONG_INTERNALS
-            const digit* digits = ((PyLongObject*)x)->ob_digit;
-            switch (Py_SIZE(x)) {
-                case  0: return (int) 0;
-                case -1: __PYX_VERIFY_RETURN_INT(int, sdigit, (sdigit) (-(sdigit)digits[0]))
-                case  1: __PYX_VERIFY_RETURN_INT(int,  digit, +digits[0])
-                case -2:
-                    if (8 * sizeof(int) - 1 > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(int, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(int) - 1 > 2 * PyLong_SHIFT) {
-                            return (int) (((int)-1)*(((((int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
-                        }
-                    }
-                    break;
-                case 2:
-                    if (8 * sizeof(int) > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(int) - 1 > 2 * PyLong_SHIFT) {
-                            return (int) ((((((int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
-                        }
-                    }
-                    break;
-                case -3:
-                    if (8 * sizeof(int) - 1 > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(int, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(int) - 1 > 3 * PyLong_SHIFT) {
-                            return (int) (((int)-1)*(((((((int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
-                        }
-                    }
-                    break;
-                case 3:
-                    if (8 * sizeof(int) > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(int) - 1 > 3 * PyLong_SHIFT) {
-                            return (int) ((((((((int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
-                        }
-                    }
-                    break;
-                case -4:
-                    if (8 * sizeof(int) - 1 > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(int, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(int) - 1 > 4 * PyLong_SHIFT) {
-                            return (int) (((int)-1)*(((((((((int)digits[3]) << PyLong_SHIFT) | (int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
-                        }
-                    }
-                    break;
-                case 4:
-                    if (8 * sizeof(int) > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(int, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(int) - 1 > 4 * PyLong_SHIFT) {
-                            return (int) ((((((((((int)digits[3]) << PyLong_SHIFT) | (int)digits[2]) << PyLong_SHIFT) | (int)digits[1]) << PyLong_SHIFT) | (int)digits[0])));
-                        }
-                    }
-                    break;
-            }
-#endif
-            if (sizeof(int) <= sizeof(long)) {
-                __PYX_VERIFY_RETURN_INT_EXC(int, long, PyLong_AsLong(x))
-#ifdef HAVE_LONG_LONG
-            } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
-                __PYX_VERIFY_RETURN_INT_EXC(int, PY_LONG_LONG, PyLong_AsLongLong(x))
-#endif
-            }
-        }
-        {
-#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
-            PyErr_SetString(PyExc_RuntimeError,
-                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
-#else
-            int val;
-            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
- #if PY_MAJOR_VERSION < 3
-            if (likely(v) && !PyLong_Check(v)) {
-                PyObject *tmp = v;
-                v = PyNumber_Long(tmp);
-                Py_DECREF(tmp);
-            }
- #endif
-            if (likely(v)) {
-                int one = 1; int is_little = (int)*(unsigned char *)&one;
-                unsigned char *bytes = (unsigned char *)&val;
-                int ret = _PyLong_AsByteArray((PyLongObject *)v,
-                                              bytes, sizeof(val),
-                                              is_little, !is_unsigned);
-                Py_DECREF(v);
-                if (likely(!ret))
-                    return val;
-            }
-#endif
-            return (int) -1;
-        }
-    } else {
-        int val;
-        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
-        if (!tmp) return (int) -1;
-        val = __Pyx_PyInt_As_int(tmp);
-        Py_DECREF(tmp);
-        return val;
-    }
-raise_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "value too large to convert to int");
-    return (int) -1;
-raise_neg_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "can't convert negative value to int");
-    return (int) -1;
 }
 
 /* FastTypeChecks */
